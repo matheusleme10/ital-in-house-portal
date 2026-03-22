@@ -14,7 +14,7 @@ from theme import inject_global_css
 
 st.set_page_config(
     page_title="Ital In House",
-    page_icon="🍕",
+    page_icon="IH",
     layout="wide",
     initial_sidebar_state="expanded",
 )
