@@ -4,24 +4,26 @@ from datetime import datetime
 
 import streamlit as st
 
-from admin_dashboard import render_admin_panel
 from db import get_connection
 from ia_ui import render_ia_tab
 from mv_dashboard import render_plataformas, render_recorrencia, render_tickets_descontos
 from queries import authenticate_user, list_units_for_user
-from tabs import fmt_brl, fmt_delta_pct, kpi_card, tab_cardapio, tab_clientes, tab_metas, tab_vendas
+from sidebar import render_sidebar
+from tabs import tab_cardapio, tab_clientes, tab_metas, tab_vendas
 from theme import inject_global_css
+
+LOGO_URL = "https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png"
 
 st.set_page_config(
     page_title="Ital In House",
-    page_icon="IH",
+    page_icon=LOGO_URL,
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
 
 def init_state():
-    for k, v in {"user": None, "loja_atual": None, "chat": []}.items():
+    for k, v in {"user": None, "loja_atual": None, "chat": [], "page": "vendas"}.items():
         if k not in st.session_state:
             st.session_state[k] = v
 
@@ -40,12 +42,9 @@ section[data-testid='stSidebar']{display:none!important}
 </style>
 """, unsafe_allow_html=True)
 
-    st.markdown("""
+    st.markdown(f"""
 <div style='text-align:center;margin-bottom:32px'>
-    <div style='font-size:2.4rem;font-weight:800;letter-spacing:-.02em'>
-        <span style='color:#F5F5F7'>Ital</span>
-        <span style='color:#C8102E'> In House</span>
-    </div>
+    <img src='{LOGO_URL}' style='height:64px;object-fit:contain;margin-bottom:10px'/>
     <div style='color:#5A5A65;font-size:.7rem;font-weight:600;
                 letter-spacing:.1em;text-transform:uppercase;margin-top:4px'>
         Portal do Franqueado
@@ -76,8 +75,7 @@ section[data-testid='stSidebar']{display:none!important}
                 user_id = int(user_data["id"])
                 role    = (user_data.get("role") or "").strip().lower()
                 try:
-                    id_unidades = user_data.get("id_unidades") or []
-                    lojas = list_units_for_user(user_id, role, id_unidades)
+                    lojas = list_units_for_user(user_id, role, user_data.get("id_unidades") or [])
                 except Exception:
                     lojas = []
 
@@ -90,11 +88,12 @@ section[data-testid='stSidebar']{display:none!important}
                 }
                 st.session_state.loja_atual = None
                 st.session_state.chat       = []
+                st.session_state.page       = "visao_geral" if role == "admin" else "vendas"
                 st.rerun()
 
 
 # ─────────────────────────────────────────────
-#  SELEÇÃO DE LOJA (só franqueado com 2+ lojas)
+#  POPUP SELEÇÃO LOJA (franqueado 2+ lojas)
 # ─────────────────────────────────────────────
 
 def popup_selecao_loja():
@@ -111,15 +110,18 @@ section[data-testid='stSidebar']{display:none!important}
     nome  = (st.session_state.user.get("nome") or "").split()[0]
 
     st.markdown(f"""
+<div style='text-align:center;margin-bottom:20px'>
+  <img src='{LOGO_URL}' style='height:48px;object-fit:contain'/>
+</div>
 <div style='background:#141416;border:1px solid #2A2A2F;border-radius:20px;
             padding:32px 28px;margin-bottom:12px'>
-    <div style='font-size:1.2rem;font-weight:800;color:#F5F5F7;margin-bottom:4px'>
-        Olá, {nome}! 👋
-    </div>
-    <div style='color:#5A5A65;font-size:.85rem;margin-bottom:20px'>
-        Você tem acesso a {len(lojas)} unidade{'s' if len(lojas) != 1 else ''}.
-        Qual deseja visualizar?
-    </div>
+  <div style='font-size:1.2rem;font-weight:800;color:#F5F5F7;margin-bottom:4px'>
+    Olá, {nome}! 👋
+  </div>
+  <div style='color:#5A5A65;font-size:.85rem;margin-bottom:20px'>
+    Você tem acesso a {len(lojas)} unidade{'s' if len(lojas) != 1 else ''}.
+    Qual deseja visualizar?
+  </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -132,6 +134,26 @@ section[data-testid='stSidebar']{display:none!important}
 
 
 # ─────────────────────────────────────────────
+#  PAGE HEADER
+# ─────────────────────────────────────────────
+
+def _page_header(titulo: str, subtitulo: str = ""):
+    data = datetime.now().strftime("%d/%m/%Y %H:%M")
+    st.markdown(f"""
+<div style='display:flex;justify-content:space-between;align-items:flex-end;
+            margin-bottom:20px;padding-bottom:12px;
+            border-bottom:1px solid #2A2A2F'>
+  <div>
+    {'<div style="color:#5A5A65;font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px">' + subtitulo + '</div>' if subtitulo else ''}
+    <div style='color:#F5F5F7;font-size:1.35rem;font-weight:800;
+                letter-spacing:-.02em'>{titulo}</div>
+  </div>
+  <div style='color:#5A5A65;font-size:.72rem'>{data}</div>
+</div>
+""", unsafe_allow_html=True)
+
+
+# ─────────────────────────────────────────────
 #  DASHBOARD FRANQUEADO
 # ─────────────────────────────────────────────
 
@@ -140,119 +162,36 @@ def pagina_dashboard():
     trade = loja["trade_name"]
     uid   = int(loja["id"])
     user  = st.session_state.user
-    lojas = user["lojas"]
     role  = (user.get("role") or "franqueado").lower()
 
-    # ── Sidebar ──
-    with st.sidebar:
-        st.markdown(f"""
-<div style='text-align:center;padding:8px 0 14px'>
-    <div style='font-size:1.15rem;font-weight:800;letter-spacing:-.02em'>
-        <span style='color:#F5F5F7'>Ital</span>
-        <span style='color:#C8102E'> In House</span>
-    </div>
-    <div style='color:#5A5A65;font-size:.58rem;font-weight:600;
-                letter-spacing:.09em;text-transform:uppercase;margin-top:2px'>
-        Portal do Franqueado
-    </div>
-</div>
-<hr style='border-color:#2A2A2F;margin:0 0 12px'>
-<div style='background:#1C1C1F;border:1px solid #2A2A2F;border-radius:10px;
-            padding:10px 12px;margin-bottom:12px'>
-    <div style='display:flex;align-items:center;gap:10px'>
-        <div style='width:32px;height:32px;border-radius:50%;background:#C8102E;
-                    display:flex;align-items:center;justify-content:center;
-                    color:white;font-size:.68rem;font-weight:800;flex-shrink:0'>
-            {(user.get("nome") or "?")[:2].upper()}
-        </div>
-        <div>
-            <div style='color:#F5F5F7;font-size:.78rem;font-weight:700;line-height:1.2'>
-                {user.get("nome") or "Usuário"}
-            </div>
-            <div style='color:#C8102E;font-size:.6rem;font-weight:600;
-                        letter-spacing:.06em;text-transform:uppercase'>
-                {role.capitalize()}
-            </div>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+    ctx = render_sidebar(role)
+    page = ctx["page"]
+    days = ctx["days"]
 
-        if len(lojas) > 1:
-            st.markdown(
-                "<div style='color:#5A5A65;font-size:.6rem;font-weight:600;"
-                "letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px'>"
-                "Unidade</div>", unsafe_allow_html=True)
-            nomes     = [l["trade_name"] for l in lojas]
-            idx_atual = nomes.index(trade) if trade in nomes else 0
-            escolha   = st.selectbox("", nomes, index=idx_atual,
-                                     key="sb_loja_sel", label_visibility="collapsed")
-            if escolha != trade:
-                nova = next(l for l in lojas if l["trade_name"] == escolha)
-                st.session_state.loja_atual = nova
-                st.session_state.chat = []
-                st.rerun()
+    # ── Roteamento por página ──
+    PAGE_TITLES = {
+        "vendas":      ("📈 Vendas",              f"Unidade · {trade}"),
+        "cardapio":    ("🍽️ Cardápio & Itens",    f"Unidade · {trade}"),
+        "clientes":    ("👥 Clientes",             f"Unidade · {trade}"),
+        "metas":       ("🎯 Metas",                f"Unidade · {trade}"),
+        "plataformas": ("📡 Plataformas",          f"Unidade · {trade}"),
+        "tickets":     ("🎟️ Tickets & Descontos",  f"Unidade · {trade}"),
+        "recorrencia": ("🔄 Recorrência",          f"Unidade · {trade}"),
+        "ia":          ("🤖 IA - IH",              f"Unidade · {trade}"),
+    }
 
-        st.markdown(
-            "<div style='color:#5A5A65;font-size:.6rem;font-weight:600;"
-            "letter-spacing:.08em;text-transform:uppercase;margin:12px 0 4px'>"
-            "Período (gráficos diários)</div>", unsafe_allow_html=True)
-        days = st.selectbox("", [7, 30, 90], index=1, key="sb_days",
-                            label_visibility="collapsed",
-                            format_func=lambda x: f"{x} dias")
+    titulo, sub = PAGE_TITLES.get(page, ("Dashboard", trade))
+    _page_header(titulo, sub)
 
-        st.markdown("<hr style='border-color:#2A2A2F;margin:12px 0'>",
-                    unsafe_allow_html=True)
-
-        if st.button("🚪 Sair", use_container_width=True, key="sb_sair"):
-            st.session_state.user       = None
-            st.session_state.loja_atual = None
-            st.session_state.chat       = []
-            st.rerun()
-
-    # ── Header ──
-    st.markdown(f"""
-<div style='display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px'>
-    <div>
-        <div style='color:#5A5A65;font-size:.62rem;font-weight:600;
-                    letter-spacing:.1em;text-transform:uppercase'>Dashboard</div>
-        <div style='color:#F5F5F7;font-size:1.45rem;font-weight:800;
-                    letter-spacing:-.02em;margin-top:2px'>🏪 {trade}</div>
-    </div>
-    <div style='color:#C8102E;font-size:.72rem;font-weight:600'>
-        {datetime.now().strftime("%d/%m/%Y %H:%M")}
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-    # ── Tabs ──
-    t1, t2, t3, t4, t_plat, t_tick, t_recorr, t_ia = st.tabs([
-        "📈  Vendas",
-        "🍽️  Cardápio & Itens",
-        "👥  Clientes",
-        "🎯  Metas",
-        "📡  Plataformas",
-        "🎟️  Tickets & Descontos",
-        "🔄  Recorrência",
-        "🤖  IA - IH",
-    ])
-
-    with t1:
-        tab_vendas(trade, uid, days)
-    with t2:
-        tab_cardapio(trade, days)
-    with t3:
-        tab_clientes(trade)
-    with t4:
-        tab_metas(trade, uid)
-    with t_plat:
-        render_plataformas(trade)
-    with t_tick:
-        render_tickets_descontos(trade)
-    with t_recorr:
-        render_recorrencia(trade)
-    with t_ia:
-        render_ia_tab(st.session_state.user, st.session_state.loja_atual)
+    if   page == "vendas":      tab_vendas(trade, uid, days)
+    elif page == "cardapio":    tab_cardapio(trade, days)
+    elif page == "clientes":    tab_clientes(trade)
+    elif page == "metas":       tab_metas(trade, uid)
+    elif page == "plataformas": render_plataformas(trade)
+    elif page == "tickets":     render_tickets_descontos(trade)
+    elif page == "recorrencia": render_recorrencia(trade)
+    elif page == "ia":          render_ia_tab(user, loja)
+    else:                       tab_vendas(trade, uid, days)
 
 
 # ─────────────────────────────────────────────
@@ -277,26 +216,27 @@ def main():
 
     role = (st.session_state.user.get("role") or "").strip().lower()
 
-    # ── Admin → SEMPRE painel admin, nunca sai dele ──
+    # ── Admin → sempre painel admin ──
     if role == "admin":
         if st.session_state.loja_atual is None:
             st.session_state.loja_atual = {"id": None, "trade_name": "__admin__"}
+        from admin_dashboard import render_admin_panel
         render_admin_panel()
         st.stop()
 
-    # ── Franqueado → seleção de loja ou dashboard ──
+    # ── Franqueado → seleção de loja ──
     if st.session_state.loja_atual is None:
         st.markdown(
             "<style>section[data-testid='stSidebar']{display:none!important}</style>",
             unsafe_allow_html=True,
         )
         lojas = st.session_state.user.get("lojas") or []
-        if len(lojas) == 1:
-            st.session_state.loja_atual = lojas[0]
-            st.rerun()
-        elif len(lojas) == 0:
+        if len(lojas) == 0:
             st.error("Você não tem nenhuma loja vinculada. Contate o administrador.")
             st.stop()
+        elif len(lojas) == 1:
+            st.session_state.loja_atual = lojas[0]
+            st.rerun()
         else:
             popup_selecao_loja()
         st.stop()
