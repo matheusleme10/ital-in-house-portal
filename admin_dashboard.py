@@ -8,6 +8,7 @@ import streamlit as st
 from admin_queries import kpi_admin, ranking_lojas, serie_admin
 from ia_ui import render_ia_tab
 from mv_dashboard import render_plataformas, render_recorrencia, render_tickets_descontos
+from user_management import render_gerenciar_usuarios
 from theme import PLOTLY_THEME, inject_global_css
 
 
@@ -98,13 +99,14 @@ section[data-testid='stSidebar']{display:none!important}
     is_visao_geral = (trade_atual == "__admin__" or not trade_atual)
 
     # ── Abas ──
-    t_geral, t_rank, t_plat, t_tick, t_recorr, t_ia = st.tabs([
-        "📊  Visão Geral",
-        "🏆  Ranking",
-        "📡  Plataformas",
-        "🎟️  Tickets & Descontos",
-        "🔄  Recorrência",
-        "🤖  IA - IH",
+    t_geral, t_rank, t_plat, t_tick, t_recorr, t_usuarios, t_ia = st.tabs([
+      "📊  Visão Geral",
+      "🏆  Ranking",
+      "📡  Plataformas",
+      "🎟️  Tickets & Descontos",
+      "🔄  Recorrência",
+      "👥  Usuários",        # ← nova
+      "🤖  IA - IH",
     ])
 
     # ══════════ ABA 1 — VISÃO GERAL ══════════
@@ -282,7 +284,11 @@ section[data-testid='stSidebar']{display:none!important}
 </div>""", unsafe_allow_html=True)
             render_recorrencia(trade_atual)
 
-    # ══════════ ABA 6 — IA ══════════
+    # ══════════ ABA 6 — Usuarios ══════════
+    with t_usuarios:
+      render_gerenciar_usuarios()
+    
+    # ══════════ ABA 7 — IA ══════════
     with t_ia:
         render_ia_tab(st.session_state.user, st.session_state.loja_atual)
         

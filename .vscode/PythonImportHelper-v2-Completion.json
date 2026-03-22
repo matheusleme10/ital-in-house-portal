@@ -122,6 +122,14 @@
         "documentation": {}
     },
     {
+        "label": "render_gerenciar_usuarios",
+        "importPath": "user_management",
+        "description": "user_management",
+        "isExtraImport": true,
+        "detail": "user_management",
+        "documentation": {}
+    },
+    {
         "label": "PLOTLY_THEME",
         "importPath": "theme",
         "description": "theme",
@@ -194,6 +202,14 @@
         "documentation": {}
     },
     {
+        "label": "inject_global_css",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
         "label": "fetch_all",
         "importPath": "db",
         "description": "db",
@@ -235,6 +251,22 @@
     },
     {
         "label": "fetch_all",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_all",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_one",
         "importPath": "db",
         "description": "db",
         "isExtraImport": true,
@@ -580,6 +612,30 @@
         "description": "dotenv",
         "isExtraImport": true,
         "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "RealDictCursor",
+        "importPath": "psycopg2.extras",
+        "description": "psycopg2.extras",
+        "isExtraImport": true,
+        "detail": "psycopg2.extras",
         "documentation": {}
     },
     {
@@ -938,7 +994,7 @@
         "kind": 2,
         "importPath": "db",
         "description": "db",
-        "peekOfCode": "def get_connection():\n    conn = psycopg2.connect(\n        host=_get(\"DB_HOST\", \"localhost\"),\n        port=_get(\"DB_PORT\", \"5432\"),\n        dbname=_get(\"DB_NAME\", \"postgres\"),\n        user=_get(\"DB_USER\", \"postgres\"),\n        password=_get(\"DB_PASSWORD\", \"\"),\n    )\n    conn.autocommit = True\n    return conn",
+        "peekOfCode": "def get_connection():\n    conn = psycopg2.connect(\n        host=_get(\"DB_HOST\", \"localhost\"),\n        port=_get(\"DB_PORT\", \"5432\"),\n        dbname=_get(\"DB_NAME\", \"postgres\"),\n        user=_get(\"DB_USER\", \"postgres\"),\n        password=_get(\"DB_PASSWORD\", \"\"),\n        sslmode=\"require\",\n        connect_timeout=10,\n    )",
         "detail": "db",
         "documentation": {}
     },
@@ -967,6 +1023,33 @@
         "description": "db",
         "peekOfCode": "def execute(sql: str, params: tuple | None = None) -> None:\n    try:\n        conn = get_connection()\n        with conn.cursor() as cur:\n            cur.execute(sql, params or ())\n    except psycopg2.errors.InFailedSqlTransaction:\n        _reset_conn()\n        try:\n            conn = get_connection()\n            with conn.cursor() as cur:",
         "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "conn",
+        "kind": 5,
+        "importPath": "debug_login",
+        "description": "debug_login",
+        "peekOfCode": "conn = psycopg2.connect(\n    host=os.getenv('DB_HOST'),\n    port=os.getenv('DB_PORT'),\n    dbname=os.getenv('DB_NAME'),\n    user=os.getenv('DB_USER'),\n    password=os.getenv('DB_PASSWORD'),\n)\nsenha = 'adm@leme2026'\npw_hash = hashlib.sha256(senha.strip().encode()).hexdigest()\nwith conn.cursor(cursor_factory=RealDictCursor) as cur:",
+        "detail": "debug_login",
+        "documentation": {}
+    },
+    {
+        "label": "senha",
+        "kind": 5,
+        "importPath": "debug_login",
+        "description": "debug_login",
+        "peekOfCode": "senha = 'adm@leme2026'\npw_hash = hashlib.sha256(senha.strip().encode()).hexdigest()\nwith conn.cursor(cursor_factory=RealDictCursor) as cur:\n    cur.execute('SELECT id, username, email, role, password_hash FROM cardapio_cmv.usuarios_portal WHERE username = %s', ('matheus_leme',))\n    user = cur.fetchone()\n    print('Hash no banco: ', user['password_hash'])\n    print('Hash gerado:   ', pw_hash)\n    print('Sao iguais?    ', user['password_hash'] == pw_hash)\nconn.close()",
+        "detail": "debug_login",
+        "documentation": {}
+    },
+    {
+        "label": "pw_hash",
+        "kind": 5,
+        "importPath": "debug_login",
+        "description": "debug_login",
+        "peekOfCode": "pw_hash = hashlib.sha256(senha.strip().encode()).hexdigest()\nwith conn.cursor(cursor_factory=RealDictCursor) as cur:\n    cur.execute('SELECT id, username, email, role, password_hash FROM cardapio_cmv.usuarios_portal WHERE username = %s', ('matheus_leme',))\n    user = cur.fetchone()\n    print('Hash no banco: ', user['password_hash'])\n    print('Hash gerado:   ', pw_hash)\n    print('Sao iguais?    ', user['password_hash'] == pw_hash)\nconn.close()",
+        "detail": "debug_login",
         "documentation": {}
     },
     {
@@ -1091,7 +1174,7 @@
         "kind": 2,
         "importPath": "queries",
         "description": "queries",
-        "peekOfCode": "def hash_password(plain: str) -> str:\n    clean_password = (plain or \"\").strip()\n    return hashlib.sha256(clean_password.encode(\"utf-8\")).hexdigest()\ndef authenticate_user(login: str, password: str):\n    pw_hash        = hash_password(password)\n    clean_password = (password or \"\").strip()\n    campo          = (login or \"\").strip().lower()\n    # Tenta sem a coluna id_unidades (compatibilidade)\n    user = fetch_one(\n        \"\"\"",
+        "peekOfCode": "def hash_password(plain: str) -> str:\n    clean = (plain or \"\").strip()\n    return hashlib.sha256(clean.encode(\"utf-8\")).hexdigest()\ndef authenticate_user(login: str, password: str):\n    pw_hash = hash_password(password)\n    campo   = (login or \"\").strip().lower()\n    row = fetch_one(\n        \"\"\"\n        SELECT id, username, email, role, nome_completo, telefone\n        FROM cardapio_cmv.usuarios_portal",
         "detail": "queries",
         "documentation": {}
     },
@@ -1100,7 +1183,7 @@
         "kind": 2,
         "importPath": "queries",
         "description": "queries",
-        "peekOfCode": "def authenticate_user(login: str, password: str):\n    pw_hash        = hash_password(password)\n    clean_password = (password or \"\").strip()\n    campo          = (login or \"\").strip().lower()\n    # Tenta sem a coluna id_unidades (compatibilidade)\n    user = fetch_one(\n        \"\"\"\n        SELECT id, username, email, role, nome_completo, telefone\n        FROM cardapio_cmv.usuarios_portal\n        WHERE (LOWER(TRIM(email)) = %s OR LOWER(TRIM(username)) = %s)",
+        "peekOfCode": "def authenticate_user(login: str, password: str):\n    pw_hash = hash_password(password)\n    campo   = (login or \"\").strip().lower()\n    row = fetch_one(\n        \"\"\"\n        SELECT id, username, email, role, nome_completo, telefone\n        FROM cardapio_cmv.usuarios_portal\n        WHERE (LOWER(TRIM(email)) = %s OR LOWER(TRIM(username)) = %s)\n          AND password_hash = %s\n        LIMIT 1",
         "detail": "queries",
         "documentation": {}
     },
@@ -1109,7 +1192,7 @@
         "kind": 2,
         "importPath": "queries",
         "description": "queries",
-        "peekOfCode": "def list_units_for_user(user_id: int, role: str, id_unidades=None):\n    \"\"\"\n    Admin  → retorna TODAS as unidades.\n    Outros → usa id_unidades (INT[]) da tabela usuarios_portal.\n             Fallback para usuarios_unidades se a coluna não existir.\n    \"\"\"\n    if (role or \"\").lower() == \"admin\":\n        return fetch_all(\n            \"\"\"\n            SELECT id, trade_name, estado, short_desc_state",
+        "peekOfCode": "def list_units_for_user(user_id: int, role: str, id_unidades=None):\n    \"\"\"\n    Admin      → todas as unidades de unidade_uf.\n    Franqueado → cruza id_unidades (array em usuarios_portal) com unidade_uf.\n    Não usa a tabela usuarios_unidades — ela não existe neste projeto.\n    \"\"\"\n    if (role or \"\").lower() == \"admin\":\n        return fetch_all(\n            \"\"\"\n            SELECT id, trade_name, estado, short_desc_state",
         "detail": "queries",
         "documentation": {}
     },
@@ -1208,7 +1291,7 @@
         "kind": 2,
         "importPath": "queries",
         "description": "queries",
-        "peekOfCode": "def metas_historico(trade_name: str):\n    \"\"\"Placeholder: tabela 'metas' ainda não foi criada.\"\"\"\n    return []\ndef meta_mes_atual(unidade_id: int):\n    \"\"\"Placeholder: tabela 'metas' ainda não foi criada.\"\"\"\n    return None\ndef itens_cardapio_list():\n    try:\n        return fetch_all(\n            \"\"\"",
+        "peekOfCode": "def metas_historico(trade_name: str):\n    return []\ndef meta_mes_atual(unidade_id: int):\n    return None\ndef itens_cardapio_list():\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT id_item, nome, ativo, data_criacao, data_atualizacao\n            FROM cardapio_cmv.itens_cardapio",
         "detail": "queries",
         "documentation": {}
     },
@@ -1217,7 +1300,7 @@
         "kind": 2,
         "importPath": "queries",
         "description": "queries",
-        "peekOfCode": "def meta_mes_atual(unidade_id: int):\n    \"\"\"Placeholder: tabela 'metas' ainda não foi criada.\"\"\"\n    return None\ndef itens_cardapio_list():\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT id_item, nome, ativo, data_criacao, data_atualizacao\n            FROM cardapio_cmv.itens_cardapio\n            ORDER BY nome",
+        "peekOfCode": "def meta_mes_atual(unidade_id: int):\n    return None\ndef itens_cardapio_list():\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT id_item, nome, ativo, data_criacao, data_atualizacao\n            FROM cardapio_cmv.itens_cardapio\n            ORDER BY nome\n            \"\"\"",
         "detail": "queries",
         "documentation": {}
     },
@@ -1264,6 +1347,15 @@
         "description": "theme",
         "peekOfCode": "COLOR_MUTED = \"#2A2A2F\"\ndef inject_global_css() -> None:\n    st.markdown(\"\"\"\n<style>\n@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');\n/* ── Base ── */\nhtml, body, [class*=\"css\"], .stMarkdown, label, p, span, div {\n    font-family: 'Plus Jakarta Sans', sans-serif !important;\n}\n.stApp { background: #0C0C0E !important; }",
         "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "render_gerenciar_usuarios",
+        "kind": 2,
+        "importPath": "user_management",
+        "description": "user_management",
+        "peekOfCode": "def render_gerenciar_usuarios():\n    \"\"\"\n    Página completa de gerenciamento de usuários.\n    Chamar dentro de uma aba do painel admin.\n    \"\"\"\n    inject_global_css()\n    lojas     = _listar_lojas()\n    lojas_map = {l[\"id\"]: l[\"trade_name\"] for l in lojas}\n    nomes_loja = [l[\"trade_name\"] for l in lojas]\n    # ── CSS extra para esta página ──",
+        "detail": "user_management",
         "documentation": {}
     }
 ]

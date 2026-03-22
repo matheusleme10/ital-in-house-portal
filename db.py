@@ -7,7 +7,7 @@ import streamlit as st
 from dotenv import load_dotenv
 from psycopg2.extras import RealDictCursor
 
-load_dotenv()
+load_dotenv(override=True)
 
 
 def _get(key: str, default: str = "") -> str:
@@ -37,6 +37,8 @@ def get_connection():
         dbname=_get("DB_NAME", "postgres"),
         user=_get("DB_USER", "postgres"),
         password=_get("DB_PASSWORD", ""),
+        sslmode="require",
+        connect_timeout=10,
     )
     conn.autocommit = True
     return conn

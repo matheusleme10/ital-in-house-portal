@@ -4,17 +4,15 @@ from db import fetch_all, fetch_one
 
 
 def hash_password(plain: str) -> str:
-    clean_password = (plain or "").strip()
-    return hashlib.sha256(clean_password.encode("utf-8")).hexdigest()
+    clean = (plain or "").strip()
+    return hashlib.sha256(clean.encode("utf-8")).hexdigest()
 
 
 def authenticate_user(login: str, password: str):
-    pw_hash        = hash_password(password)
-    clean_password = (password or "").strip()
-    campo          = (login or "").strip().lower()
+    pw_hash = hash_password(password)
+    campo   = (login or "").strip().lower()
 
-    # Tenta sem a coluna id_unidades (compatibilidade)
-    user = fetch_one(
+    row = fetch_one(
         """
         SELECT id, username, email, role, nome_completo, telefone
         FROM cardapio_cmv.usuarios_portal
@@ -25,9 +23,10 @@ def authenticate_user(login: str, password: str):
         (campo, campo, pw_hash),
     )
 
-    if user is None:
-        # Fallback plaintext
-        user = fetch_one(
+    # ── Fallback: senha em texto puro no banco ──
+    if row is None:
+        plain = (password or "").strip()
+        row = fetch_one(
             """
             SELECT id, username, email, role, nome_completo, telefone
             FROM cardapio_cmv.usuarios_portal
@@ -35,34 +34,32 @@ def authenticate_user(login: str, password: str):
               AND password_hash = %s
             LIMIT 1
             """,
-            (campo, campo, clean_password),
+            (campo, campo, plain),
         )
 
-    # Busca id_unidades separado se a coluna existir
-    if user:
-        try:
-            extra = fetch_one(
-                """
-                SELECT id_unidades
-                FROM cardapio_cmv.usuarios_portal
-                WHERE id = %s
-                """,
-                (user["id"],),
-            )
-            user = dict(user)
-            user["id_unidades"] = (extra or {}).get("id_unidades") or []
-        except Exception:
-            user = dict(user)
-            user["id_unidades"] = []
+    if row is None:
+        return None
+
+    user = dict(row)
+
+    # ── Busca id_unidades (coluna pode ainda não existir) ──
+    try:
+        extra = fetch_one(
+            "SELECT id_unidades FROM cardapio_cmv.usuarios_portal WHERE id = %s",
+            (user["id"],),
+        )
+        user["id_unidades"] = list(extra.get("id_unidades") or []) if extra else []
+    except Exception:
+        user["id_unidades"] = []
 
     return user
 
 
 def list_units_for_user(user_id: int, role: str, id_unidades=None):
     """
-    Admin  → retorna TODAS as unidades.
-    Outros → usa id_unidades (INT[]) da tabela usuarios_portal.
-             Fallback para usuarios_unidades se a coluna não existir.
+    Admin      → todas as unidades de unidade_uf.
+    Franqueado → cruza id_unidades (array em usuarios_portal) com unidade_uf.
+    Não usa a tabela usuarios_unidades — ela não existe neste projeto.
     """
     if (role or "").lower() == "admin":
         return fetch_all(
@@ -73,41 +70,25 @@ def list_units_for_user(user_id: int, role: str, id_unidades=None):
             """
         )
 
-    # ── Franqueado: usa array id_unidades ──
-    if id_unidades:
-        try:
-            ids = list(id_unidades)  # converte de psycopg2 array → list
-            if ids:
-                return fetch_all(
-                    """
-                    SELECT id, trade_name, estado, short_desc_state
-                    FROM cardapio_cmv.unidade_uf
-                    WHERE id = ANY(%s)
-                    ORDER BY trade_name
-                    """,
-                    (ids,),
-                )
-        except Exception as e:
-            print(f"[list_units] id_unidades error: {e}")
+    # ── Franqueado: id_unidades é um INT[] em usuarios_portal ──
+    ids = list(id_unidades) if id_unidades else []
+    if not ids:
+        return []
 
-    # ── Fallback 1: tabela usuarios_unidades ──
     try:
         rows = fetch_all(
             """
-            SELECT u.id, u.trade_name, u.estado, u.short_desc_state
-            FROM cardapio_cmv.unidade_uf u
-            INNER JOIN usuarios_unidades uu ON u.id = uu.unidade_id
-            WHERE uu.usuario_id = %s
-            ORDER BY u.trade_name
+            SELECT id, trade_name, estado, short_desc_state
+            FROM cardapio_cmv.unidade_uf
+            WHERE id = ANY(%s)
+            ORDER BY trade_name
             """,
-            (user_id,),
+            (ids,),
         )
-        if rows:
-            return rows
+        return rows if rows else []
     except Exception as e:
-        print(f"[list_units] usuarios_unidades fallback: {e}")
+        print(f"[list_units] error: {e}")
 
-    # ── Fallback 2: nenhum vínculo encontrado ──
     return []
 
 
@@ -300,12 +281,10 @@ def clientes_top50(trade_name: str):
 
 
 def metas_historico(trade_name: str):
-    """Placeholder: tabela 'metas' ainda não foi criada."""
     return []
 
 
 def meta_mes_atual(unidade_id: int):
-    """Placeholder: tabela 'metas' ainda não foi criada."""
     return None
 
 
