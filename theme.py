@@ -58,12 +58,32 @@ section[data-testid="stAppViewContainer"] > .main {
     color: #F5F5F7;
 }
 
-/* ── Sidebar ── */
+/* ── Esconde header/toolbar do Streamlit ── */
+header[data-testid="stHeader"]    { display: none !important; }
+#MainMenu                          { display: none !important; }
+.stDeployButton                    { display: none !important; }
+[data-testid="stToolbar"]          { display: none !important; }
+[data-testid="stDecoration"]       { display: none !important; }
+[data-testid="stStatusWidget"]     { display: none !important; }
+
+/* ── Sidebar fixa, não recolhível ── */
 [data-testid="stSidebar"] {
     background: #141416 !important;
     border-right: 1px solid #2A2A2F !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    z-index: 999 !important;
 }
-[data-testid="stSidebar"] .block-container { padding-top: 1.2rem; }
+[data-testid="stSidebar"] .block-container { padding-top: 1rem; }
+/* Esconde o botão de recolher sidebar */
+[data-testid="collapsedControl"]   { display: none !important; }
+button[data-testid="baseButton-header"] { display: none !important; }
+/* Garante que o conteúdo principal não fique atrás da sidebar */
+.main .block-container { padding-left: 1.5rem !important; }
 
 /* ── Headings ── */
 h1, h2, h3 {

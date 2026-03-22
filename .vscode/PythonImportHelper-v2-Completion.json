@@ -16,6 +16,47 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
         "label": "plotly.graph_objects",
         "kind": 6,
         "isExtraImport": true,
@@ -34,7 +75,63 @@
         "documentation": {}
     },
     {
+        "label": "clientes_faixa_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_rfm_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_top50_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
         "label": "kpi_admin",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_clientes_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas_rede_extras",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "pedidos_rede",
         "importPath": "admin_queries",
         "description": "admin_queries",
         "isExtraImport": true,
@@ -50,6 +147,14 @@
         "documentation": {}
     },
     {
+        "label": "receita_categoria_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
         "label": "serie_admin",
         "importPath": "admin_queries",
         "description": "admin_queries",
@@ -58,6 +163,158 @@
         "documentation": {}
     },
     {
+        "label": "serie_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "status_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "top_itens_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "fig_barras_pedidos",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento_diario",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faixa_freq",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_categoria",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_status",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_rfm",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_top_itens_horizontal",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_barras_pedidos",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento_diario",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faixa_freq",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_gauge_metas",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_metas_agrupadas",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_categoria",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_status",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_rfm",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_top_itens_horizontal",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
         "label": "render_ia_tab",
         "importPath": "ia_ui",
         "description": "ia_ui",
@@ -119,6 +376,46 @@
         "description": "mv_dashboard",
         "isExtraImport": true,
         "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_sidebar",
+        "importPath": "sidebar",
+        "description": "sidebar",
+        "isExtraImport": true,
+        "detail": "sidebar",
+        "documentation": {}
+    },
+    {
+        "label": "render_sidebar",
+        "importPath": "sidebar",
+        "description": "sidebar",
+        "isExtraImport": true,
+        "detail": "sidebar",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_brl",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_delta_pct",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_card",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
         "documentation": {}
     },
     {
@@ -147,30 +444,6 @@
     },
     {
         "label": "tab_vendas",
-        "importPath": "tabs",
-        "description": "tabs",
-        "isExtraImport": true,
-        "detail": "tabs",
-        "documentation": {}
-    },
-    {
-        "label": "fmt_brl",
-        "importPath": "tabs",
-        "description": "tabs",
-        "isExtraImport": true,
-        "detail": "tabs",
-        "documentation": {}
-    },
-    {
-        "label": "fmt_delta_pct",
-        "importPath": "tabs",
-        "description": "tabs",
-        "isExtraImport": true,
-        "detail": "tabs",
-        "documentation": {}
-    },
-    {
-        "label": "kpi_card",
         "importPath": "tabs",
         "description": "tabs",
         "isExtraImport": true,
@@ -572,39 +845,6 @@
         "documentation": {}
     },
     {
-        "label": "render_admin_panel",
-        "importPath": "admin_dashboard",
-        "description": "admin_dashboard",
-        "isExtraImport": true,
-        "detail": "admin_dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "Decimal",
-        "importPath": "decimal",
-        "description": "decimal",
-        "isExtraImport": true,
-        "detail": "decimal",
-        "documentation": {}
-    },
-    {
-        "label": "Decimal",
-        "importPath": "decimal",
-        "description": "decimal",
-        "isExtraImport": true,
-        "detail": "decimal",
-        "documentation": {}
-    },
-    {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
-        "documentation": {}
-    },
-    {
         "label": "plotly.express",
         "kind": 6,
         "isExtraImport": true,
@@ -712,83 +952,20 @@
         "documentation": {}
     },
     {
-        "label": "fig_barras_pedidos",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_faturamento_diario",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_faixa_freq",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_gauge_metas",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_metas_agrupadas",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_pizza_categoria",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_pizza_status",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_scatter_rfm",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_top_itens_horizontal",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
         "label": "render_admin_panel",
         "kind": 2,
         "importPath": "admin_dashboard",
         "description": "admin_dashboard",
-        "peekOfCode": "def render_admin_panel():\n    inject_global_css()\n    # Sem sidebar para admin\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{padding-left:2rem!important;padding-right:2rem!important}\n</style>\"\"\", unsafe_allow_html=True)\n    user      = st.session_state.user\n    nome      = user.get(\"nome\") or \"Admin\"",
+        "peekOfCode": "def render_admin_panel():\n    inject_global_css()\n    # Sidebar fixa — sem o collapse nativo\n    st.markdown(\"\"\"\n<style>\n[data-testid=\"collapsedControl\"]{display:none!important}\n.main .block-container{padding-top:1rem!important}\n</style>\"\"\", unsafe_allow_html=True)\n    ctx       = render_sidebar(\"admin\")\n    page      = ctx[\"page\"]",
+        "detail": "admin_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "LOGO_URL",
+        "kind": 5,
+        "importPath": "admin_dashboard",
+        "description": "admin_dashboard",
+        "peekOfCode": "LOGO_URL = \"https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png\"\ndef _f(x) -> float:\n    if x is None: return 0.0\n    if isinstance(x, Decimal): return float(x)\n    return float(x)\ndef _kpi(label, valor, delta=\"\", pos=True):\n    cor = \"#22C55E\" if pos else \"#EF4444\"\n    bg  = \"rgba(34,197,94,.12)\" if pos else \"rgba(239,68,68,.12)\"\n    d   = (f\"<div style='display:inline-block;background:{bg};color:{cor};\"\n           f\"font-size:.62rem;font-weight:600;padding:2px 8px;\"",
         "detail": "admin_dashboard",
         "documentation": {}
     },
@@ -816,6 +993,105 @@
         "importPath": "admin_queries",
         "description": "admin_queries",
         "peekOfCode": "def serie_admin(dias: int) -> list:\n    \"\"\"Série temporal de faturamento consolidado da rede (sem filtro).\"\"\"\n    try:\n        result = fetch_all(\n            \"\"\"\n            SELECT \n                created_at::date AS data,\n                SUM(total_amount)::float AS faturamento,\n                COUNT(*)::int AS pedidos\n            FROM backup.vendas",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def kpi_vendas_rede(dias: int) -> dict:\n    \"\"\"KPIs de vendas da rede inteira para as abas consolidadas.\"\"\"\n    try:\n        r = fetch_one(\"\"\"\n            SELECT\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW())\n                             THEN total_amount END), 0)::float  AS mes_atual,\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW() - INTERVAL '1 month')",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas_rede_extras",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def kpi_vendas_rede_extras(dias: int) -> dict:\n    try:\n        r = fetch_one(\"\"\"\n            SELECT\n                COALESCE(COUNT(CASE WHEN created_at::date = CURRENT_DATE - 1\n                             THEN 1 END), 0)::int               AS pedidos_ontem,\n                COALESCE(SUM(CASE WHEN created_at::date = CURRENT_DATE - 1\n                             THEN total_amount END), 0)::float  AS fat_ontem,\n                COALESCE(AVG(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW() - INTERVAL '1 month')",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "serie_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def serie_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT created_at::date AS data,\n                   SUM(total_amount)::float AS faturamento,\n                   COUNT(*)::int            AS num_vendas,\n                   AVG(total_amount)::float AS ticket_medio\n            FROM backup.vendas\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 1",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "pedidos_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def pedidos_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT created_at::date AS data, COUNT(*)::int AS pedidos\n            FROM backup.vendas\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 1\n        \"\"\", (str(dias),)) or []\n    except Exception as e:\n        print(f\"pedidos_rede: {e}\")",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "status_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def status_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT desc_store_sale_status AS status, COUNT(*)::int AS quantidade\n            FROM backup.vendas\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 2 DESC\n        \"\"\", (str(dias),)) or []\n    except Exception as e:\n        print(f\"status_rede: {e}\")",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "top_itens_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def top_itens_rede(dias: int, limit: int = 15) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT desc_sale_item                           AS produto,\n                   desc_store_category_item                AS categoria,\n                   SUM(quantity)::int                      AS qtd_vendida,\n                   SUM(quantity * unit_price)::float       AS receita_total,\n                   AVG(unit_price)::float                  AS preco_medio\n            FROM backup.venda_item\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "receita_categoria_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def receita_categoria_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT COALESCE(desc_store_category_item, '—') AS categoria,\n                   SUM(quantity * unit_price)::float        AS receita\n            FROM backup.venda_item\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY receita DESC NULLS LAST\n        \"\"\", (str(dias),)) or []\n    except Exception as e:",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_clientes_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def kpi_clientes_rede() -> dict:\n    try:\n        r = fetch_one(\"\"\"\n            SELECT COUNT(DISTINCT numero_documento)::int       AS total_clientes,\n                   ROUND(AVG(ticket_medio)::numeric, 2)::float AS ticket_medio,\n                   ROUND(AVG(frequencia)::numeric, 1)::float   AS freq_media,\n                   ROUND(AVG(recencia)::numeric, 0)::float     AS recencia_media\n            FROM clientes.clientes_historico_vendas_tratadas\n        \"\"\")\n        return dict(r) if r else {}",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_faixa_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def clientes_faixa_rede() -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT\n                CASE\n                    WHEN frequencia >= 15 THEN '15+'\n                    WHEN frequencia >= 10 THEN '10–14'\n                    WHEN frequencia >= 5  THEN '5–9'\n                    WHEN frequencia >= 2  THEN '2–4'\n                    ELSE '1'",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_rfm_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def clientes_rfm_rede(limit: int = 400) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MIN(recencia)::float              AS recencia,\n                   MAX(frequencia)::float            AS frequencia,\n                   AVG(ticket_medio)::float          AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            GROUP BY numero_documento\n            ORDER BY MAX(frequencia) DESC",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_top50_rede",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def clientes_top50_rede() -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MAX(frequencia)::float                        AS frequencia,\n                   MIN(recencia)::float                          AS recencia,\n                   ROUND(AVG(ticket_medio)::numeric, 2)::float   AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            GROUP BY numero_documento\n            ORDER BY MAX(frequencia) DESC NULLS LAST",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -851,7 +1127,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": []}.items():\n        if k not in st.session_state:\n            st.session_state[k] = v\n# ─────────────────────────────────────────────\n#  LOGIN\n# ─────────────────────────────────────────────\ndef pagina_login():\n    st.markdown(\"\"\"\n<style>",
+        "peekOfCode": "def init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": [], \"page\": \"vendas\"}.items():\n        if k not in st.session_state:\n            st.session_state[k] = v\n# ─────────────────────────────────────────────\n#  LOGIN\n# ─────────────────────────────────────────────\ndef pagina_login():\n    st.markdown(\"\"\"\n<style>",
         "detail": "app",
         "documentation": {}
     },
@@ -860,7 +1136,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def pagina_login():\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{\n    max-width:460px!important;margin:0 auto!important;padding-top:8vh!important;\n}\n</style>\n\"\"\", unsafe_allow_html=True)\n    st.markdown(\"\"\"",
+        "peekOfCode": "def pagina_login():\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{\n    max-width:460px!important;margin:0 auto!important;padding-top:8vh!important;\n}\n</style>\n\"\"\", unsafe_allow_html=True)\n    st.markdown(f\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -878,7 +1154,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user\n    lojas = user[\"lojas\"]\n    role  = (user.get(\"role\") or \"franqueado\").lower()\n    # ── Sidebar ──\n    with st.sidebar:\n        st.markdown(f\"\"\"",
+        "peekOfCode": "def pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user\n    role  = (user.get(\"role\") or \"franqueado\").lower()\n    ctx = render_sidebar(role)\n    page = ctx[\"page\"]\n    days = ctx[\"days\"]\n    # ── Roteamento por página ──",
         "detail": "app",
         "documentation": {}
     },
@@ -888,6 +1164,15 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def main():\n    init_state()\n    inject_global_css()\n    # Etapa 1 — Login\n    if st.session_state.user is None:\n        pagina_login()\n        st.stop()\n    # Checa conexão\n    try:\n        get_connection()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "LOGO_URL",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "LOGO_URL = \"https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png\"\nst.set_page_config(\n    page_title=\"Ital In House\",\n    page_icon=LOGO_URL,\n    layout=\"wide\",\n    initial_sidebar_state=\"expanded\",\n)\ndef init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": [], \"page\": \"vendas\"}.items():\n        if k not in st.session_state:",
         "detail": "app",
         "documentation": {}
     },
@@ -1285,6 +1570,42 @@
         "description": "queries",
         "peekOfCode": "def receita_por_categoria(trade_name: str, days: int):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT COALESCE(desc_store_category_item, '—') AS categoria,\n                   SUM(quantity * unit_price) AS receita\n            FROM backup.venda_item\n            WHERE trade_name = %s\n              AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1",
         "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "render_sidebar",
+        "kind": 2,
+        "importPath": "sidebar",
+        "description": "sidebar",
+        "peekOfCode": "def render_sidebar(role: str) -> dict:\n    \"\"\"\n    Renderiza a sidebar e retorna:\n    {\n      \"page\": str,      # página ativa\n      \"days\": int,      # período selecionado\n      \"trade\": str,     # loja selecionada (trade_name) ou None\n      \"loja_obj\": dict, # dict completo da loja ou None\n    }\n    \"\"\"",
+        "detail": "sidebar",
+        "documentation": {}
+    },
+    {
+        "label": "LOGO_URL",
+        "kind": 5,
+        "importPath": "sidebar",
+        "description": "sidebar",
+        "peekOfCode": "LOGO_URL = \"https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png\"\n# ─────────────────────────────────────────────\n#  MENU CONFIG\n# ─────────────────────────────────────────────\nMENU_FRANQUEADO = [\n    {\"id\": \"vendas\",       \"icon\": \"📈\", \"label\": \"Vendas\"},\n    {\"id\": \"cardapio\",     \"icon\": \"🍽️\", \"label\": \"Cardápio & Itens\"},\n    {\"id\": \"clientes\",     \"icon\": \"👥\", \"label\": \"Clientes\"},\n    {\"id\": \"metas\",        \"icon\": \"🎯\", \"label\": \"Metas\"},\n    {\"id\": \"plataformas\",  \"icon\": \"📡\", \"label\": \"Plataformas\"},",
+        "detail": "sidebar",
+        "documentation": {}
+    },
+    {
+        "label": "MENU_FRANQUEADO",
+        "kind": 5,
+        "importPath": "sidebar",
+        "description": "sidebar",
+        "peekOfCode": "MENU_FRANQUEADO = [\n    {\"id\": \"vendas\",       \"icon\": \"📈\", \"label\": \"Vendas\"},\n    {\"id\": \"cardapio\",     \"icon\": \"🍽️\", \"label\": \"Cardápio & Itens\"},\n    {\"id\": \"clientes\",     \"icon\": \"👥\", \"label\": \"Clientes\"},\n    {\"id\": \"metas\",        \"icon\": \"🎯\", \"label\": \"Metas\"},\n    {\"id\": \"plataformas\",  \"icon\": \"📡\", \"label\": \"Plataformas\"},\n    {\"id\": \"tickets\",      \"icon\": \"🎟️\", \"label\": \"Tickets & Descontos\"},\n    {\"id\": \"recorrencia\",  \"icon\": \"🔄\", \"label\": \"Recorrência\"},\n    {\"id\": \"ia\",           \"icon\": \"🤖\", \"label\": \"IA - IH\"},\n]",
+        "detail": "sidebar",
+        "documentation": {}
+    },
+    {
+        "label": "MENU_ADMIN",
+        "kind": 5,
+        "importPath": "sidebar",
+        "description": "sidebar",
+        "peekOfCode": "MENU_ADMIN = [\n    {\"id\": \"visao_geral\",  \"icon\": \"📊\", \"label\": \"Visão Geral\"},\n    {\"id\": \"ranking\",      \"icon\": \"🏆\", \"label\": \"Ranking\"},\n    {\"id\": \"vendas\",       \"icon\": \"📈\", \"label\": \"Vendas\"},\n    {\"id\": \"cardapio\",     \"icon\": \"🍽️\", \"label\": \"Cardápio\"},\n    {\"id\": \"clientes\",     \"icon\": \"👥\", \"label\": \"Clientes\"},\n    {\"id\": \"metas\",        \"icon\": \"🎯\", \"label\": \"Metas\"},\n    {\"id\": \"plataformas\",  \"icon\": \"📡\", \"label\": \"Plataformas\"},\n    {\"id\": \"tickets\",      \"icon\": \"🎟️\", \"label\": \"Tickets\"},\n    {\"id\": \"recorrencia\",  \"icon\": \"🔄\", \"label\": \"Recorrência\"},",
+        "detail": "sidebar",
         "documentation": {}
     },
     {
