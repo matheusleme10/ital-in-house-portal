@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .venv/
 testar_gemini.py
+
+.streamlit/secrets.toml
