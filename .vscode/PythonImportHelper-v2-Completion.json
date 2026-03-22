@@ -1091,7 +1091,7 @@
         "kind": 2,
         "importPath": "queries",
         "description": "queries",
-        "peekOfCode": "def hash_password(plain: str) -> str:\n    clean_password = (plain or \"\").strip()\n    return hashlib.sha256(clean_password.encode(\"utf-8\")).hexdigest()\ndef authenticate_user(login: str, password: str):\n    \"\"\"\n    Aceita login por e-mail OU username.\n    Tenta SHA-256 primeiro, depois plaintext (compatibilidade).\n    \"\"\"\n    pw_hash       = hash_password(password)\n    clean_password = (password or \"\").strip()",
+        "peekOfCode": "def hash_password(plain: str) -> str:\n    clean_password = (plain or \"\").strip()\n    return hashlib.sha256(clean_password.encode(\"utf-8\")).hexdigest()\ndef authenticate_user(login: str, password: str):\n    pw_hash        = hash_password(password)\n    clean_password = (password or \"\").strip()\n    campo          = (login or \"\").strip().lower()\n    # Tenta sem a coluna id_unidades (compatibilidade)\n    user = fetch_one(\n        \"\"\"",
         "detail": "queries",
         "documentation": {}
     },
@@ -1100,7 +1100,7 @@
         "kind": 2,
         "importPath": "queries",
         "description": "queries",
-        "peekOfCode": "def authenticate_user(login: str, password: str):\n    \"\"\"\n    Aceita login por e-mail OU username.\n    Tenta SHA-256 primeiro, depois plaintext (compatibilidade).\n    \"\"\"\n    pw_hash       = hash_password(password)\n    clean_password = (password or \"\").strip()\n    campo          = (login or \"\").strip().lower()\n    # ── Tenta SHA-256 (e-mail ou username) ──\n    user = fetch_one(",
+        "peekOfCode": "def authenticate_user(login: str, password: str):\n    pw_hash        = hash_password(password)\n    clean_password = (password or \"\").strip()\n    campo          = (login or \"\").strip().lower()\n    # Tenta sem a coluna id_unidades (compatibilidade)\n    user = fetch_one(\n        \"\"\"\n        SELECT id, username, email, role, nome_completo, telefone\n        FROM cardapio_cmv.usuarios_portal\n        WHERE (LOWER(TRIM(email)) = %s OR LOWER(TRIM(username)) = %s)",
         "detail": "queries",
         "documentation": {}
     },

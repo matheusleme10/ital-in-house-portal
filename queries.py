@@ -9,18 +9,14 @@ def hash_password(plain: str) -> str:
 
 
 def authenticate_user(login: str, password: str):
-    """
-    Aceita login por e-mail OU username.
-    Tenta SHA-256 primeiro, depois plaintext (compatibilidade).
-    """
-    pw_hash       = hash_password(password)
+    pw_hash        = hash_password(password)
     clean_password = (password or "").strip()
     campo          = (login or "").strip().lower()
 
-    # ── Tenta SHA-256 (e-mail ou username) ──
+    # Tenta sem a coluna id_unidades (compatibilidade)
     user = fetch_one(
         """
-        SELECT id, username, email, role, nome_completo, telefone, id_unidades
+        SELECT id, username, email, role, nome_completo, telefone
         FROM cardapio_cmv.usuarios_portal
         WHERE (LOWER(TRIM(email)) = %s OR LOWER(TRIM(username)) = %s)
           AND password_hash = %s
@@ -29,11 +25,11 @@ def authenticate_user(login: str, password: str):
         (campo, campo, pw_hash),
     )
 
-    # ── Fallback plaintext ──
     if user is None:
+        # Fallback plaintext
         user = fetch_one(
             """
-            SELECT id, username, email, role, nome_completo, telefone, id_unidades
+            SELECT id, username, email, role, nome_completo, telefone
             FROM cardapio_cmv.usuarios_portal
             WHERE (LOWER(TRIM(email)) = %s OR LOWER(TRIM(username)) = %s)
               AND password_hash = %s
@@ -41,6 +37,23 @@ def authenticate_user(login: str, password: str):
             """,
             (campo, campo, clean_password),
         )
+
+    # Busca id_unidades separado se a coluna existir
+    if user:
+        try:
+            extra = fetch_one(
+                """
+                SELECT id_unidades
+                FROM cardapio_cmv.usuarios_portal
+                WHERE id = %s
+                """,
+                (user["id"],),
+            )
+            user = dict(user)
+            user["id_unidades"] = (extra or {}).get("id_unidades") or []
+        except Exception:
+            user = dict(user)
+            user["id_unidades"] = []
 
     return user
 
