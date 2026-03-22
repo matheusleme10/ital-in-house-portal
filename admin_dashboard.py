@@ -1,4 +1,7 @@
-"""Painel administrativo — Ital In House."""
+"""Painel administrativo — Ital In House.
+Admin NUNCA sai desta tela. Quando seleciona uma loja, as abas de detalhe
+aparecem aqui mesmo junto com Visão Geral, Ranking e Usuários.
+"""
 
 from datetime import datetime
 
@@ -8,18 +11,21 @@ import streamlit as st
 from admin_queries import kpi_admin, ranking_lojas, serie_admin
 from ia_ui import render_ia_tab
 from mv_dashboard import render_plataformas, render_recorrencia, render_tickets_descontos
-from user_management import render_gerenciar_usuarios
+from tabs import tab_cardapio, tab_clientes, tab_metas, tab_vendas
 from theme import PLOTLY_THEME, inject_global_css
+from user_management import render_gerenciar_usuarios
 
 
-def _header_html(data_str: str) -> str:
+def _header_html(data_str: str, trade: str = "") -> str:
+    subtitulo = f"🏪 {trade}" if trade else "📊 Painel Administrativo"
+    label     = f"Loja: {trade}" if trade else "Visão geral da rede"
     return f"""
 <div style='display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px'>
   <div>
     <div style='color:#5A5A65;font-size:.62rem;font-weight:600;
-                letter-spacing:.1em;text-transform:uppercase'>Visão geral da rede</div>
+                letter-spacing:.1em;text-transform:uppercase'>{label}</div>
     <div style='color:#F5F5F7;font-size:1.45rem;font-weight:800;
-                letter-spacing:-.02em;margin-top:2px'>📊 Painel Administrativo</div>
+                letter-spacing:-.02em;margin-top:2px'>{subtitulo}</div>
   </div>
   <div style='color:#C8102E;font-size:.72rem;font-weight:600'>{data_str}</div>
 </div>"""
@@ -33,7 +39,6 @@ def _kpi_card(label: str, valor: str, delta: str = "", delta_pos: bool = True):
         f"font-size:.62rem;font-weight:600;padding:2px 8px;border-radius:99px;margin-top:4px'>"
         f"{delta}</div>"
     ) if delta else ""
-
     st.markdown(f"""
 <div style='background:#141416;border:1px solid #2A2A2F;border-radius:12px;
             padding:14px 18px;transition:border-color .2s'>
@@ -42,6 +47,17 @@ def _kpi_card(label: str, valor: str, delta: str = "", delta_pos: bool = True):
   <div style='color:#F5F5F7;font-size:1.5rem;font-weight:800;
               letter-spacing:-.02em'>{valor}</div>
   {delta_html}
+</div>""", unsafe_allow_html=True)
+
+
+def _aviso_selecione(icone: str, titulo: str, desc: str):
+    st.markdown(f"""
+<div style='background:#141416;border:1px solid #2A2A2F;border-radius:12px;
+            padding:20px 24px;margin-top:8px'>
+  <div style='font-size:.9rem;font-weight:700;color:#F5F5F7;margin-bottom:6px'>
+    {icone} {titulo}
+  </div>
+  <div style='color:#5A5A65;font-size:.85rem;line-height:1.6'>{desc}</div>
 </div>""", unsafe_allow_html=True)
 
 
@@ -55,34 +71,68 @@ section[data-testid='stSidebar']{display:none!important}
 .main .block-container{padding-left:2rem!important;padding-right:2rem!important}
 </style>""", unsafe_allow_html=True)
 
-    dias_map = {"7 dias": 7, "30 dias": 30, "90 dias": 90}
+    user      = st.session_state.user
+    nome      = user.get("nome") or "Admin"
+    iniciais  = "".join(p[0].upper() for p in nome.split()[:2]) or "AD"
+    dias_map  = {"7 dias": 7, "30 dias": 30, "90 dias": 90}
 
-    # ── Header ──
-    st.markdown(_header_html(datetime.now().strftime("%d/%m/%Y %H:%M")),
+    # ── Header com badge Admin ──
+    loja_atual  = st.session_state.loja_atual or {}
+    trade_atual = loja_atual.get("trade_name") or ""
+    is_geral    = (trade_atual == "__admin__" or not trade_atual)
+
+    st.markdown(_header_html(datetime.now().strftime("%d/%m/%Y %H:%M"),
+                             "" if is_geral else trade_atual),
                 unsafe_allow_html=True)
 
-    # ── Controles em linha ──
-    cc1, cc2, cc3, cc4 = st.columns([1.2, 2, 1.4, 0.7])
+    # ── Barra de controles ──
+    cc1, cc2, cc3, cc4, cc5 = st.columns([0.9, 1.8, 1.2, 1.2, 0.6])
+
     with cc1:
-        periodo = st.selectbox("Período", list(dias_map.keys()), index=1,
-                               key="adm_periodo", label_visibility="collapsed")
+        # Badge Admin + nome
+        st.markdown(f"""
+<div style='background:#1C1C1F;border:1px solid #2A2A2F;border-radius:10px;
+            padding:7px 12px;display:flex;align-items:center;gap:8px;height:38px'>
+    <div style='width:26px;height:26px;border-radius:50%;background:#C8102E;
+                display:flex;align-items:center;justify-content:center;
+                color:white;font-size:.6rem;font-weight:800;flex-shrink:0'>{iniciais}</div>
+    <div>
+        <div style='color:#F5F5F7;font-size:.7rem;font-weight:700;line-height:1.1'>{nome}</div>
+        <div style='color:#C8102E;font-size:.55rem;font-weight:700;
+                    letter-spacing:.06em;text-transform:uppercase'>Admin</div>
+    </div>
+</div>""", unsafe_allow_html=True)
+
     with cc2:
-        opts    = ["— Visão geral —"] + [l["trade_name"] for l in st.session_state.user["lojas"]]
-        escolha = st.selectbox("Loja", opts, index=0,
+        opts    = ["— Visão geral —"] + [l["trade_name"] for l in user["lojas"]]
+        # Mantém seleção atual
+        idx_sel = 0
+        if not is_geral and trade_atual in opts:
+            idx_sel = opts.index(trade_atual)
+        escolha = st.selectbox("Loja", opts, index=idx_sel,
                                key="adm_loja", label_visibility="collapsed")
         if escolha == "— Visão geral —":
-            if st.session_state.loja_atual.get("trade_name") != "__admin__":
+            if not is_geral:
                 st.session_state.loja_atual = {"id": None, "trade_name": "__admin__"}
                 st.session_state.chat = []
                 st.rerun()
         else:
-            nova = next(l for l in st.session_state.user["lojas"]
-                        if l["trade_name"] == escolha)
-            if st.session_state.loja_atual != nova:
+            nova = next((l for l in user["lojas"] if l["trade_name"] == escolha), None)
+            if nova and st.session_state.loja_atual != nova:
                 st.session_state.loja_atual = nova
                 st.session_state.chat = []
                 st.rerun()
+
+    with cc3:
+        periodo = st.selectbox("Período rede", list(dias_map.keys()), index=1,
+                               key="adm_periodo", label_visibility="collapsed")
+
     with cc4:
+        days_loja = st.selectbox("Período loja", [7, 30, 90], index=1,
+                                 key="adm_days_loja", label_visibility="collapsed",
+                                 format_func=lambda x: f"{x} dias")
+
+    with cc5:
         if st.button("🚪 Sair", key="adm_sair", use_container_width=True):
             for k in ["user", "loja_atual", "chat"]:
                 st.session_state.pop(k, None)
@@ -93,20 +143,25 @@ section[data-testid='stSidebar']{display:none!important}
 
     dias = dias_map[periodo]
 
-    # Verifica se está em visão geral ou loja específica
-    loja_atual     = st.session_state.loja_atual
-    trade_atual    = loja_atual.get("trade_name")
-    is_visao_geral = (trade_atual == "__admin__" or not trade_atual)
+    # ── Resolve id da loja selecionada ──
+    loja_id = loja_atual.get("id")
 
-    # ── Abas ──
-    t_geral, t_rank, t_plat, t_tick, t_recorr, t_usuarios, t_ia = st.tabs([
-      "📊  Visão Geral",
-      "🏆  Ranking",
-      "📡  Plataformas",
-      "🎟️  Tickets & Descontos",
-      "🔄  Recorrência",
-      "👥  Usuários",        # ← nova
-      "🤖  IA - IH",
+    # ── ABAS — sempre todas visíveis ──
+    (t_geral, t_rank,
+     t_vend, t_card, t_cli, t_metas,
+     t_plat, t_tick, t_recorr,
+     t_usuarios, t_ia) = st.tabs([
+        "📊  Visão Geral",
+        "🏆  Ranking",
+        "📈  Vendas",
+        "🍽️  Cardápio",
+        "👥  Clientes",
+        "🎯  Metas",
+        "📡  Plataformas",
+        "🎟️  Tickets & Descontos",
+        "🔄  Recorrência",
+        "👤  Usuários",
+        "🤖  IA - IH",
     ])
 
     # ══════════ ABA 1 — VISÃO GERAL ══════════
@@ -129,34 +184,23 @@ section[data-testid='stSidebar']{display:none!important}
         if serie:
             datas = [s.get("data") for s in serie]
             fats  = [float(s.get("faturamento") or 0) for s in serie]
-
             fig = go.Figure()
             fig.add_trace(go.Scatter(
-                x=datas, y=fats,
-                mode="lines", fill="tozeroy",
+                x=datas, y=fats, mode="lines", fill="tozeroy",
                 line=dict(color="#C8102E", width=2.2),
                 fillcolor="rgba(200,16,46,.07)",
                 hovertemplate="R$ %{y:,.2f}<extra></extra>",
             ))
-            # ── FIX: dois update_layout separados evita conflito de 'title' ──
             fig.update_layout(**PLOTLY_THEME, height=340)
-            fig.update_layout(
-                yaxis=dict(
-                    gridcolor="#1C1C1F",
-                    showline=False,
-                    tickfont=dict(color="#8A8A95", size=11),
-                    tickprefix="R$ ",
-                    tickformat=",.0f",
-                    zeroline=False,
-                )
-            )
-            fig.update_layout(
-                title=dict(
-                    text=f"Faturamento diário — últimos {dias} dias",
-                    font=dict(color="#C8C8D0", size=13),
-                    x=0,
-                )
-            )
+            fig.update_layout(yaxis=dict(
+                gridcolor="#1C1C1F", showline=False,
+                tickfont=dict(color="#8A8A95", size=11),
+                tickprefix="R$ ", tickformat=",.0f", zeroline=False,
+            ))
+            fig.update_layout(title=dict(
+                text=f"Faturamento diário — últimos {dias} dias",
+                font=dict(color="#C8C8D0", size=13), x=0,
+            ))
             st.plotly_chart(fig, use_container_width=True, key="adm_serie")
         else:
             st.info("Sem dados de série temporal no período.")
@@ -173,19 +217,16 @@ section[data-testid='stSidebar']{display:none!important}
         if ranking:
             max_fat = max(float(r.get("faturamento") or 0) for r in ranking) or 1
             cores   = {1: "#F59E0B", 2: "#A0A0A8", 3: "#C8102E"}
-
             for i, row in enumerate(ranking[:20]):
                 pos  = i + 1
                 fat  = float(row.get("faturamento") or 0)
                 pct  = fat / max_fat * 100
                 nome = row.get("trade_name") or "—"
                 cor  = cores.get(pos, "#3A3A4A")
-
                 st.markdown(f"""
 <div style='display:flex;align-items:center;gap:10px;
             padding:9px 0;border-bottom:1px solid #1C1C1F'>
-  <div style='color:{cor};font-size:.72rem;font-weight:800;width:22px;
-              flex-shrink:0'>#{pos}</div>
+  <div style='color:{cor};font-size:.72rem;font-weight:800;width:22px;flex-shrink:0'>#{pos}</div>
   <div style='flex:1;min-width:0'>
     <div style='color:#F5F5F7;font-size:.78rem;font-weight:700;
                 white-space:nowrap;overflow:hidden;text-overflow:ellipsis'>{nome}</div>
@@ -195,100 +236,62 @@ section[data-testid='stSidebar']{display:none!important}
     </div>
   </div>
   <div style='text-align:right;flex-shrink:0'>
-    <div style='color:#F5F5F7;font-size:.78rem;font-weight:700'>
-      R$ {fat:,.0f}
-    </div>
-    <div style='color:#5A5A65;font-size:.62rem'>
-      {int(row.get("pedidos") or 0)} pedidos
-    </div>
+    <div style='color:#F5F5F7;font-size:.78rem;font-weight:700'>R$ {fat:,.0f}</div>
+    <div style='color:#5A5A65;font-size:.62rem'>{int(row.get("pedidos") or 0)} pedidos</div>
   </div>
 </div>""", unsafe_allow_html=True)
         else:
             st.info("Sem dados de faturamento no período.")
 
-    # ══════════ ABA 3 — PLATAFORMAS ══════════
-    with t_plat:
-        if is_visao_geral:
-            st.markdown("""
-<div style='background:#141416;border:1px solid #2A2A2F;border-radius:12px;
-            padding:20px 24px;margin-top:8px'>
-  <div style='font-size:.9rem;font-weight:700;color:#F5F5F7;margin-bottom:6px'>
-    📡 Selecione uma loja
-  </div>
-  <div style='color:#5A5A65;font-size:.85rem;line-height:1.6'>
-    Use o seletor <strong style='color:#A0A0A8'>🏪 Loja</strong> no topo da página
-    para filtrar uma unidade específica e visualizar os dados de
-    <strong style='color:#A0A0A8'>iFood, Anotaai, 99Food e Direto</strong> semana a semana.
-  </div>
-</div>""", unsafe_allow_html=True)
+    # ══════════ ABAS DE LOJA — só mostram dados quando loja selecionada ══════════
+    MSG = "Selecione uma loja no seletor acima para visualizar os dados desta aba."
+
+    with t_vend:
+        if is_geral:
+            _aviso_selecione("📈", "Selecione uma loja", MSG)
         else:
-            st.markdown(f"""
-<div style='color:#5A5A65;font-size:.62rem;font-weight:600;
-            letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px'>
-  Visualizando
-</div>
-<div style='color:#F5F5F7;font-size:1rem;font-weight:800;margin-bottom:16px'>
-  📡 Plataformas — {trade_atual}
-</div>""", unsafe_allow_html=True)
+            tab_vendas(trade_atual, loja_id or 0, days_loja)
+
+    with t_card:
+        if is_geral:
+            _aviso_selecione("🍽️", "Selecione uma loja", MSG)
+        else:
+            tab_cardapio(trade_atual, days_loja)
+
+    with t_cli:
+        if is_geral:
+            _aviso_selecione("👥", "Selecione uma loja", MSG)
+        else:
+            tab_clientes(trade_atual)
+
+    with t_metas:
+        if is_geral:
+            _aviso_selecione("🎯", "Selecione uma loja", MSG)
+        else:
+            tab_metas(trade_atual, loja_id or 0)
+
+    with t_plat:
+        if is_geral:
+            _aviso_selecione("📡", "Selecione uma loja", MSG)
+        else:
             render_plataformas(trade_atual)
 
-    # ══════════ ABA 4 — TICKETS & DESCONTOS ══════════
     with t_tick:
-        if is_visao_geral:
-            st.markdown("""
-<div style='background:#141416;border:1px solid #2A2A2F;border-radius:12px;
-            padding:20px 24px;margin-top:8px'>
-  <div style='font-size:.9rem;font-weight:700;color:#F5F5F7;margin-bottom:6px'>
-    🎟️ Selecione uma loja
-  </div>
-  <div style='color:#5A5A65;font-size:.85rem;line-height:1.6'>
-    Use o seletor <strong style='color:#A0A0A8'>🏪 Loja</strong> no topo da página
-    para visualizar <strong style='color:#A0A0A8'>tickets médios e descontos</strong>
-    por plataforma semana a semana.
-  </div>
-</div>""", unsafe_allow_html=True)
+        if is_geral:
+            _aviso_selecione("🎟️", "Selecione uma loja", MSG)
         else:
-            st.markdown(f"""
-<div style='color:#5A5A65;font-size:.62rem;font-weight:600;
-            letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px'>
-  Visualizando
-</div>
-<div style='color:#F5F5F7;font-size:1rem;font-weight:800;margin-bottom:16px'>
-  🎟️ Tickets & Descontos — {trade_atual}
-</div>""", unsafe_allow_html=True)
             render_tickets_descontos(trade_atual)
 
-    # ══════════ ABA 5 — RECORRÊNCIA ══════════
     with t_recorr:
-        if is_visao_geral:
-            st.markdown("""
-<div style='background:#141416;border:1px solid #2A2A2F;border-radius:12px;
-            padding:20px 24px;margin-top:8px'>
-  <div style='font-size:.9rem;font-weight:700;color:#F5F5F7;margin-bottom:6px'>
-    🔄 Selecione uma loja
-  </div>
-  <div style='color:#5A5A65;font-size:.85rem;line-height:1.6'>
-    Use o seletor <strong style='color:#A0A0A8'>🏪 Loja</strong> no topo da página
-    para visualizar <strong style='color:#A0A0A8'>recorrência, almoço vs janta
-    e clientes novos vs recorrentes</strong> semana a semana.
-  </div>
-</div>""", unsafe_allow_html=True)
+        if is_geral:
+            _aviso_selecione("🔄", "Selecione uma loja", MSG)
         else:
-            st.markdown(f"""
-<div style='color:#5A5A65;font-size:.62rem;font-weight:600;
-            letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px'>
-  Visualizando
-</div>
-<div style='color:#F5F5F7;font-size:1rem;font-weight:800;margin-bottom:16px'>
-  🔄 Recorrência — {trade_atual}
-</div>""", unsafe_allow_html=True)
             render_recorrencia(trade_atual)
 
-    # ══════════ ABA 6 — Usuarios ══════════
+    # ══════════ ABA USUÁRIOS — sempre visível ══════════
     with t_usuarios:
-      render_gerenciar_usuarios()
-    
-    # ══════════ ABA 7 — IA ══════════
+        render_gerenciar_usuarios()
+
+    # ══════════ ABA IA ══════════
     with t_ia:
         render_ia_tab(st.session_state.user, st.session_state.loja_atual)
-        

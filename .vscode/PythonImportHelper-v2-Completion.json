@@ -122,11 +122,91 @@
         "documentation": {}
     },
     {
-        "label": "render_gerenciar_usuarios",
-        "importPath": "user_management",
-        "description": "user_management",
+        "label": "tab_cardapio",
+        "importPath": "tabs",
+        "description": "tabs",
         "isExtraImport": true,
-        "detail": "user_management",
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_clientes",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_metas",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_vendas",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_brl",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_delta_pct",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_card",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_cardapio",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_clientes",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_metas",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_vendas",
+        "importPath": "tabs",
+        "description": "tabs",
+        "isExtraImport": true,
+        "detail": "tabs",
         "documentation": {}
     },
     {
@@ -207,6 +287,14 @@
         "description": "theme",
         "isExtraImport": true,
         "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "render_gerenciar_usuarios",
+        "importPath": "user_management",
+        "description": "user_management",
+        "isExtraImport": true,
+        "detail": "user_management",
         "documentation": {}
     },
     {
@@ -348,6 +436,14 @@
         "documentation": {}
     },
     {
+        "label": "list_units_for_user",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
         "label": "clientes_faixa_frequencia",
         "importPath": "queries",
         "description": "queries",
@@ -397,14 +493,6 @@
     },
     {
         "label": "kpi_vendas_extras",
-        "importPath": "queries",
-        "description": "queries",
-        "isExtraImport": true,
-        "detail": "queries",
-        "documentation": {}
-    },
-    {
-        "label": "list_units_for_user",
         "importPath": "queries",
         "description": "queries",
         "isExtraImport": true,
@@ -484,6 +572,14 @@
         "documentation": {}
     },
     {
+        "label": "render_admin_panel",
+        "importPath": "admin_dashboard",
+        "description": "admin_dashboard",
+        "isExtraImport": true,
+        "detail": "admin_dashboard",
+        "documentation": {}
+    },
+    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -506,86 +602,6 @@
         "importPath": "pandas",
         "description": "pandas",
         "detail": "pandas",
-        "documentation": {}
-    },
-    {
-        "label": "render_admin_panel",
-        "importPath": "admin_dashboard",
-        "description": "admin_dashboard",
-        "isExtraImport": true,
-        "detail": "admin_dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "fig_barras_pedidos",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_faturamento_diario",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_faixa_freq",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_gauge_metas",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_metas_agrupadas",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_pizza_categoria",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_pizza_status",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_scatter_rfm",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
-        "documentation": {}
-    },
-    {
-        "label": "fig_top_itens_horizontal",
-        "importPath": "charts",
-        "description": "charts",
-        "isExtraImport": true,
-        "detail": "charts",
         "documentation": {}
     },
     {
@@ -612,30 +628,6 @@
         "description": "dotenv",
         "isExtraImport": true,
         "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "RealDictCursor",
-        "importPath": "psycopg2.extras",
-        "description": "psycopg2.extras",
-        "isExtraImport": true,
-        "detail": "psycopg2.extras",
         "documentation": {}
     },
     {
@@ -720,11 +712,83 @@
         "documentation": {}
     },
     {
+        "label": "fig_barras_pedidos",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento_diario",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faixa_freq",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_gauge_metas",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_metas_agrupadas",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_categoria",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_status",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_rfm",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_top_itens_horizontal",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
         "label": "render_admin_panel",
         "kind": 2,
         "importPath": "admin_dashboard",
         "description": "admin_dashboard",
-        "peekOfCode": "def render_admin_panel():\n    inject_global_css()\n    # Sem sidebar para admin\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{padding-left:2rem!important;padding-right:2rem!important}\n</style>\"\"\", unsafe_allow_html=True)\n    dias_map = {\"7 dias\": 7, \"30 dias\": 30, \"90 dias\": 90}\n    # ── Header ──",
+        "peekOfCode": "def render_admin_panel():\n    inject_global_css()\n    # Sem sidebar para admin\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{padding-left:2rem!important;padding-right:2rem!important}\n</style>\"\"\", unsafe_allow_html=True)\n    user      = st.session_state.user\n    nome      = user.get(\"nome\") or \"Admin\"",
         "detail": "admin_dashboard",
         "documentation": {}
     },
@@ -783,38 +847,11 @@
         "documentation": {}
     },
     {
-        "label": "fmt_brl",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def fmt_brl(x) -> str:\n    s = f\"{_f(x):,.2f}\"\n    return \"R$ \" + s.replace(\",\", \"X\").replace(\".\", \",\").replace(\"X\", \".\")\ndef fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "fmt_delta_pct",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:\n        return f\"↑ {abs(d):.1f}%\", \"pos\"\n    return f\"↓ {abs(d):.1f}%\", \"neg\"\ndef kpi_card(",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "kpi_card",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def kpi_card(\n    title: str,\n    value: str,\n    delta_text: str | None,\n    delta_pos: bool | None,\n    progress_pct: float,\n    bar_label: str,\n) -> None:\n    p = max(0.0, min(float(progress_pct), 100.0))\n    delta = \"\"",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "init_state",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": []}.items():\n        if k not in st.session_state:\n            st.session_state[k] = v\n# ─────────────────────────────────────────────\n#  PÁGINAS\n# ─────────────────────────────────────────────\ndef pagina_login():\n    st.markdown(\"\"\"\n<style>",
+        "peekOfCode": "def init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": []}.items():\n        if k not in st.session_state:\n            st.session_state[k] = v\n# ─────────────────────────────────────────────\n#  LOGIN\n# ─────────────────────────────────────────────\ndef pagina_login():\n    st.markdown(\"\"\"\n<style>",
         "detail": "app",
         "documentation": {}
     },
@@ -837,56 +874,11 @@
         "documentation": {}
     },
     {
-        "label": "pagina_admin",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def pagina_admin():\n    render_admin_panel()\n# ─────────────────────────────────────────────\n#  DASHBOARD FRANQUEADO\n# ─────────────────────────────────────────────\ndef pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "pagina_dashboard",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user\n    lojas = user[\"lojas\"]\n    # ── Sidebar ──────────────────────────────\n    with st.sidebar:\n        st.markdown(f\"\"\"\n<div style='text-align:center;padding:8px 0 14px'>",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "tab_vendas",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def tab_vendas(trade: str, unidade_id: int, days: int):\n    kv   = kpi_vendas(trade) or {}\n    kx   = kpi_vendas_extras(trade) or {}\n    meta = meta_mes_atual(unidade_id) or {}\n    mes_atual = _f(kv.get(\"mes_atual\"))\n    mes_ant   = _f(kv.get(\"mes_anterior\"))\n    hoje      = _f(kv.get(\"hoje\"))\n    ontem     = _f(kx.get(\"fat_ontem\"))\n    ped_hj    = int(kv.get(\"pedidos_hoje\") or 0)\n    ped_ont   = int(kx.get(\"pedidos_ontem\") or 0)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "tab_cardapio",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def tab_cardapio(trade: str, days: int):\n    rows = top_itens(trade, days, 15)\n    df   = pd.DataFrame(rows)\n    top1 = rows[0] if rows else None\n    c1, c2, c3 = st.columns(3)\n    with c1:\n        kpi_card(\"Item mais vendido\",\n                 (top1 or {}).get(\"produto\") or \"—\",\n                 None, None, 100.0 if top1 else 0.0, \"Por receita no período\")\n    with c2:",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "tab_clientes",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def tab_clientes(trade: str):\n    kc    = kpi_clientes(trade) or {}\n    total = int(kc.get(\"total_clientes\") or 0)\n    tm    = _f(kc.get(\"ticket_medio\"))\n    fq    = _f(kc.get(\"freq_media\"))\n    rc    = _f(kc.get(\"recencia_media\"))\n    c1, c2, c3, c4 = st.columns(4)\n    with c1:\n        kpi_card(\"Total de clientes\", f\"{total}\", None, None,\n                 min(100.0, total / max(total, 1) * 10), \"Distintos (documento)\")",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "tab_metas",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def tab_metas(trade: str, unidade_id: int):\n    hist = metas_historico(trade)\n    df   = pd.DataFrame(hist)\n    if df.empty:\n        st.warning(\"Nenhuma meta cadastrada para esta unidade.\")\n        st.code(\n            \"INSERT INTO metas (unidade_id, mes, ano, meta_vendas, realizado_vendas, \"\n            \"meta_clientes, realizado_clientes)\\n\"\n            \"VALUES (<id_unidade>, EXTRACT(MONTH FROM NOW())::int, \"\n            \"EXTRACT(YEAR FROM NOW())::int, 100000, 0, 500, 0);\",",
+        "peekOfCode": "def pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user\n    lojas = user[\"lojas\"]\n    role  = (user.get(\"role\") or \"franqueado\").lower()\n    # ── Sidebar ──\n    with st.sidebar:\n        st.markdown(f\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -1023,33 +1015,6 @@
         "description": "db",
         "peekOfCode": "def execute(sql: str, params: tuple | None = None) -> None:\n    try:\n        conn = get_connection()\n        with conn.cursor() as cur:\n            cur.execute(sql, params or ())\n    except psycopg2.errors.InFailedSqlTransaction:\n        _reset_conn()\n        try:\n            conn = get_connection()\n            with conn.cursor() as cur:",
         "detail": "db",
-        "documentation": {}
-    },
-    {
-        "label": "conn",
-        "kind": 5,
-        "importPath": "debug_login",
-        "description": "debug_login",
-        "peekOfCode": "conn = psycopg2.connect(\n    host=os.getenv('DB_HOST'),\n    port=os.getenv('DB_PORT'),\n    dbname=os.getenv('DB_NAME'),\n    user=os.getenv('DB_USER'),\n    password=os.getenv('DB_PASSWORD'),\n)\nsenha = 'adm@leme2026'\npw_hash = hashlib.sha256(senha.strip().encode()).hexdigest()\nwith conn.cursor(cursor_factory=RealDictCursor) as cur:",
-        "detail": "debug_login",
-        "documentation": {}
-    },
-    {
-        "label": "senha",
-        "kind": 5,
-        "importPath": "debug_login",
-        "description": "debug_login",
-        "peekOfCode": "senha = 'adm@leme2026'\npw_hash = hashlib.sha256(senha.strip().encode()).hexdigest()\nwith conn.cursor(cursor_factory=RealDictCursor) as cur:\n    cur.execute('SELECT id, username, email, role, password_hash FROM cardapio_cmv.usuarios_portal WHERE username = %s', ('matheus_leme',))\n    user = cur.fetchone()\n    print('Hash no banco: ', user['password_hash'])\n    print('Hash gerado:   ', pw_hash)\n    print('Sao iguais?    ', user['password_hash'] == pw_hash)\nconn.close()",
-        "detail": "debug_login",
-        "documentation": {}
-    },
-    {
-        "label": "pw_hash",
-        "kind": 5,
-        "importPath": "debug_login",
-        "description": "debug_login",
-        "peekOfCode": "pw_hash = hashlib.sha256(senha.strip().encode()).hexdigest()\nwith conn.cursor(cursor_factory=RealDictCursor) as cur:\n    cur.execute('SELECT id, username, email, role, password_hash FROM cardapio_cmv.usuarios_portal WHERE username = %s', ('matheus_leme',))\n    user = cur.fetchone()\n    print('Hash no banco: ', user['password_hash'])\n    print('Hash gerado:   ', pw_hash)\n    print('Sao iguais?    ', user['password_hash'] == pw_hash)\nconn.close()",
-        "detail": "debug_login",
         "documentation": {}
     },
     {
@@ -1320,6 +1285,69 @@
         "description": "queries",
         "peekOfCode": "def receita_por_categoria(trade_name: str, days: int):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT COALESCE(desc_store_category_item, '—') AS categoria,\n                   SUM(quantity * unit_price) AS receita\n            FROM backup.venda_item\n            WHERE trade_name = %s\n              AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1",
         "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_brl",
+        "kind": 2,
+        "importPath": "tabs",
+        "description": "tabs",
+        "peekOfCode": "def fmt_brl(x) -> str:\n    s = f\"{_f(x):,.2f}\"\n    return \"R$ \" + s.replace(\",\", \"X\").replace(\".\", \",\").replace(\"X\", \".\")\ndef fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:",
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_delta_pct",
+        "kind": 2,
+        "importPath": "tabs",
+        "description": "tabs",
+        "peekOfCode": "def fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:\n        return f\"↑ {abs(d):.1f}%\", \"pos\"\n    return f\"↓ {abs(d):.1f}%\", \"neg\"\ndef kpi_card(",
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_card",
+        "kind": 2,
+        "importPath": "tabs",
+        "description": "tabs",
+        "peekOfCode": "def kpi_card(\n    title: str,\n    value: str,\n    delta_text: str | None,\n    delta_pos: bool | None,\n    progress_pct: float,\n    bar_label: str,\n) -> None:\n    p = max(0.0, min(float(progress_pct), 100.0))\n    delta = \"\"",
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_vendas",
+        "kind": 2,
+        "importPath": "tabs",
+        "description": "tabs",
+        "peekOfCode": "def tab_vendas(trade: str, unidade_id: int, days: int):\n    kv   = kpi_vendas(trade) or {}\n    kx   = kpi_vendas_extras(trade) or {}\n    meta = meta_mes_atual(unidade_id) or {}\n    mes_atual = _f(kv.get(\"mes_atual\"))\n    mes_ant   = _f(kv.get(\"mes_anterior\"))\n    hoje      = _f(kv.get(\"hoje\"))\n    ontem     = _f(kx.get(\"fat_ontem\"))\n    ped_hj    = int(kv.get(\"pedidos_hoje\") or 0)\n    ped_ont   = int(kx.get(\"pedidos_ontem\") or 0)",
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_cardapio",
+        "kind": 2,
+        "importPath": "tabs",
+        "description": "tabs",
+        "peekOfCode": "def tab_cardapio(trade: str, days: int):\n    rows = top_itens(trade, days, 15)\n    df   = pd.DataFrame(rows)\n    top1 = rows[0] if rows else None\n    c1, c2, c3 = st.columns(3)\n    with c1:\n        kpi_card(\"Item mais vendido\",\n                 (top1 or {}).get(\"produto\") or \"—\",\n                 None, None, 100.0 if top1 else 0.0, \"Por receita no período\")\n    with c2:",
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_clientes",
+        "kind": 2,
+        "importPath": "tabs",
+        "description": "tabs",
+        "peekOfCode": "def tab_clientes(trade: str):\n    kc    = kpi_clientes(trade) or {}\n    total = int(kc.get(\"total_clientes\") or 0)\n    tm    = _f(kc.get(\"ticket_medio\"))\n    fq    = _f(kc.get(\"freq_media\"))\n    rc    = _f(kc.get(\"recencia_media\"))\n    c1, c2, c3, c4 = st.columns(4)\n    with c1:\n        kpi_card(\"Total de clientes\", f\"{total}\", None, None,\n                 min(100.0, total / max(total, 1) * 10), \"Distintos (documento)\")",
+        "detail": "tabs",
+        "documentation": {}
+    },
+    {
+        "label": "tab_metas",
+        "kind": 2,
+        "importPath": "tabs",
+        "description": "tabs",
+        "peekOfCode": "def tab_metas(trade: str, unidade_id: int):\n    hist = metas_historico(trade)\n    df   = pd.DataFrame(hist)\n    if df.empty:\n        st.warning(\"Nenhuma meta cadastrada para esta unidade.\")\n        st.code(\n            \"INSERT INTO metas (unidade_id, mes, ano, meta_vendas, realizado_vendas, \"\n            \"meta_clientes, realizado_clientes)\\n\"\n            \"VALUES (<id_unidade>, EXTRACT(MONTH FROM NOW())::int, \"\n            \"EXTRACT(YEAR FROM NOW())::int, 100000, 0, 500, 0);\",",
+        "detail": "tabs",
         "documentation": {}
     },
     {
