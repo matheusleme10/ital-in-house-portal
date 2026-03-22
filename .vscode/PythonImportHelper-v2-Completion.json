@@ -1,0 +1,1269 @@
+[
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.graph_objects",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.graph_objects",
+        "description": "plotly.graph_objects",
+        "detail": "plotly.graph_objects",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_admin",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "ranking_lojas",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "serie_admin",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "render_ia_tab",
+        "importPath": "ia_ui",
+        "description": "ia_ui",
+        "isExtraImport": true,
+        "detail": "ia_ui",
+        "documentation": {}
+    },
+    {
+        "label": "render_ia_tab",
+        "importPath": "ia_ui",
+        "description": "ia_ui",
+        "isExtraImport": true,
+        "detail": "ia_ui",
+        "documentation": {}
+    },
+    {
+        "label": "render_plataformas",
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "isExtraImport": true,
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_recorrencia",
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "isExtraImport": true,
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_tickets_descontos",
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "isExtraImport": true,
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_plataformas",
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "isExtraImport": true,
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_recorrencia",
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "isExtraImport": true,
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_tickets_descontos",
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "isExtraImport": true,
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "PLOTLY_THEME",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "inject_global_css",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "inject_global_css",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "COLOR_MAIN",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "COLOR_MUTED",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "COLOR_RAMP",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "PLOTLY_THEME",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "COLOR_MAIN",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "PLOTLY_THEME",
+        "importPath": "theme",
+        "description": "theme",
+        "isExtraImport": true,
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_all",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_one",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_all",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_one",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_all",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_all",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_one",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "genai",
+        "importPath": "google",
+        "description": "google",
+        "isExtraImport": true,
+        "detail": "google",
+        "documentation": {}
+    },
+    {
+        "label": "types",
+        "importPath": "google.genai",
+        "description": "google.genai",
+        "isExtraImport": true,
+        "detail": "google.genai",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_clientes",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate_user",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_faixa_frequencia",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_rfm_points",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_top50",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "itens_cardapio_list",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_clientes",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas_extras",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "list_units_for_user",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "meta_mes_atual",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "metas_historico",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "pedidos_por_dia",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "receita_por_categoria",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "serie_temporal",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "status_vendas",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "top_itens",
+        "importPath": "queries",
+        "description": "queries",
+        "isExtraImport": true,
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "render_admin_panel",
+        "importPath": "admin_dashboard",
+        "description": "admin_dashboard",
+        "isExtraImport": true,
+        "detail": "admin_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "fig_barras_pedidos",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento_diario",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faixa_freq",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_gauge_metas",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_metas_agrupadas",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_categoria",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_status",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_rfm",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_top_itens_horizontal",
+        "importPath": "charts",
+        "description": "charts",
+        "isExtraImport": true,
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.express",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.express",
+        "description": "plotly.express",
+        "detail": "plotly.express",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "RealDictCursor",
+        "importPath": "psycopg2.extras",
+        "description": "psycopg2.extras",
+        "isExtraImport": true,
+        "detail": "psycopg2.extras",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "_f",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "_semana_label",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_descontos",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_faturamento",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_pedidos",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_percentuais",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_tickets",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_vendas",
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "isExtraImport": true,
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "hashlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "render_admin_panel",
+        "kind": 2,
+        "importPath": "admin_dashboard",
+        "description": "admin_dashboard",
+        "peekOfCode": "def render_admin_panel():\n    inject_global_css()\n    # Sem sidebar para admin\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{padding-left:2rem!important;padding-right:2rem!important}\n</style>\"\"\", unsafe_allow_html=True)\n    dias_map = {\"7 dias\": 7, \"30 dias\": 30, \"90 dias\": 90}\n    # ── Header ──",
+        "detail": "admin_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_admin",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def kpi_admin(dias: int) -> dict:\n    \"\"\"KPIs consolidados de toda a rede (sem filtro de loja).\"\"\"\n    try:\n        row = fetch_one(\n            \"\"\"\n            SELECT\n                COALESCE(SUM(total_amount), 0)::float AS faturamento_total,\n                COALESCE(COUNT(*), 0)::int AS total_pedidos,\n                COALESCE(AVG(total_amount), 0)::float AS ticket_medio\n            FROM backup.vendas",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "ranking_lojas",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def ranking_lojas(dias: int) -> list:\n    \"\"\"Ranking de lojas por faturamento no período (sem filtro).\"\"\"\n    try:\n        result = fetch_all(\n            \"\"\"\n            SELECT \n                trade_name,\n                SUM(total_amount)::float AS faturamento,\n                COUNT(*)::int AS pedidos,\n                AVG(total_amount)::float AS ticket_medio",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "serie_admin",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def serie_admin(dias: int) -> list:\n    \"\"\"Série temporal de faturamento consolidado da rede (sem filtro).\"\"\"\n    try:\n        result = fetch_all(\n            \"\"\"\n            SELECT \n                created_at::date AS data,\n                SUM(total_amount)::float AS faturamento,\n                COUNT(*)::int AS pedidos\n            FROM backup.vendas",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "ia_responder",
+        "kind": 2,
+        "importPath": "ai_chat",
+        "description": "ai_chat",
+        "peekOfCode": "def ia_responder(messages: list, context: str) -> str:\n    \"\"\"Gemini (principal) com fallback para Anthropic.\"\"\"\n    gemini_key    = os.getenv(\"GOOGLE_API_KEY\", \"\").strip()\n    anthropic_key = os.getenv(\"ANTHROPIC_API_KEY\", \"\").strip()\n    print(f\"[IA-IH] Gemini={'✓' if gemini_key else '✗'} | \"\n          f\"Anthropic={'✓' if anthropic_key else '✗'} | \"\n          f\"msgs={len(messages)}\")\n    if messages:\n        print(f\"[IA-IH] '{messages[-1]['content'][:60]}'\")\n    if gemini_key:",
+        "detail": "ai_chat",
+        "documentation": {}
+    },
+    {
+        "label": "build_context_ia",
+        "kind": 2,
+        "importPath": "ai_chat",
+        "description": "ai_chat",
+        "peekOfCode": "def build_context_ia(user: dict, loja_atual: dict) -> str:\n    is_admin  = (user.get(\"role\") or \"\").lower() == \"admin\"\n    nome      = user.get(\"nome_completo\") or user.get(\"username\", \"Usuário\")\n    trade     = None\n    if loja_atual and loja_atual.get(\"trade_name\") not in (None, \"__admin__\"):\n        trade = loja_atual[\"trade_name\"]\n    bloco_rede = \"\"\n    bloco_loja = \"\"\n    # ── Admin: dados consolidados da rede ──\n    if is_admin:",
+        "detail": "ai_chat",
+        "documentation": {}
+    },
+    {
+        "label": "build_context",
+        "kind": 2,
+        "importPath": "ai_chat",
+        "description": "ai_chat",
+        "peekOfCode": "def build_context(trade_name: str) -> str:\n    kv  = kpi_vendas(trade_name) or {}\n    kc  = kpi_clientes(trade_name) or {}\n    top = _top_prods(trade_name=trade_name, dias=30, limit=10)\n    def money(k):\n        from decimal import Decimal\n        v = kv.get(k)\n        if v is None: return \"R$ 0,00\"\n        x = float(v) if isinstance(v, Decimal) else float(v)\n        return f\"R$ {x:,.2f}\".replace(\",\",\"X\").replace(\".\",\",\").replace(\"X\",\".\")",
+        "detail": "ai_chat",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_brl",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def fmt_brl(x) -> str:\n    s = f\"{_f(x):,.2f}\"\n    return \"R$ \" + s.replace(\",\", \"X\").replace(\".\", \",\").replace(\"X\", \".\")\ndef fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "fmt_delta_pct",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:\n        return f\"↑ {abs(d):.1f}%\", \"pos\"\n    return f\"↓ {abs(d):.1f}%\", \"neg\"\ndef kpi_card(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_card",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def kpi_card(\n    title: str,\n    value: str,\n    delta_text: str | None,\n    delta_pos: bool | None,\n    progress_pct: float,\n    bar_label: str,\n) -> None:\n    p = max(0.0, min(float(progress_pct), 100.0))\n    delta = \"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "init_state",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": []}.items():\n        if k not in st.session_state:\n            st.session_state[k] = v\n# ─────────────────────────────────────────────\n#  PÁGINAS\n# ─────────────────────────────────────────────\ndef pagina_login():\n    st.markdown(\"\"\"\n<style>",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "pagina_login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def pagina_login():\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{\n    max-width:460px!important;margin:0 auto!important;padding-top:8vh!important;\n}\n</style>\n\"\"\", unsafe_allow_html=True)\n    st.markdown(\"\"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "popup_selecao_loja",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def popup_selecao_loja():\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{\n    max-width:480px!important;margin:0 auto!important;padding-top:10vh!important;\n}\n</style>\n\"\"\", unsafe_allow_html=True)\n    lojas = st.session_state.user[\"lojas\"]",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "pagina_admin",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def pagina_admin():\n    render_admin_panel()\n# ─────────────────────────────────────────────\n#  DASHBOARD FRANQUEADO\n# ─────────────────────────────────────────────\ndef pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "pagina_dashboard",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user\n    lojas = user[\"lojas\"]\n    # ── Sidebar ──────────────────────────────\n    with st.sidebar:\n        st.markdown(f\"\"\"\n<div style='text-align:center;padding:8px 0 14px'>",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tab_vendas",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def tab_vendas(trade: str, unidade_id: int, days: int):\n    kv   = kpi_vendas(trade) or {}\n    kx   = kpi_vendas_extras(trade) or {}\n    meta = meta_mes_atual(unidade_id) or {}\n    mes_atual = _f(kv.get(\"mes_atual\"))\n    mes_ant   = _f(kv.get(\"mes_anterior\"))\n    hoje      = _f(kv.get(\"hoje\"))\n    ontem     = _f(kx.get(\"fat_ontem\"))\n    ped_hj    = int(kv.get(\"pedidos_hoje\") or 0)\n    ped_ont   = int(kx.get(\"pedidos_ontem\") or 0)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tab_cardapio",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def tab_cardapio(trade: str, days: int):\n    rows = top_itens(trade, days, 15)\n    df   = pd.DataFrame(rows)\n    top1 = rows[0] if rows else None\n    c1, c2, c3 = st.columns(3)\n    with c1:\n        kpi_card(\"Item mais vendido\",\n                 (top1 or {}).get(\"produto\") or \"—\",\n                 None, None, 100.0 if top1 else 0.0, \"Por receita no período\")\n    with c2:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tab_clientes",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def tab_clientes(trade: str):\n    kc    = kpi_clientes(trade) or {}\n    total = int(kc.get(\"total_clientes\") or 0)\n    tm    = _f(kc.get(\"ticket_medio\"))\n    fq    = _f(kc.get(\"freq_media\"))\n    rc    = _f(kc.get(\"recencia_media\"))\n    c1, c2, c3, c4 = st.columns(4)\n    with c1:\n        kpi_card(\"Total de clientes\", f\"{total}\", None, None,\n                 min(100.0, total / max(total, 1) * 10), \"Distintos (documento)\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tab_metas",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def tab_metas(trade: str, unidade_id: int):\n    hist = metas_historico(trade)\n    df   = pd.DataFrame(hist)\n    if df.empty:\n        st.warning(\"Nenhuma meta cadastrada para esta unidade.\")\n        st.code(\n            \"INSERT INTO metas (unidade_id, mes, ano, meta_vendas, realizado_vendas, \"\n            \"meta_clientes, realizado_clientes)\\n\"\n            \"VALUES (<id_unidade>, EXTRACT(MONTH FROM NOW())::int, \"\n            \"EXTRACT(YEAR FROM NOW())::int, 100000, 0, 500, 0);\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def main():\n    init_state()\n    inject_global_css()\n    # Etapa 1 — Login\n    if st.session_state.user is None:\n        pagina_login()\n        st.stop()\n    # Checa conexão\n    try:\n        get_connection()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "apply_layout",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def apply_layout(fig):\n    fig.update_layout(**PLOTLY_THEME)\n    return fig\ndef fig_faturamento_diario(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados no período\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    df = df.copy()\n    df[\"data\"] = pd.to_datetime(df[\"data\"])",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento_diario",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_faturamento_diario(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados no período\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    df = df.copy()\n    df[\"data\"] = pd.to_datetime(df[\"data\"])\n    fig = go.Figure()\n    fig.add_trace(\n        go.Scatter(",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_status",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_pizza_status(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    fig = px.pie(\n        df,\n        names=\"status\",\n        values=\"quantidade\",\n        color_discrete_sequence=COLOR_RAMP,",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_barras_pedidos",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_barras_pedidos(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    df = df.copy()\n    df[\"data\"] = pd.to_datetime(df[\"data\"])\n    fig = px.bar(\n        df,\n        x=\"data\",",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_top_itens_horizontal",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_top_itens_horizontal(df: pd.DataFrame, n: int = 10):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    sub = df.head(n).iloc[::-1]\n    fig = px.bar(\n        sub,\n        x=\"receita_total\",\n        y=\"produto\",",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_pizza_categoria",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_pizza_categoria(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    fig = px.pie(\n        df,\n        names=\"categoria\",\n        values=\"receita\",\n        color_discrete_sequence=COLOR_RAMP,",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faixa_freq",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_faixa_freq(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    order = [\"1\", \"2–4\", \"5–9\", \"10–14\", \"15+\"]\n    df = df.copy()\n    df[\"faixa\"] = pd.Categorical(df[\"faixa\"].astype(str), categories=order, ordered=True)\n    df = df.sort_values(\"faixa\")\n    fig = px.bar(",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_scatter_rfm",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_scatter_rfm(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    d = df.copy()\n    d[\"_tm\"] = d[\"ticket_medio\"].map(_to_float)\n    d = d.dropna(subset=[\"recencia\", \"frequencia\", \"_tm\"])\n    if d.empty:\n        fig = go.Figure()",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_metas_agrupadas",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_metas_agrupadas(df: pd.DataFrame):\n    if df.empty:\n        fig = go.Figure()\n        fig.add_annotation(text=\"Sem dados\", xref=\"paper\", yref=\"paper\", x=0.5, y=0.5, showarrow=False)\n        return apply_layout(fig)\n    df = df.iloc[::-1].copy()\n    df[\"label\"] = df.apply(lambda r: f\"{int(r['mes']):02d}/{int(r['ano'])}\", axis=1)\n    fig = go.Figure(\n        data=[\n            go.Bar(name=\"Meta\", x=df[\"label\"], y=df[\"meta_vendas\"].map(_to_float), marker_color=COLOR_MUTED),",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "fig_gauge_metas",
+        "kind": 2,
+        "importPath": "charts",
+        "description": "charts",
+        "peekOfCode": "def fig_gauge_metas(pct: float):\n    pct = max(0.0, min(float(pct or 0), 200.0))\n    fig = go.Figure(\n        go.Indicator(\n            mode=\"gauge+number\",\n            value=pct,\n            number=dict(suffix=\"%\", font=dict(color=\"#F5F5F7\")),\n            gauge=dict(\n                axis=dict(range=[0, 120], tickcolor=\"#5A5A65\"),\n                bar=dict(color=COLOR_MAIN),",
+        "detail": "charts",
+        "documentation": {}
+    },
+    {
+        "label": "get_connection",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def get_connection():\n    return psycopg2.connect(\n        host=os.getenv(\"DB_HOST\", \"localhost\"),\n        port=os.getenv(\"DB_PORT\", \"5432\"),\n        dbname=os.getenv(\"DB_NAME\", \"postgres\"),\n        user=os.getenv(\"DB_USER\", \"postgres\"),\n        password=os.getenv(\"DB_PASSWORD\", \"\"),\n    )\ndef fetch_all(sql: str, params: tuple | None = None):\n    \"\"\"Fetch all rows, with automatic rollback and reconnection on error.\"\"\"",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_all",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def fetch_all(sql: str, params: tuple | None = None):\n    \"\"\"Fetch all rows, with automatic rollback and reconnection on error.\"\"\"\n    try:\n        conn = get_connection()\n        with conn.cursor(cursor_factory=RealDictCursor) as cur:\n            cur.execute(sql, params or ())\n            return cur.fetchall()\n    except psycopg2.errors.InFailedSqlTransaction:\n        # Reset the cached connection\n        st.cache_resource.clear()",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_one",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def fetch_one(sql: str, params: tuple | None = None):\n    \"\"\"Fetch one row, with automatic rollback and reconnection on error.\"\"\"\n    try:\n        conn = get_connection()\n        with conn.cursor(cursor_factory=RealDictCursor) as cur:\n            cur.execute(sql, params or ())\n            return cur.fetchone()\n    except psycopg2.errors.InFailedSqlTransaction:\n        # Reset the cached connection\n        st.cache_resource.clear()",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "execute",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def execute(sql: str, params: tuple | None = None) -> None:\n    \"\"\"Execute a query, with automatic rollback on error.\"\"\"\n    try:\n        conn = get_connection()\n        with conn.cursor() as cur:\n            cur.execute(sql, params or ())\n        conn.commit()\n    except psycopg2.errors.InFailedSqlTransaction:\n        # Reset the cached connection\n        st.cache_resource.clear()",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "render_ia_css",
+        "kind": 2,
+        "importPath": "ia_ui",
+        "description": "ia_ui",
+        "peekOfCode": "def render_ia_css():\n    st.markdown(\"\"\"\n<style>\n/* ── Área do chat ── */\n.ia-area {\n    max-width: 720px;\n    margin: 0 auto;\n    padding-bottom: 140px;\n}\n/* ── Mensagem usuário ── */",
+        "detail": "ia_ui",
+        "documentation": {}
+    },
+    {
+        "label": "render_ia_tab",
+        "kind": 2,
+        "importPath": "ia_ui",
+        "description": "ia_ui",
+        "peekOfCode": "def render_ia_tab(user_dict: dict, loja_atual: dict):\n    \"\"\"Renderiza a aba IA - IH.\"\"\"\n    from ai_chat import build_context_ia, ia_responder\n    render_ia_css()\n    nome = user_dict.get(\"nome_completo\") or user_dict.get(\"username\") or \"Usuário\"\n    # ── Processa sugestão clicada ──\n    if \"_ia_sugestao\" in st.session_state:\n        pergunta = st.session_state.pop(\"_ia_sugestao\")\n        _processar_pergunta(pergunta, user_dict, loja_atual, ia_responder, build_context_ia)\n        return  # rerun já foi chamado dentro",
+        "detail": "ia_ui",
+        "documentation": {}
+    },
+    {
+        "label": "render_plataformas",
+        "kind": 2,
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "peekOfCode": "def render_plataformas(trade_name: str):\n    st.markdown(\"<br>\", unsafe_allow_html=True)\n    col_s, _ = st.columns([0.3, 0.7])\n    with col_s:\n        semanas = st.selectbox(\"📅 Semanas\", SEMANAS_OPTS, index=1,\n                               key=\"plat_semanas\")\n    fat  = mv_faturamento(trade_name, semanas)\n    ped  = mv_pedidos(trade_name, semanas)\n    fat4 = mv_faturamento(trade_name, 4)\n    if not fat:",
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_tickets_descontos",
+        "kind": 2,
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "peekOfCode": "def render_tickets_descontos(trade_name: str):\n    st.markdown(\"<br>\", unsafe_allow_html=True)\n    col_s, _ = st.columns([0.3, 0.7])\n    with col_s:\n        semanas = st.selectbox(\"📅 Semanas\", SEMANAS_OPTS, index=1,\n                               key=\"tick_semanas\")\n    tkt  = mv_tickets(trade_name, semanas)\n    desc = mv_descontos(trade_name, semanas)\n    tkt4 = mv_tickets(trade_name, 4)\n    d4   = mv_descontos(trade_name, 4)",
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "render_recorrencia",
+        "kind": 2,
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "peekOfCode": "def render_recorrencia(trade_name: str):\n    st.markdown(\"<br>\", unsafe_allow_html=True)\n    col_s, _ = st.columns([0.3, 0.7])\n    with col_s:\n        semanas = st.selectbox(\"📅 Semanas\", SEMANAS_OPTS, index=1,\n                               key=\"rec_semanas\")\n    perc = mv_percentuais(trade_name, semanas)\n    fat  = mv_faturamento(trade_name, semanas)\n    vend = mv_vendas(trade_name, semanas)\n    ped  = mv_pedidos(trade_name, semanas)",
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "COR",
+        "kind": 5,
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "peekOfCode": "COR = {\n    \"iFood\":   \"#C8102E\",\n    \"Anotaai\": \"#4f6ef7\",\n    \"99Food\":  \"#F59E0B\",\n    \"Direto\":  \"#22C55E\",\n    \"Outros\":  \"#5A5A65\",\n    \"Almoço\":  \"#C8102E\",\n    \"Janta\":   \"#4f6ef7\",\n    \"Recor\":   \"#22C55E\",\n    \"Novos\":   \"#4f6ef7\",",
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "SEMANAS_OPTS",
+        "kind": 5,
+        "importPath": "mv_dashboard",
+        "description": "mv_dashboard",
+        "peekOfCode": "SEMANAS_OPTS = [4, 8, 12, 24]\ndef _base_layout(**extra):\n    layout = {**PLOTLY_THEME, \"height\": 320}\n    layout.update(extra)\n    return layout\ndef _kpi(label: str, valor: str, delta: str = \"\", pos: bool = True):\n    cor  = \"#22C55E\" if pos else \"#EF4444\"\n    bg   = \"rgba(34,197,94,.1)\" if pos else \"rgba(239,68,68,.1)\"\n    d_html = (\n        f\"<div style='display:inline-block;background:{bg};color:{cor};\"",
+        "detail": "mv_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "mv_faturamento",
+        "kind": 2,
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "peekOfCode": "def mv_faturamento(trade_name: str, semanas: int = 12) -> list:\n    try:\n        rows = fetch_all(\"\"\"\n            SELECT semana_ano, data_referencia,\n                   faturamento_total,\n                   faturamento_total_almoco,\n                   faturamento_total_janta,\n                   faturamento_ifood,\n                   faturamento_anotaai,\n                   faturamento_99food,",
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_pedidos",
+        "kind": 2,
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "peekOfCode": "def mv_pedidos(trade_name: str, semanas: int = 12) -> list:\n    try:\n        rows = fetch_all(\"\"\"\n            SELECT semana_ano, data_referencia,\n                   pedidos_total,\n                   pedidos_total_almoco,\n                   pedidos_total_janta,\n                   pedidos_combos,\n                   pedidos_green,\n                   pedidos_recorrentes,",
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_tickets",
+        "kind": 2,
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "peekOfCode": "def mv_tickets(trade_name: str, semanas: int = 12) -> list:\n    try:\n        rows = fetch_all(\"\"\"\n            SELECT semana_ano, data_referencia,\n                   \"Tkt ifood\",\n                   \"Tkt 99food\",\n                   \"Tkt outros\",\n                   \"Tkt dir\",\n                   \"Tkt almoço\",\n                   \"Tkt jantar\",",
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_descontos",
+        "kind": 2,
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "peekOfCode": "def mv_descontos(trade_name: str, semanas: int = 12) -> list:\n    try:\n        rows = fetch_all(\"\"\"\n            SELECT semana_ano, data_referencia,\n                   total_desconto_ifood,\n                   total_desconto_anotaai,\n                   total_desconto_99food,\n                   total_desconto_outros,\n                   total_desconto_geral\n            FROM views_n8n.mv_descontos",
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_percentuais",
+        "kind": 2,
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "peekOfCode": "def mv_percentuais(trade_name: str, semanas: int = 12) -> list:\n    try:\n        rows = fetch_all(\"\"\"\n            SELECT semana_ano, data_referencia,\n                   \"Perc Faturamento Almoço\",\n                   \"Perc Faturamento Jantar\",\n                   \"Perc ifood\",\n                   \"Perc anotai\",\n                   \"Perc 99food\",\n                   \"Perc outros\",",
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "mv_vendas",
+        "kind": 2,
+        "importPath": "mv_queries",
+        "description": "mv_queries",
+        "peekOfCode": "def mv_vendas(trade_name: str, semanas: int = 12) -> list:\n    try:\n        rows = fetch_all(\"\"\"\n            SELECT semana_ano, data_referencia,\n                   venda_total_almoco,\n                   venda_total_janta,\n                   vendas_ifood,\n                   vendas_anotaai,\n                   vendas_99food,\n                   vendas_outros",
+        "detail": "mv_queries",
+        "documentation": {}
+    },
+    {
+        "label": "hash_password",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def hash_password(plain: str) -> str:\n    clean_password = (plain or \"\").strip()\n    return hashlib.sha256(clean_password.encode(\"utf-8\")).hexdigest()\ndef authenticate_user(login: str, password: str):\n    \"\"\"\n    Aceita login por e-mail OU username.\n    Tenta SHA-256 primeiro, depois plaintext (compatibilidade).\n    \"\"\"\n    pw_hash       = hash_password(password)\n    clean_password = (password or \"\").strip()",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate_user",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def authenticate_user(login: str, password: str):\n    \"\"\"\n    Aceita login por e-mail OU username.\n    Tenta SHA-256 primeiro, depois plaintext (compatibilidade).\n    \"\"\"\n    pw_hash       = hash_password(password)\n    clean_password = (password or \"\").strip()\n    campo          = (login or \"\").strip().lower()\n    # ── Tenta SHA-256 (e-mail ou username) ──\n    user = fetch_one(",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "list_units_for_user",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def list_units_for_user(user_id: int, role: str, id_unidades=None):\n    \"\"\"\n    Admin  → retorna TODAS as unidades.\n    Outros → usa id_unidades (INT[]) da tabela usuarios_portal.\n             Fallback para usuarios_unidades se a coluna não existir.\n    \"\"\"\n    if (role or \"\").lower() == \"admin\":\n        return fetch_all(\n            \"\"\"\n            SELECT id, trade_name, estado, short_desc_state",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def kpi_vendas(trade_name: str):\n    try:\n        return fetch_one(\n            \"\"\"\n            SELECT\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at) = DATE_TRUNC('month', NOW())\n                             THEN total_amount END), 0) AS mes_atual,\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at) = DATE_TRUNC('month', NOW() - INTERVAL '1 month')\n                             THEN total_amount END), 0) AS mes_anterior,\n                COALESCE(SUM(CASE WHEN created_at::date = CURRENT_DATE THEN total_amount END), 0) AS hoje,",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_vendas_extras",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def kpi_vendas_extras(trade_name: str):\n    try:\n        return fetch_one(\n            \"\"\"\n            SELECT\n                COALESCE(COUNT(CASE WHEN created_at::date = CURRENT_DATE - 1 THEN 1 END), 0) AS pedidos_ontem,\n                COALESCE(SUM(CASE WHEN created_at::date = CURRENT_DATE - 1 THEN total_amount END), 0) AS fat_ontem,\n                COALESCE(AVG(CASE WHEN DATE_TRUNC('month', created_at) = DATE_TRUNC('month', NOW() - INTERVAL '1 month')\n                             THEN total_amount END), 0) AS ticket_mes_anterior\n            FROM backup.vendas WHERE trade_name = %s",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "serie_temporal",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def serie_temporal(trade_name: str, days: int):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT created_at::date AS data,\n                   SUM(total_amount) AS faturamento,\n                   COUNT(*) AS num_vendas,\n                   AVG(total_amount) AS ticket_medio\n            FROM backup.vendas\n            WHERE trade_name = %s AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "pedidos_por_dia",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def pedidos_por_dia(trade_name: str, days: int):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT created_at::date AS data, COUNT(*) AS pedidos\n            FROM backup.vendas\n            WHERE trade_name = %s AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 1\n            \"\"\",\n            (trade_name, str(days)),",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "status_vendas",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def status_vendas(trade_name: str, days: int):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT desc_store_sale_status AS status, COUNT(*) AS quantidade\n            FROM backup.vendas\n            WHERE trade_name = %s AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 2 DESC\n            \"\"\",\n            (trade_name, str(days)),",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "top_itens",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def top_itens(trade_name: str, days: int, limit: int = 15):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT vi.desc_sale_item AS produto,\n                   vi.desc_store_category_item AS categoria,\n                   SUM(vi.quantity) AS qtd_vendida,\n                   SUM(vi.quantity * vi.unit_price) AS receita_total,\n                   AVG(vi.unit_price) AS preco_medio\n            FROM backup.venda_item vi",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_clientes",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def kpi_clientes(trade_name: str):\n    try:\n        return fetch_one(\n            \"\"\"\n            SELECT COUNT(DISTINCT numero_documento) AS total_clientes,\n                   ROUND(AVG(ticket_medio)::numeric, 2) AS ticket_medio,\n                   ROUND(AVG(frequencia)::numeric, 1) AS freq_media,\n                   ROUND(AVG(recencia)::numeric, 0) AS recencia_media\n            FROM clientes.clientes_historico_vendas_tratadas WHERE trade_name = %s\n            \"\"\",",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_faixa_frequencia",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def clientes_faixa_frequencia(trade_name: str):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT\n                CASE\n                    WHEN frequencia >= 15 THEN '15+'\n                    WHEN frequencia >= 10 THEN '10–14'\n                    WHEN frequencia >= 5  THEN '5–9'\n                    WHEN frequencia >= 2  THEN '2–4'",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_rfm_points",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def clientes_rfm_points(trade_name: str, limit: int = 400):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MIN(recencia) AS recencia,\n                   MAX(frequencia) AS frequencia,\n                   AVG(ticket_medio)::float AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            WHERE trade_name = %s",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_top50",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def clientes_top50(trade_name: str):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MAX(frequencia) AS frequencia,\n                   MIN(recencia) AS recencia,\n                   ROUND(AVG(ticket_medio)::numeric, 2) AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            WHERE trade_name = %s",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "metas_historico",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def metas_historico(trade_name: str):\n    \"\"\"Placeholder: tabela 'metas' ainda não foi criada.\"\"\"\n    return []\ndef meta_mes_atual(unidade_id: int):\n    \"\"\"Placeholder: tabela 'metas' ainda não foi criada.\"\"\"\n    return None\ndef itens_cardapio_list():\n    try:\n        return fetch_all(\n            \"\"\"",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "meta_mes_atual",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def meta_mes_atual(unidade_id: int):\n    \"\"\"Placeholder: tabela 'metas' ainda não foi criada.\"\"\"\n    return None\ndef itens_cardapio_list():\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT id_item, nome, ativo, data_criacao, data_atualizacao\n            FROM cardapio_cmv.itens_cardapio\n            ORDER BY nome",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "itens_cardapio_list",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def itens_cardapio_list():\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT id_item, nome, ativo, data_criacao, data_atualizacao\n            FROM cardapio_cmv.itens_cardapio\n            ORDER BY nome\n            \"\"\"\n        )\n    except Exception:",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "receita_por_categoria",
+        "kind": 2,
+        "importPath": "queries",
+        "description": "queries",
+        "peekOfCode": "def receita_por_categoria(trade_name: str, days: int):\n    try:\n        return fetch_all(\n            \"\"\"\n            SELECT COALESCE(desc_store_category_item, '—') AS categoria,\n                   SUM(quantity * unit_price) AS receita\n            FROM backup.venda_item\n            WHERE trade_name = %s\n              AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1",
+        "detail": "queries",
+        "documentation": {}
+    },
+    {
+        "label": "inject_global_css",
+        "kind": 2,
+        "importPath": "theme",
+        "description": "theme",
+        "peekOfCode": "def inject_global_css() -> None:\n    st.markdown(\"\"\"\n<style>\n@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');\n/* ── Base ── */\nhtml, body, [class*=\"css\"], .stMarkdown, label, p, span, div {\n    font-family: 'Plus Jakarta Sans', sans-serif !important;\n}\n.stApp { background: #0C0C0E !important; }\nsection[data-testid=\"stAppViewContainer\"] > .main {",
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "PLOTLY_THEME",
+        "kind": 5,
+        "importPath": "theme",
+        "description": "theme",
+        "peekOfCode": "PLOTLY_THEME = dict(\n    paper_bgcolor=\"rgba(0,0,0,0)\",\n    plot_bgcolor=\"rgba(0,0,0,0)\",\n    font=dict(color=\"#A0A0A8\", family=\"Plus Jakarta Sans\", size=12),\n    margin=dict(l=10, r=10, t=36, b=10),\n    xaxis=dict(\n        gridcolor=\"#1C1C1F\",\n        showline=False,\n        tickfont=dict(color=\"#8A8A95\", size=11),\n        title_font=dict(color=\"#5A5A65\"),",
+        "detail": "theme",
+        "documentation": {}
+    },
+    {
+        "label": "COLOR_MUTED",
+        "kind": 5,
+        "importPath": "theme",
+        "description": "theme",
+        "peekOfCode": "COLOR_MUTED = \"#2A2A2F\"\ndef inject_global_css() -> None:\n    st.markdown(\"\"\"\n<style>\n@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');\n/* ── Base ── */\nhtml, body, [class*=\"css\"], .stMarkdown, label, p, span, div {\n    font-family: 'Plus Jakarta Sans', sans-serif !important;\n}\n.stApp { background: #0C0C0E !important; }",
+        "detail": "theme",
+        "documentation": {}
+    }
+]
