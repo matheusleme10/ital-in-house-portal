@@ -3,104 +3,110 @@ from __future__ import annotations
 import os
 
 import psycopg2
-from psycopg2.extras import RealDictCursor
 import streamlit as st
 from dotenv import load_dotenv
+from psycopg2.extras import RealDictCursor
 
 load_dotenv()
 
 
+def _get(key: str, default: str = "") -> str:
+    """
+    Lê variável de ambiente com fallback para st.secrets.
+    Funciona em: local (.env), Railway (env vars) e Streamlit Cloud (secrets).
+    """
+    # 1. Variável de ambiente do sistema (Railway injeta assim)
+    val = os.getenv(key, "")
+    if val:
+        return val
+    # 2. Streamlit secrets (Streamlit Cloud)
+    try:
+        val = st.secrets.get(key, "")
+        if val:
+            return str(val)
+    except Exception:
+        pass
+    return default
+
+
 @st.cache_resource
 def get_connection():
-    return psycopg2.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        port=os.getenv("DB_PORT", "5432"),
-        dbname=os.getenv("DB_NAME", "postgres"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", ""),
+    conn = psycopg2.connect(
+        host=_get("DB_HOST", "localhost"),
+        port=_get("DB_PORT", "5432"),
+        dbname=_get("DB_NAME", "postgres"),
+        user=_get("DB_USER", "postgres"),
+        password=_get("DB_PASSWORD", ""),
     )
+    conn.autocommit = True
+    return conn
+
+
+def _reset_conn():
+    """Limpa o cache e reconecta."""
+    try:
+        st.cache_resource.clear()
+    except Exception:
+        pass
 
 
 def fetch_all(sql: str, params: tuple | None = None):
-    """Fetch all rows, with automatic rollback and reconnection on error."""
     try:
         conn = get_connection()
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute(sql, params or ())
             return cur.fetchall()
     except psycopg2.errors.InFailedSqlTransaction:
-        # Reset the cached connection
-        st.cache_resource.clear()
+        _reset_conn()
         try:
             conn = get_connection()
-            conn.rollback()
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 cur.execute(sql, params or ())
                 return cur.fetchall()
         except Exception as e:
-            print(f"fetch_all error after reset: {e}")
+            print(f"fetch_all retry error: {e}")
             return []
     except Exception as e:
         print(f"fetch_all error: {e}")
-        try:
-            conn = get_connection()
-            conn.rollback()
-        except:
-            pass
+        _reset_conn()
         return []
 
 
 def fetch_one(sql: str, params: tuple | None = None):
-    """Fetch one row, with automatic rollback and reconnection on error."""
     try:
         conn = get_connection()
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute(sql, params or ())
             return cur.fetchone()
     except psycopg2.errors.InFailedSqlTransaction:
-        # Reset the cached connection
-        st.cache_resource.clear()
+        _reset_conn()
         try:
             conn = get_connection()
-            conn.rollback()
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 cur.execute(sql, params or ())
                 return cur.fetchone()
         except Exception as e:
-            print(f"fetch_one error after reset: {e}")
+            print(f"fetch_one retry error: {e}")
             return None
     except Exception as e:
         print(f"fetch_one error: {e}")
-        try:
-            conn = get_connection()
-            conn.rollback()
-        except:
-            pass
+        _reset_conn()
         return None
 
 
 def execute(sql: str, params: tuple | None = None) -> None:
-    """Execute a query, with automatic rollback on error."""
     try:
         conn = get_connection()
         with conn.cursor() as cur:
             cur.execute(sql, params or ())
-        conn.commit()
     except psycopg2.errors.InFailedSqlTransaction:
-        # Reset the cached connection
-        st.cache_resource.clear()
+        _reset_conn()
         try:
             conn = get_connection()
-            conn.rollback()
             with conn.cursor() as cur:
                 cur.execute(sql, params or ())
-            conn.commit()
         except Exception as e:
-            print(f"execute error after reset: {e}")
+            print(f"execute retry error: {e}")
     except Exception as e:
         print(f"execute error: {e}")
-        try:
-            conn = get_connection()
-            conn.rollback()
-        except:
-            pass
+        _reset_conn()

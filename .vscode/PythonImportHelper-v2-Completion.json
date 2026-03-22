@@ -575,19 +575,19 @@
         "documentation": {}
     },
     {
-        "label": "RealDictCursor",
-        "importPath": "psycopg2.extras",
-        "description": "psycopg2.extras",
-        "isExtraImport": true,
-        "detail": "psycopg2.extras",
-        "documentation": {}
-    },
-    {
         "label": "load_dotenv",
         "importPath": "dotenv",
         "description": "dotenv",
         "isExtraImport": true,
         "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "RealDictCursor",
+        "importPath": "psycopg2.extras",
+        "description": "psycopg2.extras",
+        "isExtraImport": true,
+        "detail": "psycopg2.extras",
         "documentation": {}
     },
     {
@@ -938,7 +938,7 @@
         "kind": 2,
         "importPath": "db",
         "description": "db",
-        "peekOfCode": "def get_connection():\n    return psycopg2.connect(\n        host=os.getenv(\"DB_HOST\", \"localhost\"),\n        port=os.getenv(\"DB_PORT\", \"5432\"),\n        dbname=os.getenv(\"DB_NAME\", \"postgres\"),\n        user=os.getenv(\"DB_USER\", \"postgres\"),\n        password=os.getenv(\"DB_PASSWORD\", \"\"),\n    )\ndef fetch_all(sql: str, params: tuple | None = None):\n    \"\"\"Fetch all rows, with automatic rollback and reconnection on error.\"\"\"",
+        "peekOfCode": "def get_connection():\n    conn = psycopg2.connect(\n        host=_get(\"DB_HOST\", \"localhost\"),\n        port=_get(\"DB_PORT\", \"5432\"),\n        dbname=_get(\"DB_NAME\", \"postgres\"),\n        user=_get(\"DB_USER\", \"postgres\"),\n        password=_get(\"DB_PASSWORD\", \"\"),\n    )\n    conn.autocommit = True\n    return conn",
         "detail": "db",
         "documentation": {}
     },
@@ -947,7 +947,7 @@
         "kind": 2,
         "importPath": "db",
         "description": "db",
-        "peekOfCode": "def fetch_all(sql: str, params: tuple | None = None):\n    \"\"\"Fetch all rows, with automatic rollback and reconnection on error.\"\"\"\n    try:\n        conn = get_connection()\n        with conn.cursor(cursor_factory=RealDictCursor) as cur:\n            cur.execute(sql, params or ())\n            return cur.fetchall()\n    except psycopg2.errors.InFailedSqlTransaction:\n        # Reset the cached connection\n        st.cache_resource.clear()",
+        "peekOfCode": "def fetch_all(sql: str, params: tuple | None = None):\n    try:\n        conn = get_connection()\n        with conn.cursor(cursor_factory=RealDictCursor) as cur:\n            cur.execute(sql, params or ())\n            return cur.fetchall()\n    except psycopg2.errors.InFailedSqlTransaction:\n        _reset_conn()\n        try:\n            conn = get_connection()",
         "detail": "db",
         "documentation": {}
     },
@@ -956,7 +956,7 @@
         "kind": 2,
         "importPath": "db",
         "description": "db",
-        "peekOfCode": "def fetch_one(sql: str, params: tuple | None = None):\n    \"\"\"Fetch one row, with automatic rollback and reconnection on error.\"\"\"\n    try:\n        conn = get_connection()\n        with conn.cursor(cursor_factory=RealDictCursor) as cur:\n            cur.execute(sql, params or ())\n            return cur.fetchone()\n    except psycopg2.errors.InFailedSqlTransaction:\n        # Reset the cached connection\n        st.cache_resource.clear()",
+        "peekOfCode": "def fetch_one(sql: str, params: tuple | None = None):\n    try:\n        conn = get_connection()\n        with conn.cursor(cursor_factory=RealDictCursor) as cur:\n            cur.execute(sql, params or ())\n            return cur.fetchone()\n    except psycopg2.errors.InFailedSqlTransaction:\n        _reset_conn()\n        try:\n            conn = get_connection()",
         "detail": "db",
         "documentation": {}
     },
@@ -965,7 +965,7 @@
         "kind": 2,
         "importPath": "db",
         "description": "db",
-        "peekOfCode": "def execute(sql: str, params: tuple | None = None) -> None:\n    \"\"\"Execute a query, with automatic rollback on error.\"\"\"\n    try:\n        conn = get_connection()\n        with conn.cursor() as cur:\n            cur.execute(sql, params or ())\n        conn.commit()\n    except psycopg2.errors.InFailedSqlTransaction:\n        # Reset the cached connection\n        st.cache_resource.clear()",
+        "peekOfCode": "def execute(sql: str, params: tuple | None = None) -> None:\n    try:\n        conn = get_connection()\n        with conn.cursor() as cur:\n            cur.execute(sql, params or ())\n    except psycopg2.errors.InFailedSqlTransaction:\n        _reset_conn()\n        try:\n            conn = get_connection()\n            with conn.cursor() as cur:",
         "detail": "db",
         "documentation": {}
     },
