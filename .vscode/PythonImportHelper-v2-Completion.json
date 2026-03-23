@@ -564,15 +564,6 @@
         "documentation": {}
     },
     {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
         "label": "genai",
         "importPath": "google",
         "description": "google",
@@ -1036,11 +1027,20 @@
         "documentation": {}
     },
     {
+        "label": "ia_stream",
+        "kind": 2,
+        "importPath": "ai_chat",
+        "description": "ai_chat",
+        "peekOfCode": "def ia_stream(messages: list, context: str):\n    \"\"\"Generator de tokens para st.write_stream().\"\"\"\n    client = _client()\n    if not client:\n        yield \"⚠️ GOOGLE_API_KEY não configurada no .env ou Secrets.\"\n        return\n    system_prompt = (\n        \"Você é a IA - IH, assistente da Ital In House Macarrão Gourmet.\\n\"\n        \"Responda SEMPRE em português do Brasil, de forma direta e amigável.\\n\"\n        \"Use apenas os dados do contexto. Se não souber, diga claramente.\\n\"",
+        "detail": "ai_chat",
+        "documentation": {}
+    },
+    {
         "label": "ia_responder",
         "kind": 2,
         "importPath": "ai_chat",
         "description": "ai_chat",
-        "peekOfCode": "def ia_responder(messages: list, context: str) -> str:\n    \"\"\"Ponto de entrada principal. Gemini com fallback automático entre modelos.\"\"\"\n    gemini_key = _key(\"GOOGLE_API_KEY\")\n    print(f\"[IA-IH] Gemini={'✓' if gemini_key else '✗'} | msgs={len(messages)}\")\n    if messages:\n        print(f\"[IA-IH] pergunta: '{messages[-1]['content'][:80]}'\")\n    if gemini_key:\n        return _responder_gemini(messages, context)\n    return \"⚠️ GOOGLE_API_KEY não configurada. Adicione no .env ou Streamlit Secrets.\"\n# ─────────────────────────────────────────────────────────",
+        "peekOfCode": "def ia_responder(messages: list, context: str) -> str:\n    return \"\".join(ia_stream(messages, context))\n# ─────────────────────────────────────────────────────────\n#  QUERIES DE CONTEXTO\n# ─────────────────────────────────────────────────────────\ndef _top_prods(trade_name=None, dias=30, limit=10) -> list:\n    try:\n        where = f\"created_at >= CURRENT_DATE - ('{dias} days')::INTERVAL AND desc_sale_item IS NOT NULL\"\n        if trade_name:\n            where = f\"trade_name=%s AND {where}\"",
         "detail": "ai_chat",
         "documentation": {}
     },
@@ -1049,7 +1049,7 @@
         "kind": 2,
         "importPath": "ai_chat",
         "description": "ai_chat",
-        "peekOfCode": "def build_context_ia(user: dict, loja_atual: dict) -> str:\n    is_admin = (user.get(\"role\") or \"\").lower() == \"admin\"\n    # ── nome: session guarda como \"nome\", não \"nome_completo\" ──\n    nome = (user.get(\"nome_completo\")\n            or user.get(\"nome\")\n            or user.get(\"username\")\n            or \"Usuário\")\n    trade = None\n    if loja_atual and loja_atual.get(\"trade_name\") not in (None, \"__admin__\", \"\"):\n        trade = loja_atual[\"trade_name\"]",
+        "peekOfCode": "def build_context_ia(user: dict, loja_atual: dict) -> str:\n    is_admin = (user.get(\"role\") or \"\").lower() == \"admin\"\n    nome = (user.get(\"nome_completo\") or user.get(\"nome\")\n            or user.get(\"username\") or \"Usuário\")\n    trade = None\n    if loja_atual and loja_atual.get(\"trade_name\") not in (None, \"__admin__\", \"\"):\n        trade = loja_atual[\"trade_name\"]\n    lojas_permitidas = []\n    if not is_admin:\n        lojas_permitidas = [l[\"trade_name\"] for l in (user.get(\"lojas\") or [])]",
         "detail": "ai_chat",
         "documentation": {}
     },
@@ -1058,7 +1058,7 @@
         "kind": 2,
         "importPath": "ai_chat",
         "description": "ai_chat",
-        "peekOfCode": "def build_context(trade_name: str) -> str:\n    kv  = kpi_vendas(trade_name) or {}\n    kc  = kpi_clientes(trade_name) or {}\n    top = _top_prods(trade_name=trade_name, dias=30, limit=10)\n    def money(k):\n        from decimal import Decimal\n        v = kv.get(k)\n        if v is None: return \"R$ 0,00\"\n        x = float(v) if isinstance(v, Decimal) else float(v)\n        return f\"R$ {x:,.2f}\".replace(\",\",\"X\").replace(\".\",\",\").replace(\"X\",\".\")",
+        "peekOfCode": "def build_context(trade_name: str) -> str:\n    kv  = kpi_vendas(trade_name) or {}\n    top = _top_prods(trade_name=trade_name, dias=30, limit=5)\n    return (f\"Unidade: {trade_name}. \"\n            f\"Mês: R$ {float(kv.get('mes_atual') or 0):,.2f}. \"\n            f\"Produtos: {_fmt_prods(top)}\")",
         "detail": "ai_chat",
         "documentation": {}
     },
@@ -1067,7 +1067,16 @@
         "kind": 5,
         "importPath": "ai_chat",
         "description": "ai_chat",
-        "peekOfCode": "_MODELOS = [\n    \"gemini-1.5-flash\",      # principal — rápido e barato\n    \"gemini-1.5-flash-8b\",   # fallback leve\n    \"gemini-1.5-pro\",        # fallback premium se os outros falharem\n]\ndef _key(name: str) -> str:\n    \"\"\"Lê chave do .env ou Streamlit Secrets.\"\"\"\n    val = os.getenv(name, \"\").strip()\n    if val:\n        return val",
+        "peekOfCode": "_MODELOS = [\n    \"gemini-2.0-flash\",\n    \"gemini-2.0-flash-lite\",\n    \"gemini-2.5-flash\",\n]\n_client_cache = None\ndef _key(name: str) -> str:\n    val = os.getenv(name, \"\").strip()\n    if val:\n        return val",
+        "detail": "ai_chat",
+        "documentation": {}
+    },
+    {
+        "label": "_client_cache",
+        "kind": 5,
+        "importPath": "ai_chat",
+        "description": "ai_chat",
+        "peekOfCode": "_client_cache = None\ndef _key(name: str) -> str:\n    val = os.getenv(name, \"\").strip()\n    if val:\n        return val\n    try:\n        return str(st.secrets.get(name, \"\")).strip()\n    except Exception:\n        return \"\"\ndef _client():",
         "detail": "ai_chat",
         "documentation": {}
     },
@@ -1220,7 +1229,7 @@
         "kind": 2,
         "importPath": "ia_ui",
         "description": "ia_ui",
-        "peekOfCode": "def render_ia_css():\n    st.markdown(\"\"\"\n<style>\n/* ── Área do chat ── */\n.ia-area {\n    max-width: 720px;\n    margin: 0 auto;\n    padding-bottom: 140px;\n}\n/* ── Mensagem usuário ── */",
+        "peekOfCode": "def render_ia_css():\n    st.markdown(\"\"\"\n<style>\n.ia-area {\n    max-width: 780px;\n    margin: 0 auto;\n    padding-bottom: 160px;\n    display: flex;\n    flex-direction: column;\n    gap: 4px;",
         "detail": "ia_ui",
         "documentation": {}
     },
@@ -1229,7 +1238,7 @@
         "kind": 2,
         "importPath": "ia_ui",
         "description": "ia_ui",
-        "peekOfCode": "def render_ia_tab(user_dict: dict, loja_atual: dict):\n    \"\"\"Renderiza a aba IA - IH com streaming Gemini.\"\"\"\n    from ai_chat import build_context_ia, ia_stream\n    render_ia_css()\n    nome = user_dict.get(\"nome_completo\") or user_dict.get(\"username\") or \"Usuário\"\n    # ── Processa sugestão clicada ──\n    if \"_ia_sugestao\" in st.session_state:\n        pergunta = st.session_state.pop(\"_ia_sugestao\")\n        _processar_stream(pergunta, user_dict, loja_atual, ia_stream, build_context_ia)\n        return",
+        "peekOfCode": "def render_ia_tab(user_dict: dict, loja_atual: dict):\n    from ai_chat import build_context_ia, ia_stream\n    render_ia_css()\n    nome     = (user_dict.get(\"nome_completo\")\n                or user_dict.get(\"nome\")\n                or user_dict.get(\"username\")\n                or \"Usuário\")\n    is_admin = (user_dict.get(\"role\") or \"\").lower() == \"admin\"\n    chat     = st.session_state.get(\"chat\", [])\n    # ── Histórico ──",
         "detail": "ia_ui",
         "documentation": {}
     },
