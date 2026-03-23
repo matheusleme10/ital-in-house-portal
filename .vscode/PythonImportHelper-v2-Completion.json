@@ -16,14 +16,6 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
         "label": "Decimal",
         "importPath": "decimal",
         "description": "decimal",
@@ -75,30 +67,6 @@
         "documentation": {}
     },
     {
-        "label": "clientes_faixa_rede",
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "isExtraImport": true,
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
-        "label": "clientes_rfm_rede",
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "isExtraImport": true,
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
-        "label": "clientes_top50_rede",
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "isExtraImport": true,
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
         "label": "kpi_admin",
         "importPath": "admin_queries",
         "description": "admin_queries",
@@ -107,7 +75,15 @@
         "documentation": {}
     },
     {
-        "label": "kpi_clientes_rede",
+        "label": "ranking_lojas",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "serie_admin",
         "importPath": "admin_queries",
         "description": "admin_queries",
         "isExtraImport": true,
@@ -131,39 +107,15 @@
         "documentation": {}
     },
     {
-        "label": "pedidos_rede",
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "isExtraImport": true,
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
-        "label": "ranking_lojas",
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "isExtraImport": true,
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
-        "label": "receita_categoria_rede",
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "isExtraImport": true,
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
-        "label": "serie_admin",
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "isExtraImport": true,
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
         "label": "serie_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "pedidos_rede",
         "importPath": "admin_queries",
         "description": "admin_queries",
         "isExtraImport": true,
@@ -180,6 +132,46 @@
     },
     {
         "label": "top_itens_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "receita_categoria_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "kpi_clientes_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_faixa_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_rfm_rede",
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "isExtraImport": true,
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "clientes_top50_rede",
         "importPath": "admin_queries",
         "description": "admin_queries",
         "isExtraImport": true,
@@ -323,14 +315,6 @@
         "documentation": {}
     },
     {
-        "label": "render_ia_tab",
-        "importPath": "ia_ui",
-        "description": "ia_ui",
-        "isExtraImport": true,
-        "detail": "ia_ui",
-        "documentation": {}
-    },
-    {
         "label": "render_plataformas",
         "importPath": "mv_dashboard",
         "description": "mv_dashboard",
@@ -352,46 +336,6 @@
         "description": "mv_dashboard",
         "isExtraImport": true,
         "detail": "mv_dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "render_plataformas",
-        "importPath": "mv_dashboard",
-        "description": "mv_dashboard",
-        "isExtraImport": true,
-        "detail": "mv_dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "render_recorrencia",
-        "importPath": "mv_dashboard",
-        "description": "mv_dashboard",
-        "isExtraImport": true,
-        "detail": "mv_dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "render_tickets_descontos",
-        "importPath": "mv_dashboard",
-        "description": "mv_dashboard",
-        "isExtraImport": true,
-        "detail": "mv_dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "render_sidebar",
-        "importPath": "sidebar",
-        "description": "sidebar",
-        "isExtraImport": true,
-        "detail": "sidebar",
-        "documentation": {}
-    },
-    {
-        "label": "render_sidebar",
-        "importPath": "sidebar",
-        "description": "sidebar",
-        "isExtraImport": true,
-        "detail": "sidebar",
         "documentation": {}
     },
     {
@@ -412,38 +356,6 @@
     },
     {
         "label": "kpi_card",
-        "importPath": "tabs",
-        "description": "tabs",
-        "isExtraImport": true,
-        "detail": "tabs",
-        "documentation": {}
-    },
-    {
-        "label": "tab_cardapio",
-        "importPath": "tabs",
-        "description": "tabs",
-        "isExtraImport": true,
-        "detail": "tabs",
-        "documentation": {}
-    },
-    {
-        "label": "tab_clientes",
-        "importPath": "tabs",
-        "description": "tabs",
-        "isExtraImport": true,
-        "detail": "tabs",
-        "documentation": {}
-    },
-    {
-        "label": "tab_metas",
-        "importPath": "tabs",
-        "description": "tabs",
-        "isExtraImport": true,
-        "detail": "tabs",
-        "documentation": {}
-    },
-    {
-        "label": "tab_vendas",
         "importPath": "tabs",
         "description": "tabs",
         "isExtraImport": true,
@@ -548,14 +460,6 @@
     },
     {
         "label": "PLOTLY_THEME",
-        "importPath": "theme",
-        "description": "theme",
-        "isExtraImport": true,
-        "detail": "theme",
-        "documentation": {}
-    },
-    {
-        "label": "inject_global_css",
         "importPath": "theme",
         "description": "theme",
         "isExtraImport": true,
@@ -956,7 +860,7 @@
         "kind": 2,
         "importPath": "admin_dashboard",
         "description": "admin_dashboard",
-        "peekOfCode": "def render_admin_panel():\n    inject_global_css()\n    # Sidebar fixa — sem o collapse nativo\n    st.markdown(\"\"\"\n<style>\n[data-testid=\"collapsedControl\"]{display:none!important}\n.main .block-container{padding-top:1rem!important}\n</style>\"\"\", unsafe_allow_html=True)\n    ctx       = render_sidebar(\"admin\")\n    page      = ctx[\"page\"]",
+        "peekOfCode": "def render_admin_panel():\n    inject_global_css()\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{\n    padding-left:2rem!important;\n    padding-right:2rem!important;\n    padding-top:1rem!important;\n}",
         "detail": "admin_dashboard",
         "documentation": {}
     },
@@ -965,8 +869,17 @@
         "kind": 5,
         "importPath": "admin_dashboard",
         "description": "admin_dashboard",
-        "peekOfCode": "LOGO_URL = \"https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png\"\ndef _f(x) -> float:\n    if x is None: return 0.0\n    if isinstance(x, Decimal): return float(x)\n    return float(x)\ndef _kpi(label, valor, delta=\"\", pos=True):\n    cor = \"#22C55E\" if pos else \"#EF4444\"\n    bg  = \"rgba(34,197,94,.12)\" if pos else \"rgba(239,68,68,.12)\"\n    d   = (f\"<div style='display:inline-block;background:{bg};color:{cor};\"\n           f\"font-size:.62rem;font-weight:600;padding:2px 8px;\"",
+        "peekOfCode": "LOGO_URL = \"https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png\"\ndef _f(x) -> float:\n    if x is None: return 0.0\n    if isinstance(x, Decimal): return float(x)\n    return float(x)\n# ─────────────────────────────────────────────\n#  KPI CARD ADMIN\n# ─────────────────────────────────────────────\ndef _kpi(label: str, valor: str, delta: str = \"\", pos: bool = True):\n    cor = \"#22C55E\" if pos else \"#EF4444\"",
         "detail": "admin_dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "ultimo_dia_com_dados",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def ultimo_dia_com_dados(trade_name: str | None = None) -> tuple[str, str]:\n    \"\"\"\n    Retorna (data_iso 'YYYY-MM-DD', label 'DD/MM') do último dia\n    com registros anterior a hoje. Exclui hoje pois dados são parciais.\n    \"\"\"\n    try:\n        filtro = \"AND trade_name = %s\" if trade_name else \"\"\n        params = (trade_name,) if trade_name else ()\n        row = fetch_one(f\"\"\"\n            SELECT MAX(created_at::date)::text AS dt",
+        "detail": "admin_queries",
         "documentation": {}
     },
     {
@@ -974,16 +887,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def kpi_admin(dias: int) -> dict:\n    \"\"\"KPIs consolidados de toda a rede (sem filtro de loja).\"\"\"\n    try:\n        row = fetch_one(\n            \"\"\"\n            SELECT\n                COALESCE(SUM(total_amount), 0)::float AS faturamento_total,\n                COALESCE(COUNT(*), 0)::int AS total_pedidos,\n                COALESCE(AVG(total_amount), 0)::float AS ticket_medio\n            FROM backup.vendas",
-        "detail": "admin_queries",
-        "documentation": {}
-    },
-    {
-        "label": "ranking_lojas",
-        "kind": 2,
-        "importPath": "admin_queries",
-        "description": "admin_queries",
-        "peekOfCode": "def ranking_lojas(dias: int) -> list:\n    \"\"\"Ranking de lojas por faturamento no período (sem filtro).\"\"\"\n    try:\n        result = fetch_all(\n            \"\"\"\n            SELECT \n                trade_name,\n                SUM(total_amount)::float AS faturamento,\n                COUNT(*)::int AS pedidos,\n                AVG(total_amount)::float AS ticket_medio",
+        "peekOfCode": "def kpi_admin(dias: int) -> dict:\n    \"\"\"\n    KPIs consolidados da rede.\n    'fat_ref' = faturamento do último dia com dados (retroativo).\n    \"\"\"\n    try:\n        row = fetch_one(\"\"\"\n            SELECT\n                COALESCE(SUM(total_amount), 0)::float        AS faturamento_total,\n                COALESCE(COUNT(*), 0)::int                   AS total_pedidos,",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -992,7 +896,43 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def serie_admin(dias: int) -> list:\n    \"\"\"Série temporal de faturamento consolidado da rede (sem filtro).\"\"\"\n    try:\n        result = fetch_all(\n            \"\"\"\n            SELECT \n                created_at::date AS data,\n                SUM(total_amount)::float AS faturamento,\n                COUNT(*)::int AS pedidos\n            FROM backup.vendas",
+        "peekOfCode": "def serie_admin(dias: int) -> list:\n    \"\"\"Série diária da rede — exclui hoje (dados parciais).\"\"\"\n    try:\n        return fetch_all(\"\"\"\n            SELECT created_at::date AS data,\n                   SUM(total_amount)::float AS faturamento,\n                   COUNT(*)::int            AS pedidos\n            FROM backup.vendas\n            WHERE created_at::date < CURRENT_DATE\n              AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "ranking_lojas",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def ranking_lojas(dias: int) -> list:\n    \"\"\"Top 10 lojas por faturamento com variação % vs período anterior.\"\"\"\n    try:\n        return fetch_all(\"\"\"\n            WITH atual AS (\n                SELECT trade_name,\n                       SUM(total_amount)::float AS faturamento,\n                       COUNT(*)::int            AS pedidos,\n                       AVG(total_amount)::float AS ticket_medio\n                FROM backup.vendas",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "ranking_volume_pedidos",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def ranking_volume_pedidos(dias: int) -> list:\n    \"\"\"\n    Top 10 lojas por VOLUME DE PEDIDOS (não ticket médio).\n    Mais estratégico: mostra quem está operando mais.\n    \"\"\"\n    try:\n        return fetch_all(\"\"\"\n            WITH atual AS (\n                SELECT trade_name,\n                       COUNT(*)::int            AS pedidos,",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "ranking_plataformas",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def ranking_plataformas(dias: int) -> list:\n    \"\"\"Performance por plataforma — usa backup.vendas como fallback.\"\"\"\n    try:\n        return fetch_all(\"\"\"\n            SELECT COALESCE(desc_partner_sale, 'Direto') AS plataforma,\n                   COUNT(*)::int                         AS pedidos,\n                   SUM(total_amount)::float              AS faturamento,\n                   AVG(total_amount)::float              AS ticket_medio,\n                   ROUND((COUNT(*) * 100.0\n                          / NULLIF(SUM(COUNT(*)) OVER (), 0))::numeric, 1)::float AS pct_pedidos,",
+        "detail": "admin_queries",
+        "documentation": {}
+    },
+    {
+        "label": "ranking_ticket_por_loja",
+        "kind": 2,
+        "importPath": "admin_queries",
+        "description": "admin_queries",
+        "peekOfCode": "def ranking_ticket_por_loja(dias: int, limit: int = 10) -> list:\n    \"\"\"Top lojas por ticket médio (mínimo 30 pedidos).\"\"\"\n    try:\n        return fetch_all(\"\"\"\n            SELECT v.trade_name,\n                   u.estado, u.regiao_simples,\n                   COUNT(*)::int             AS pedidos,\n                   AVG(total_amount)::float  AS ticket_medio,\n                   SUM(total_amount)::float  AS faturamento\n            FROM backup.vendas v",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1001,7 +941,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def kpi_vendas_rede(dias: int) -> dict:\n    \"\"\"KPIs de vendas da rede inteira para as abas consolidadas.\"\"\"\n    try:\n        r = fetch_one(\"\"\"\n            SELECT\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW())\n                             THEN total_amount END), 0)::float  AS mes_atual,\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW() - INTERVAL '1 month')",
+        "peekOfCode": "def kpi_vendas_rede(dias: int) -> dict:\n    \"\"\"KPIs de vendas retroativos — usa último dia com dados, não hoje.\"\"\"\n    try:\n        r = fetch_one(\"\"\"\n            SELECT\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW())\n                             THEN total_amount END), 0)::float  AS mes_atual,\n                COALESCE(SUM(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW() - INTERVAL '1 month')",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1010,7 +950,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def kpi_vendas_rede_extras(dias: int) -> dict:\n    try:\n        r = fetch_one(\"\"\"\n            SELECT\n                COALESCE(COUNT(CASE WHEN created_at::date = CURRENT_DATE - 1\n                             THEN 1 END), 0)::int               AS pedidos_ontem,\n                COALESCE(SUM(CASE WHEN created_at::date = CURRENT_DATE - 1\n                             THEN total_amount END), 0)::float  AS fat_ontem,\n                COALESCE(AVG(CASE WHEN DATE_TRUNC('month', created_at)\n                               = DATE_TRUNC('month', NOW() - INTERVAL '1 month')",
+        "peekOfCode": "def kpi_vendas_rede_extras(dias: int) -> dict:\n    \"\"\"Fat e pedidos do último dia com dados + dia anterior para comparação.\"\"\"\n    try:\n        r = fetch_one(\"\"\"\n            WITH ref AS (\n                SELECT MAX(created_at::date) AS ref_date\n                FROM backup.vendas WHERE created_at::date < CURRENT_DATE\n            ),\n            ant AS (\n                SELECT MAX(created_at::date) AS ant_date",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1019,7 +959,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def serie_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT created_at::date AS data,\n                   SUM(total_amount)::float AS faturamento,\n                   COUNT(*)::int            AS num_vendas,\n                   AVG(total_amount)::float AS ticket_medio\n            FROM backup.vendas\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 1",
+        "peekOfCode": "def serie_rede(dias: int) -> list:\n    \"\"\"Série diária da rede — exclui hoje.\"\"\"\n    try:\n        return fetch_all(\"\"\"\n            SELECT created_at::date AS data,\n                   SUM(total_amount)::float AS faturamento,\n                   COUNT(*)::int            AS num_vendas,\n                   AVG(total_amount)::float AS ticket_medio\n            FROM backup.vendas\n            WHERE created_at::date < CURRENT_DATE",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1028,7 +968,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def pedidos_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT created_at::date AS data, COUNT(*)::int AS pedidos\n            FROM backup.vendas\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 1\n        \"\"\", (str(dias),)) or []\n    except Exception as e:\n        print(f\"pedidos_rede: {e}\")",
+        "peekOfCode": "def pedidos_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT created_at::date AS data, COUNT(*)::int AS pedidos\n            FROM backup.vendas\n            WHERE created_at::date < CURRENT_DATE\n              AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 1\n        \"\"\", (str(dias),)) or []\n    except Exception as e:",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1037,7 +977,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def status_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT desc_store_sale_status AS status, COUNT(*)::int AS quantidade\n            FROM backup.vendas\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 2 DESC\n        \"\"\", (str(dias),)) or []\n    except Exception as e:\n        print(f\"status_rede: {e}\")",
+        "peekOfCode": "def status_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT desc_store_sale_status AS status, COUNT(*)::int AS quantidade\n            FROM backup.vendas\n            WHERE created_at::date < CURRENT_DATE\n              AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY 2 DESC\n        \"\"\", (str(dias),)) or []\n    except Exception as e:",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1046,7 +986,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def top_itens_rede(dias: int, limit: int = 15) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT desc_sale_item                           AS produto,\n                   desc_store_category_item                AS categoria,\n                   SUM(quantity)::int                      AS qtd_vendida,\n                   SUM(quantity * unit_price)::float       AS receita_total,\n                   AVG(unit_price)::float                  AS preco_medio\n            FROM backup.venda_item\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL",
+        "peekOfCode": "def top_itens_rede(dias: int, limit: int = 15) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT desc_sale_item                    AS produto,\n                   desc_store_category_item          AS categoria,\n                   SUM(quantity)::int                AS qtd_vendida,\n                   SUM(quantity * unit_price)::float AS receita_total,\n                   AVG(unit_price)::float            AS preco_medio\n            FROM backup.venda_item\n            WHERE created_at::date < CURRENT_DATE",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1055,7 +995,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def receita_categoria_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT COALESCE(desc_store_category_item, '—') AS categoria,\n                   SUM(quantity * unit_price)::float        AS receita\n            FROM backup.venda_item\n            WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY receita DESC NULLS LAST\n        \"\"\", (str(dias),)) or []\n    except Exception as e:",
+        "peekOfCode": "def receita_categoria_rede(dias: int) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT COALESCE(desc_store_category_item, '—') AS categoria,\n                   SUM(quantity * unit_price)::float        AS receita\n            FROM backup.venda_item\n            WHERE created_at::date < CURRENT_DATE\n              AND created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL\n            GROUP BY 1 ORDER BY receita DESC NULLS LAST\n        \"\"\", (str(dias),)) or []",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1082,7 +1022,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def clientes_rfm_rede(limit: int = 400) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MIN(recencia)::float              AS recencia,\n                   MAX(frequencia)::float            AS frequencia,\n                   AVG(ticket_medio)::float          AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            GROUP BY numero_documento\n            ORDER BY MAX(frequencia) DESC",
+        "peekOfCode": "def clientes_rfm_rede(limit: int = 400) -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MIN(recencia)::float   AS recencia,\n                   MAX(frequencia)::float AS frequencia,\n                   AVG(ticket_medio)::float AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            GROUP BY numero_documento\n            ORDER BY MAX(frequencia) DESC LIMIT %s",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1091,7 +1031,7 @@
         "kind": 2,
         "importPath": "admin_queries",
         "description": "admin_queries",
-        "peekOfCode": "def clientes_top50_rede() -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MAX(frequencia)::float                        AS frequencia,\n                   MIN(recencia)::float                          AS recencia,\n                   ROUND(AVG(ticket_medio)::numeric, 2)::float   AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            GROUP BY numero_documento\n            ORDER BY MAX(frequencia) DESC NULLS LAST",
+        "peekOfCode": "def clientes_top50_rede() -> list:\n    try:\n        return fetch_all(\"\"\"\n            SELECT numero_documento, MAX(full_name) AS full_name,\n                   MAX(frequencia)::float                      AS frequencia,\n                   MIN(recencia)::float                        AS recencia,\n                   ROUND(AVG(ticket_medio)::numeric, 2)::float AS ticket_medio\n            FROM clientes.clientes_historico_vendas_tratadas\n            GROUP BY numero_documento\n            ORDER BY MAX(frequencia) DESC NULLS LAST LIMIT 50",
         "detail": "admin_queries",
         "documentation": {}
     },
@@ -1100,7 +1040,7 @@
         "kind": 2,
         "importPath": "ai_chat",
         "description": "ai_chat",
-        "peekOfCode": "def ia_responder(messages: list, context: str) -> str:\n    \"\"\"Gemini (principal) com fallback para Anthropic.\"\"\"\n    gemini_key    = os.getenv(\"GOOGLE_API_KEY\", \"\").strip()\n    anthropic_key = os.getenv(\"ANTHROPIC_API_KEY\", \"\").strip()\n    print(f\"[IA-IH] Gemini={'✓' if gemini_key else '✗'} | \"\n          f\"Anthropic={'✓' if anthropic_key else '✗'} | \"\n          f\"msgs={len(messages)}\")\n    if messages:\n        print(f\"[IA-IH] '{messages[-1]['content'][:60]}'\")\n    if gemini_key:",
+        "peekOfCode": "def ia_responder(messages: list, context: str) -> str:\n    \"\"\"Ponto de entrada principal. Gemini com fallback automático entre modelos.\"\"\"\n    gemini_key = _key(\"GOOGLE_API_KEY\")\n    print(f\"[IA-IH] Gemini={'✓' if gemini_key else '✗'} | msgs={len(messages)}\")\n    if messages:\n        print(f\"[IA-IH] pergunta: '{messages[-1]['content'][:80]}'\")\n    if gemini_key:\n        return _responder_gemini(messages, context)\n    return \"⚠️ GOOGLE_API_KEY não configurada. Adicione no .env ou Streamlit Secrets.\"\n# ─────────────────────────────────────────────────────────",
         "detail": "ai_chat",
         "documentation": {}
     },
@@ -1109,7 +1049,7 @@
         "kind": 2,
         "importPath": "ai_chat",
         "description": "ai_chat",
-        "peekOfCode": "def build_context_ia(user: dict, loja_atual: dict) -> str:\n    is_admin  = (user.get(\"role\") or \"\").lower() == \"admin\"\n    nome      = user.get(\"nome_completo\") or user.get(\"username\", \"Usuário\")\n    trade     = None\n    if loja_atual and loja_atual.get(\"trade_name\") not in (None, \"__admin__\"):\n        trade = loja_atual[\"trade_name\"]\n    bloco_rede = \"\"\n    bloco_loja = \"\"\n    # ── Admin: dados consolidados da rede ──\n    if is_admin:",
+        "peekOfCode": "def build_context_ia(user: dict, loja_atual: dict) -> str:\n    is_admin = (user.get(\"role\") or \"\").lower() == \"admin\"\n    # ── nome: session guarda como \"nome\", não \"nome_completo\" ──\n    nome = (user.get(\"nome_completo\")\n            or user.get(\"nome\")\n            or user.get(\"username\")\n            or \"Usuário\")\n    trade = None\n    if loja_atual and loja_atual.get(\"trade_name\") not in (None, \"__admin__\", \"\"):\n        trade = loja_atual[\"trade_name\"]",
         "detail": "ai_chat",
         "documentation": {}
     },
@@ -1123,39 +1063,12 @@
         "documentation": {}
     },
     {
-        "label": "init_state",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": [], \"page\": \"vendas\"}.items():\n        if k not in st.session_state:\n            st.session_state[k] = v\n# ─────────────────────────────────────────────\n#  LOGIN\n# ─────────────────────────────────────────────\ndef pagina_login():\n    st.markdown(\"\"\"\n<style>",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "pagina_login",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def pagina_login():\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{\n    max-width:460px!important;margin:0 auto!important;padding-top:8vh!important;\n}\n</style>\n\"\"\", unsafe_allow_html=True)\n    st.markdown(f\"\"\"",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "popup_selecao_loja",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def popup_selecao_loja():\n    st.markdown(\"\"\"\n<style>\nsection[data-testid='stSidebar']{display:none!important}\n.main .block-container{\n    max-width:480px!important;margin:0 auto!important;padding-top:10vh!important;\n}\n</style>\n\"\"\", unsafe_allow_html=True)\n    lojas = st.session_state.user[\"lojas\"]",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "pagina_dashboard",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def pagina_dashboard():\n    loja  = st.session_state.loja_atual\n    trade = loja[\"trade_name\"]\n    uid   = int(loja[\"id\"])\n    user  = st.session_state.user\n    role  = (user.get(\"role\") or \"franqueado\").lower()\n    ctx = render_sidebar(role)\n    page = ctx[\"page\"]\n    days = ctx[\"days\"]\n    # ── Roteamento por página ──",
-        "detail": "app",
+        "label": "_MODELOS",
+        "kind": 5,
+        "importPath": "ai_chat",
+        "description": "ai_chat",
+        "peekOfCode": "_MODELOS = [\n    \"gemini-1.5-flash\",      # principal — rápido e barato\n    \"gemini-1.5-flash-8b\",   # fallback leve\n    \"gemini-1.5-pro\",        # fallback premium se os outros falharem\n]\ndef _key(name: str) -> str:\n    \"\"\"Lê chave do .env ou Streamlit Secrets.\"\"\"\n    val = os.getenv(name, \"\").strip()\n    if val:\n        return val",
+        "detail": "ai_chat",
         "documentation": {}
     },
     {
@@ -1163,7 +1076,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def main():\n    init_state()\n    inject_global_css()\n    # Etapa 1 — Login\n    if st.session_state.user is None:\n        pagina_login()\n        st.stop()\n    # Checa conexão\n    try:\n        get_connection()",
+        "peekOfCode": "def main():\n    _init()\n    inject_global_css()\n    # 1. Não logado → login\n    if st.session_state.user is None:\n        _login()\n        st.stop()\n    # 2. Checa conexão DB\n    try:\n        get_connection()",
         "detail": "app",
         "documentation": {}
     },
@@ -1172,7 +1085,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "LOGO_URL = \"https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png\"\nst.set_page_config(\n    page_title=\"Ital In House\",\n    page_icon=LOGO_URL,\n    layout=\"wide\",\n    initial_sidebar_state=\"expanded\",\n)\ndef init_state():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": [], \"page\": \"vendas\"}.items():\n        if k not in st.session_state:",
+        "peekOfCode": "LOGO_URL = \"https://d7jztl9hjt0p1.cloudfront.net/1.0.0.119/assets/images/home/logo.png\"\nst.set_page_config(\n    page_title=\"Ital In House\",\n    page_icon=LOGO_URL,\n    layout=\"wide\",\n    initial_sidebar_state=\"collapsed\",\n)\ndef _init():\n    for k, v in {\"user\": None, \"loja_atual\": None, \"chat\": []}.items():\n        if k not in st.session_state:",
         "detail": "app",
         "documentation": {}
     },
@@ -1316,7 +1229,7 @@
         "kind": 2,
         "importPath": "ia_ui",
         "description": "ia_ui",
-        "peekOfCode": "def render_ia_tab(user_dict: dict, loja_atual: dict):\n    \"\"\"Renderiza a aba IA - IH.\"\"\"\n    from ai_chat import build_context_ia, ia_responder\n    render_ia_css()\n    nome = user_dict.get(\"nome_completo\") or user_dict.get(\"username\") or \"Usuário\"\n    # ── Processa sugestão clicada ──\n    if \"_ia_sugestao\" in st.session_state:\n        pergunta = st.session_state.pop(\"_ia_sugestao\")\n        _processar_pergunta(pergunta, user_dict, loja_atual, ia_responder, build_context_ia)\n        return  # rerun já foi chamado dentro",
+        "peekOfCode": "def render_ia_tab(user_dict: dict, loja_atual: dict):\n    \"\"\"Renderiza a aba IA - IH com streaming Gemini.\"\"\"\n    from ai_chat import build_context_ia, ia_stream\n    render_ia_css()\n    nome = user_dict.get(\"nome_completo\") or user_dict.get(\"username\") or \"Usuário\"\n    # ── Processa sugestão clicada ──\n    if \"_ia_sugestao\" in st.session_state:\n        pergunta = st.session_state.pop(\"_ia_sugestao\")\n        _processar_stream(pergunta, user_dict, loja_atual, ia_stream, build_context_ia)\n        return",
         "detail": "ia_ui",
         "documentation": {}
     },
@@ -1613,7 +1526,7 @@
         "kind": 2,
         "importPath": "tabs",
         "description": "tabs",
-        "peekOfCode": "def fmt_brl(x) -> str:\n    s = f\"{_f(x):,.2f}\"\n    return \"R$ \" + s.replace(\",\", \"X\").replace(\".\", \",\").replace(\"X\", \".\")\ndef fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:",
+        "peekOfCode": "def fmt_brl(x) -> str:\n    s = f\"{_f(x):,.2f}\"\n    return \"R$ \" + s.replace(\",\", \"X\").replace(\".\", \",\").replace(\"X\", \".\")\ndef fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        return (\"↑ 100%\", \"pos\") if cur > 0 else (\"—\", \"pos\")\n    d = (cur - prev) / prev * 100\n    return (f\"{abs(d):.1f}%\", \"pos\") if d >= 0 else (f\"{abs(d):.1f}%\", \"neg\")\n# ─────────────────────────────────────────────\n#  KPI CARD — STRIPE STYLE",
         "detail": "tabs",
         "documentation": {}
     },
@@ -1622,7 +1535,7 @@
         "kind": 2,
         "importPath": "tabs",
         "description": "tabs",
-        "peekOfCode": "def fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        if cur == 0:\n            return \"0%\", \"pos\"\n        return \"↑ 100%\", \"pos\"\n    d = (cur - prev) / prev * 100\n    if d >= 0:\n        return f\"↑ {abs(d):.1f}%\", \"pos\"\n    return f\"↓ {abs(d):.1f}%\", \"neg\"\ndef kpi_card(",
+        "peekOfCode": "def fmt_delta_pct(cur: float, prev: float) -> tuple[str, str]:\n    if prev == 0:\n        return (\"↑ 100%\", \"pos\") if cur > 0 else (\"—\", \"pos\")\n    d = (cur - prev) / prev * 100\n    return (f\"{abs(d):.1f}%\", \"pos\") if d >= 0 else (f\"{abs(d):.1f}%\", \"neg\")\n# ─────────────────────────────────────────────\n#  KPI CARD — STRIPE STYLE\n# ─────────────────────────────────────────────\ndef kpi_card(\n    title: str,",
         "detail": "tabs",
         "documentation": {}
     },
@@ -1631,7 +1544,7 @@
         "kind": 2,
         "importPath": "tabs",
         "description": "tabs",
-        "peekOfCode": "def kpi_card(\n    title: str,\n    value: str,\n    delta_text: str | None,\n    delta_pos: bool | None,\n    progress_pct: float,\n    bar_label: str,\n) -> None:\n    p = max(0.0, min(float(progress_pct), 100.0))\n    delta = \"\"",
+        "peekOfCode": "def kpi_card(\n    title: str,\n    value: str,\n    delta_text: str | None,\n    delta_pos: bool | None,\n    progress_pct: float,\n    bar_label: str,\n    icon: str = \"\",\n) -> None:\n    p = max(0.0, min(float(progress_pct or 0), 100.0))",
         "detail": "tabs",
         "documentation": {}
     },
@@ -1640,7 +1553,7 @@
         "kind": 2,
         "importPath": "tabs",
         "description": "tabs",
-        "peekOfCode": "def tab_vendas(trade: str, unidade_id: int, days: int):\n    kv   = kpi_vendas(trade) or {}\n    kx   = kpi_vendas_extras(trade) or {}\n    meta = meta_mes_atual(unidade_id) or {}\n    mes_atual = _f(kv.get(\"mes_atual\"))\n    mes_ant   = _f(kv.get(\"mes_anterior\"))\n    hoje      = _f(kv.get(\"hoje\"))\n    ontem     = _f(kx.get(\"fat_ontem\"))\n    ped_hj    = int(kv.get(\"pedidos_hoje\") or 0)\n    ped_ont   = int(kx.get(\"pedidos_ontem\") or 0)",
+        "peekOfCode": "def tab_vendas(trade: str, unidade_id: int, days: int):\n    kv   = _kpi_vendas_c(trade) or {}\n    kx   = _kpi_vendas_extras_c(trade) or {}\n    meta = _meta_c(unidade_id) or {}\n    mes_atual = _f(kv.get(\"mes_atual\"))\n    mes_ant   = _f(kv.get(\"mes_anterior\"))\n    ticket    = _f(kv.get(\"ticket_medio_geral\"))\n    ticket_ma = _f(kx.get(\"ticket_mes_anterior\"))\n    # Retroativo: usa ontem (ou último dia com dados) em vez de hoje\n    fat_ref  = _f(kx.get(\"fat_ontem\"))   # último dia com dados",
         "detail": "tabs",
         "documentation": {}
     },
@@ -1649,7 +1562,7 @@
         "kind": 2,
         "importPath": "tabs",
         "description": "tabs",
-        "peekOfCode": "def tab_cardapio(trade: str, days: int):\n    rows = top_itens(trade, days, 15)\n    df   = pd.DataFrame(rows)\n    top1 = rows[0] if rows else None\n    c1, c2, c3 = st.columns(3)\n    with c1:\n        kpi_card(\"Item mais vendido\",\n                 (top1 or {}).get(\"produto\") or \"—\",\n                 None, None, 100.0 if top1 else 0.0, \"Por receita no período\")\n    with c2:",
+        "peekOfCode": "def tab_cardapio(trade: str, days: int):\n    rows = _top_itens_c(trade, days, 15)\n    df   = pd.DataFrame(rows)\n    top1 = rows[0] if rows else None\n    c1, c2, c3 = st.columns(3)\n    with c1:\n        kpi_card(\"Item mais vendido\",\n                 (top1 or {}).get(\"produto\") or \"—\",\n                 None, None, 100.0 if top1 else 0.0, \"Por receita no período\", \"🥇\")\n    with c2:",
         "detail": "tabs",
         "documentation": {}
     },
@@ -1658,7 +1571,7 @@
         "kind": 2,
         "importPath": "tabs",
         "description": "tabs",
-        "peekOfCode": "def tab_clientes(trade: str):\n    kc    = kpi_clientes(trade) or {}\n    total = int(kc.get(\"total_clientes\") or 0)\n    tm    = _f(kc.get(\"ticket_medio\"))\n    fq    = _f(kc.get(\"freq_media\"))\n    rc    = _f(kc.get(\"recencia_media\"))\n    c1, c2, c3, c4 = st.columns(4)\n    with c1:\n        kpi_card(\"Total de clientes\", f\"{total}\", None, None,\n                 min(100.0, total / max(total, 1) * 10), \"Distintos (documento)\")",
+        "peekOfCode": "def tab_clientes(trade: str):\n    kc    = _kpi_cli_c(trade) or {}\n    total = int(kc.get(\"total_clientes\") or 0)\n    tm    = _f(kc.get(\"ticket_medio\"))\n    fq    = _f(kc.get(\"freq_media\"))\n    rc    = _f(kc.get(\"recencia_media\"))\n    c1, c2, c3, c4 = st.columns(4)\n    with c1: kpi_card(\"Total de clientes\", f\"{total:,}\", None, None,\n                      min(100.0, total/max(total,1)*10), \"Distintos (documento)\", \"👥\")\n    with c2: kpi_card(\"Ticket médio\",      fmt_brl(tm), None, None,",
         "detail": "tabs",
         "documentation": {}
     },
@@ -1667,7 +1580,7 @@
         "kind": 2,
         "importPath": "tabs",
         "description": "tabs",
-        "peekOfCode": "def tab_metas(trade: str, unidade_id: int):\n    hist = metas_historico(trade)\n    df   = pd.DataFrame(hist)\n    if df.empty:\n        st.warning(\"Nenhuma meta cadastrada para esta unidade.\")\n        st.code(\n            \"INSERT INTO metas (unidade_id, mes, ano, meta_vendas, realizado_vendas, \"\n            \"meta_clientes, realizado_clientes)\\n\"\n            \"VALUES (<id_unidade>, EXTRACT(MONTH FROM NOW())::int, \"\n            \"EXTRACT(YEAR FROM NOW())::int, 100000, 0, 500, 0);\",",
+        "peekOfCode": "def tab_metas(trade: str, unidade_id: int):\n    hist = _metas_hist_c(trade)\n    df   = pd.DataFrame(hist)\n    if df.empty:\n        st.warning(\"Nenhuma meta cadastrada para esta unidade.\")\n        st.code(\n            \"INSERT INTO metas (unidade_id, mes, ano, meta_vendas, realizado_vendas,\\n\"\n            \"                   meta_clientes, realizado_clientes)\\n\"\n            \"VALUES (<id>, EXTRACT(MONTH FROM NOW())::int,\\n\"\n            \"        EXTRACT(YEAR FROM NOW())::int, 100000, 0, 500, 0);\",",
         "detail": "tabs",
         "documentation": {}
     },
@@ -1703,7 +1616,7 @@
         "kind": 2,
         "importPath": "user_management",
         "description": "user_management",
-        "peekOfCode": "def render_gerenciar_usuarios():\n    \"\"\"\n    Página completa de gerenciamento de usuários.\n    Chamar dentro de uma aba do painel admin.\n    \"\"\"\n    inject_global_css()\n    lojas     = _listar_lojas()\n    lojas_map = {l[\"id\"]: l[\"trade_name\"] for l in lojas}\n    nomes_loja = [l[\"trade_name\"] for l in lojas]\n    # ── CSS extra para esta página ──",
+        "peekOfCode": "def render_gerenciar_usuarios():\n    lojas     = _listar_lojas()\n    lojas_map = {l[\"id\"]: l[\"trade_name\"] for l in lojas}\n    nomes_loja = [l[\"trade_name\"] for l in lojas]\n    st.markdown(\"\"\"\n<style>\ndiv[data-testid=\"stForm\"] {\n    background: #141416 !important;\n    border: 1px solid #2A2A2F !important;\n    border-radius: 16px !important;",
         "detail": "user_management",
         "documentation": {}
     }

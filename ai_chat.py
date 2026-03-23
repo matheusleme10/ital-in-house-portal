@@ -1,34 +1,40 @@
-"""IA - IH · Motor de IA (Gemini principal, Anthropic fallback)."""
+"""IA - IH · Motor de IA — Gemini 1.5 Flash (estável) com fallback."""
 
 import os
 import time
 
+import streamlit as st
 from google import genai
 from google.genai import types
 
 from db import fetch_all, fetch_one
 from queries import kpi_clientes, kpi_vendas
 
+# ── Modelos em ordem de preferência (todos estáveis) ──
+_MODELOS = [
+    "gemini-1.5-flash",      # principal — rápido e barato
+    "gemini-1.5-flash-8b",   # fallback leve
+    "gemini-1.5-pro",        # fallback premium se os outros falharem
+]
+
+
+def _key(name: str) -> str:
+    """Lê chave do .env ou Streamlit Secrets."""
+    val = os.getenv(name, "").strip()
+    if val:
+        return val
+    try:
+        return str(st.secrets.get(name, "")).strip()
+    except Exception:
+        return ""
+
 
 # ─────────────────────────────────────────────────────────
-#  GEMINI
+#  GEMINI — fallback automático por modelos
 # ─────────────────────────────────────────────────────────
 
-def _responder_gemini(messages: list, context: str) -> str:
-    gemini_key = os.getenv("GOOGLE_API_KEY", "").strip()
-    if not gemini_key:
-        return "⚠️ GOOGLE_API_KEY não configurada no .env"
-
-    client = genai.Client(api_key=gemini_key)
-
-    system_prompt = (
-        "Você é a IA - IH, assistente inteligente da Ital In House.\n"
-        "Responda SEMPRE em português do Brasil, de forma direta.\n"
-        "Não invente dados. Use apenas as informações do contexto.\n\n"
-        + context
-    )
-
-    # Gemini usa "user" e "model" — NUNCA "assistant"
+def _build_history(messages: list) -> list:
+    """Converte histórico para formato Gemini (user/model, nunca assistant)."""
     history = []
     for msg in messages[:-1]:
         role = "user" if msg["role"] == "user" else "model"
@@ -37,86 +43,71 @@ def _responder_gemini(messages: list, context: str) -> str:
         role="user",
         parts=[types.Part(text=messages[-1]["content"])]
     ))
+    return history
 
-    try:
-        # gemini-2.0-flash = melhor custo-benefício velocidade/qualidade
-        resp = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=history,
-            config=types.GenerateContentConfig(
-                system_instruction=system_prompt,
-                max_output_tokens=800,   # Reduzido para respostas mais rápidas
-                temperature=0.6,
-            ),
-        )
-        return resp.text
 
-    except Exception as e:
-        err = str(e)
-        print(f"[GEMINI] {err}")
+def _responder_gemini(messages: list, context: str) -> str:
+    gemini_key = _key("GOOGLE_API_KEY")
+    if not gemini_key:
+        return "⚠️ GOOGLE_API_KEY não configurada no .env ou Secrets."
 
-        if "quota" in err.lower() or "429" in err or "resource exhausted" in err.lower():
-            # Fallback imediato para modelo lite
-            try:
-                time.sleep(2)
-                resp2 = client.models.generate_content(
-                    model="gemini-2.0-flash-lite",
-                    contents=history,
-                    config=types.GenerateContentConfig(
-                        system_instruction=system_prompt,
-                        max_output_tokens=800,
-                        temperature=0.6,
-                    ),
-                )
-                return resp2.text
-            except Exception as e2:
-                print(f"[GEMINI LITE] {e2}")
-                return "⚠️ Limite atingido. Aguarde 1 minuto e tente novamente."
-        elif "404" in err or "not found" in err.lower():
-            return "⚠️ Modelo indisponível. Tente novamente."
-        elif "api key" in err.lower() or "401" in err:
-            return "⚠️ Chave Google inválida. Verifique GOOGLE_API_KEY no .env"
-        else:
-            return f"⚠️ Erro Gemini: {err}"
+    client  = genai.Client(api_key=gemini_key)
+    history = _build_history(messages)
+
+    system_prompt = (
+        "Você é a IA - IH, assistente inteligente da Ital In House.\n"
+        "Responda SEMPRE em português do Brasil, de forma direta.\n"
+        "Não invente dados. Use apenas as informações do contexto.\n\n"
+        + context
+    )
+
+    ultimo_erro = ""
+    for modelo in _MODELOS:
+        try:
+            resp = client.models.generate_content(
+                model=modelo,
+                contents=history,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_prompt,
+                    max_output_tokens=800,
+                    temperature=0.6,
+                ),
+            )
+            print(f"[IA-IH] ✓ respondeu via {modelo}")
+            return resp.text
+
+        except Exception as e:
+            err = str(e)
+            ultimo_erro = err
+            print(f"[IA-IH] {modelo} falhou: {err[:120]}")
+
+            is_quota = "quota" in err.lower() or "429" in err or "resource exhausted" in err.lower()
+            is_key   = "api key" in err.lower() or "401" in err or "invalid" in err.lower() and "key" in err.lower()
+
+            if is_key:
+                return "⚠️ Chave Google inválida. Verifique GOOGLE_API_KEY no .env"
+            if is_quota:
+                time.sleep(1)  # aguarda antes do próximo modelo
+
+            # qualquer erro → tenta próximo modelo
+            continue
+
+    # todos falharam — retorna o erro real para diagnóstico
+    return f"⚠️ Não foi possível conectar à IA agora. Detalhe: {ultimo_erro[:200]}"
 
 
 def ia_responder(messages: list, context: str) -> str:
-    """Gemini (principal) com fallback para Anthropic."""
-    gemini_key    = os.getenv("GOOGLE_API_KEY", "").strip()
-    anthropic_key = os.getenv("ANTHROPIC_API_KEY", "").strip()
+    """Ponto de entrada principal. Gemini com fallback automático entre modelos."""
+    gemini_key = _key("GOOGLE_API_KEY")
 
-    print(f"[IA-IH] Gemini={'✓' if gemini_key else '✗'} | "
-          f"Anthropic={'✓' if anthropic_key else '✗'} | "
-          f"msgs={len(messages)}")
+    print(f"[IA-IH] Gemini={'✓' if gemini_key else '✗'} | msgs={len(messages)}")
     if messages:
-        print(f"[IA-IH] '{messages[-1]['content'][:60]}'")
+        print(f"[IA-IH] pergunta: '{messages[-1]['content'][:80]}'")
 
     if gemini_key:
-        r = _responder_gemini(messages, context)
-        if not r.startswith("⚠️ Chave Google") and not r.startswith("⚠️ Erro Gemini"):
-            return r
-        if not anthropic_key:
-            return r
-        print("[IA-IH] Gemini falhou → Anthropic")
+        return _responder_gemini(messages, context)
 
-    if anthropic_key:
-        try:
-            from anthropic import Anthropic
-            c = Anthropic(api_key=anthropic_key)
-            r = c.messages.create(
-                model=os.getenv("ANTHROPIC_MODEL", "claude-opus-4-5"),
-                max_tokens=800,
-                system="Você é a IA - IH, assistente da Ital In House.\n" + context,
-                messages=messages,
-            )
-            return r.content[0].text
-        except Exception as e:
-            err = str(e).lower()
-            if "credit" in err or "balance" in err or "billing" in err:
-                return "⚠️ Saldo insuficiente no Claude. Recarregue em console.anthropic.com"
-            return f"⚠️ Erro Anthropic: {err}"
-
-    return "⚠️ Nenhuma IA configurada. Adicione GOOGLE_API_KEY ou ANTHROPIC_API_KEY no .env"
+    return "⚠️ GOOGLE_API_KEY não configurada. Adicione no .env ou Streamlit Secrets."
 
 
 # ─────────────────────────────────────────────────────────
@@ -220,11 +211,22 @@ def _fmt_rank(rows: list) -> str:
 # ─────────────────────────────────────────────────────────
 
 def build_context_ia(user: dict, loja_atual: dict) -> str:
-    is_admin  = (user.get("role") or "").lower() == "admin"
-    nome      = user.get("nome_completo") or user.get("username", "Usuário")
-    trade     = None
-    if loja_atual and loja_atual.get("trade_name") not in (None, "__admin__"):
+    is_admin = (user.get("role") or "").lower() == "admin"
+
+    # ── nome: session guarda como "nome", não "nome_completo" ──
+    nome = (user.get("nome_completo")
+            or user.get("nome")
+            or user.get("username")
+            or "Usuário")
+
+    trade = None
+    if loja_atual and loja_atual.get("trade_name") not in (None, "__admin__", ""):
         trade = loja_atual["trade_name"]
+
+    # ── Lojas que o franqueado pode ver ──
+    lojas_permitidas: list[str] = []
+    if not is_admin:
+        lojas_permitidas = [l["trade_name"] for l in (user.get("lojas") or [])]
 
     bloco_rede = ""
     bloco_loja = ""
@@ -236,9 +238,6 @@ def build_context_ia(user: dict, loja_atual: dict) -> str:
             rank = _ranking(30, 10)
             pior = _ranking(30, 5, asc=True)
             top  = _top_prods(dias=30, limit=10)
-            top_feb = _top_prods(mes=2, ano=2026, limit=10)
-            top_jan = _top_prods(mes=1, ano=2026, limit=10)
-            top_dez = _top_prods(mes=12, ano=2025, limit=10)
 
             fat  = float(kv.get("fat_total") or 0)
             peds = int(kv.get("pedidos_total") or 0)
@@ -250,23 +249,14 @@ Faturamento total: R$ {fat:,.2f}
 Total de pedidos:  {peds:,}
 Ticket médio:      R$ {tick:,.2f}
 
-=== TOP 10 LOJAS ===
+=== TOP 10 LOJAS por faturamento ===
 {_fmt_rank(rank)}
 
-=== 5 PIORES LOJAS ===
+=== 5 LOJAS COM MENOR FATURAMENTO ===
 {_fmt_rank(pior)}
 
-=== TOP PRODUTOS DA REDE — últimos 30 dias ===
+=== TOP PRODUTOS DA REDE (30d) ===
 {_fmt_prods(top)}
-
-=== TOP PRODUTOS — fev/2026 ===
-{_fmt_prods(top_feb)}
-
-=== TOP PRODUTOS — jan/2026 ===
-{_fmt_prods(top_jan)}
-
-=== TOP PRODUTOS — dez/2025 ===
-{_fmt_prods(top_dez)}
 """
         except Exception as e:
             print(f"[ctx admin] {e}")
@@ -277,65 +267,66 @@ Ticket médio:      R$ {tick:,.2f}
             kv  = kpi_vendas(trade) or {}
             kc  = kpi_clientes(trade) or {}
             top = _top_prods(trade_name=trade, dias=30, limit=10)
-            top_feb = _top_prods(trade_name=trade, mes=2, ano=2026, limit=10)
-            top_jan = _top_prods(trade_name=trade, mes=1, ano=2026, limit=10)
 
             ma  = float(kv.get("mes_atual") or 0)
             mp  = float(kv.get("mes_anterior") or 0)
-            hj  = float(kv.get("hoje") or 0)
-            phj = int(kv.get("pedidos_hoje") or 0)
             tk  = float(kv.get("ticket_medio_geral") or 0)
             tc  = int(kc.get("total_clientes") or 0)
-            tm  = float(kc.get("ticket_medio") or 0)
             fm  = float(kc.get("freq_media") or 0)
             rm  = float(kc.get("recencia_media") or 0)
 
+            var = ((ma - mp) / mp * 100) if mp else 0
+            sinal = "↑" if var >= 0 else "↓"
+
             bloco_loja = f"""
 === LOJA: {trade} ===
-Faturamento mês atual:    R$ {ma:,.2f}
+Faturamento mês atual:    R$ {ma:,.2f} ({sinal}{abs(var):.1f}% vs mês anterior)
 Faturamento mês anterior: R$ {mp:,.2f}
-Hoje:                     R$ {hj:,.2f}
-Pedidos hoje:             {phj}
 Ticket médio:             R$ {tk:,.2f}
 
 === CLIENTES — {trade} ===
 Total clientes únicos: {tc:,}
-Ticket médio histórico: R$ {tm:,.2f}
-Frequência média:       {fm:.1f} compras
-Recência média:         {rm:.0f} dias
+Frequência média:      {fm:.1f} compras
+Recência média:        {rm:.0f} dias
 
-=== TOP PRODUTOS — {trade} (30d) ===
+=== TOP 10 PRODUTOS — {trade} (30d) ===
 {_fmt_prods(top)}
-
-=== TOP PRODUTOS — {trade} (fev/2026) ===
-{_fmt_prods(top_feb)}
-
-=== TOP PRODUTOS — {trade} (jan/2026) ===
-{_fmt_prods(top_jan)}
 """
         except Exception as e:
             print(f"[ctx loja] {e}")
 
-    dados = (bloco_rede + bloco_loja).strip() or \
-            "Não há dados disponíveis. Informe o usuário."
+    dados = (bloco_rede + bloco_loja).strip() or "Não há dados disponíveis no momento."
 
-    perfil    = "ADMINISTRADOR" if is_admin else "FRANQUEADO"
-    loja_info = f"Loja: {trade}" if trade else "Visão consolidada da rede"
+    # ── Regra de permissão para franqueado ──
+    regra_permissao = ""
+    if not is_admin and lojas_permitidas:
+        lojas_str = ", ".join(lojas_permitidas)
+        regra_permissao = f"""
+REGRA DE PERMISSÃO (OBRIGATÓRIA):
+- Este usuário é FRANQUEADO e só tem acesso aos dados das suas lojas: {lojas_str}
+- Se perguntarem sobre QUALQUER outra loja ou dados da rede, responda:
+  "Só tenho acesso aos dados da(s) sua(s) unidade(s): {lojas_str}."
+- NUNCA compartilhe dados de outras lojas, mesmo que estejam no contexto.
+"""
+
+    perfil    = "ADMINISTRADOR (acesso total à rede)" if is_admin else f"FRANQUEADO (acesso restrito a: {', '.join(lojas_permitidas) or trade or '—'})"
+    loja_info = f"Loja ativa: {trade}" if trade else "Visão consolidada da rede"
 
     return f"""
-Você é a IA - IH, assistente inteligente da Ital In House.
+Você é a IA - IH, assistente inteligente da Ital In House Macarrão Gourmet.
 Usuário: {nome} ({perfil}) | {loja_info}
-
-REGRAS:
-1. Responda sempre em português do Brasil, de forma direta e amigável
-2. Use 1-2 emojis por resposta no máximo
+{regra_permissao}
+REGRAS GERAIS:
+1. Responda SEMPRE em português do Brasil, de forma direta e amigável
+2. Use no máximo 2 emojis por resposta
 3. NUNCA invente dados — use apenas o contexto abaixo
-4. Se a informação não estiver no contexto, diga claramente que não tem
-5. Valores monetários: R$ X.XXX,XX
-6. Máximo 3 parágrafos por resposta — seja conciso
-7. Mensagens de teste: confirme que está funcionando e pergunte como ajudar
-8. Para produtos: use as seções TOP PRODUTOS abaixo
+4. Se a informação não estiver disponível, diga claramente
+5. Valores monetários: R$ X.XXX,XX | Crescimento: ↑ | Queda: ↓
+6. Máximo 3 parágrafos — seja conciso e objetivo
+7. Mensagens de teste: confirme que está funcionando normalmente
+8. Finalize com 1 insight ou sugestão prática quando relevante
 
+DADOS DISPONÍVEIS:
 {dados}
 """.strip()
 

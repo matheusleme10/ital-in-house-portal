@@ -232,8 +232,8 @@ chips.forEach(function(chip, i) {
 
 
 def render_ia_tab(user_dict: dict, loja_atual: dict):
-    """Renderiza a aba IA - IH."""
-    from ai_chat import build_context_ia, ia_responder
+    """Renderiza a aba IA - IH com streaming Gemini."""
+    from ai_chat import build_context_ia, ia_stream
 
     render_ia_css()
 
@@ -242,8 +242,8 @@ def render_ia_tab(user_dict: dict, loja_atual: dict):
     # ── Processa sugestão clicada ──
     if "_ia_sugestao" in st.session_state:
         pergunta = st.session_state.pop("_ia_sugestao")
-        _processar_pergunta(pergunta, user_dict, loja_atual, ia_responder, build_context_ia)
-        return  # rerun já foi chamado dentro
+        _processar_stream(pergunta, user_dict, loja_atual, ia_stream, build_context_ia)
+        return
 
     # ── Histórico ──
     st.markdown('<div class="ia-area">', unsafe_allow_html=True)
@@ -287,8 +287,8 @@ def render_ia_tab(user_dict: dict, loja_atual: dict):
     st.markdown("</div></div>", unsafe_allow_html=True)
 
     if enviar and pergunta and pergunta.strip():
-        _processar_pergunta(
-            pergunta.strip(), user_dict, loja_atual, ia_responder, build_context_ia
+        _processar_stream(
+            pergunta.strip(), user_dict, loja_atual, ia_stream, build_context_ia
         )
 
     # ── Limpar ──
@@ -301,17 +301,28 @@ def render_ia_tab(user_dict: dict, loja_atual: dict):
                 st.rerun()
 
 
-def _processar_pergunta(pergunta, user_dict, loja_atual, ia_responder, build_context_ia):
-    """Processa uma pergunta e salva a resposta no histórico."""
-    ctx = build_context_ia(user_dict, loja_atual)
+def _processar_stream(pergunta, user_dict, loja_atual, ia_stream_fn, build_context_ia):
+    """Processa pergunta com streaming — tokens aparecem em tempo real."""
+    ctx  = build_context_ia(user_dict, loja_atual)
     st.session_state.chat.append({"role": "user", "content": pergunta})
     msgs = [{"role": m["role"], "content": m["content"]} for m in st.session_state.chat]
 
-    with st.spinner("IA - IH pensando..."):
-        try:
-            reply = ia_responder(msgs, ctx)
-        except Exception as e:
-            reply = f"⚠️ Erro ao conectar com a IA: {e}"
+    # Renderiza histórico atual
+    st.markdown('<div class="ia-area">', unsafe_allow_html=True)
+    for msg in st.session_state.chat:
+        if msg["role"] == "user":
+            _user_msg(msg["content"])
 
-    st.session_state.chat.append({"role": "assistant", "content": reply})
+    # Streaming em tempo real dentro do bubble da IA
+    st.markdown('<div class="ia-ai"><div class="ia-ai-ico">✦</div><div class="ia-ai-text">',
+                unsafe_allow_html=True)
+    try:
+        reply = st.write_stream(ia_stream_fn(msgs, ctx))
+    except Exception as e:
+        reply = f"⚠️ Erro: {e}"
+        st.error(reply)
+    st.markdown("</div></div><div class='ia-sep'></div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.session_state.chat.append({"role": "assistant", "content": reply or ""})
     st.rerun()
