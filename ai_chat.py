@@ -1,8 +1,6 @@
-"""IA - IH · Motor de IA — Gemini 1.5 Flash (estável) com fallback."""
+"""IA - IH · Motor de IA — google.genai (biblioteca atual)"""
 
 import os
-import time
-
 import streamlit as st
 from google import genai
 from google.genai import types
@@ -10,16 +8,17 @@ from google.genai import types
 from db import fetch_all, fetch_one
 from queries import kpi_clientes, kpi_vendas
 
-# ── Modelos em ordem de preferência (todos estáveis) ──
+# Modelos disponíveis na conta (em ordem de preferência)
 _MODELOS = [
-    "gemini-1.5-flash",      # principal — rápido e barato
-    "gemini-1.5-flash-8b",   # fallback leve
-    "gemini-1.5-pro",        # fallback premium se os outros falharem
+    "gemini-2.0-flash",
+    "gemini-2.0-flash-lite",
+    "gemini-2.5-flash",
 ]
+
+_client_cache = None
 
 
 def _key(name: str) -> str:
-    """Lê chave do .env ou Streamlit Secrets."""
     val = os.getenv(name, "").strip()
     if val:
         return val
@@ -29,42 +28,52 @@ def _key(name: str) -> str:
         return ""
 
 
+def _client():
+    global _client_cache
+    if _client_cache is None:
+        key = _key("GOOGLE_API_KEY")
+        if not key:
+            return None
+        _client_cache = genai.Client(api_key=key)
+    return _client_cache
+
+
 # ─────────────────────────────────────────────────────────
-#  GEMINI — fallback automático por modelos
+#  STREAMING
 # ─────────────────────────────────────────────────────────
 
-def _build_history(messages: list) -> list:
-    """Converte histórico para formato Gemini (user/model, nunca assistant)."""
+def ia_stream(messages: list, context: str):
+    """Generator de tokens para st.write_stream()."""
+    client = _client()
+    if not client:
+        yield "⚠️ GOOGLE_API_KEY não configurada no .env ou Secrets."
+        return
+
+    system_prompt = (
+        "Você é a IA - IH, assistente da Ital In House Macarrão Gourmet.\n"
+        "Responda SEMPRE em português do Brasil, de forma direta e amigável.\n"
+        "Use apenas os dados do contexto. Se não souber, diga claramente.\n"
+        "Máximo 3 parágrafos por resposta.\n\n"
+        + context
+    )
+
+    # Converte histórico: streamlit usa "assistant", genai usa "model"
     history = []
     for msg in messages[:-1]:
         role = "user" if msg["role"] == "user" else "model"
-        history.append(types.Content(role=role, parts=[types.Part(text=msg["content"])]))
+        history.append(types.Content(
+            role=role,
+            parts=[types.Part(text=msg["content"])]
+        ))
     history.append(types.Content(
         role="user",
         parts=[types.Part(text=messages[-1]["content"])]
     ))
-    return history
 
-
-def _responder_gemini(messages: list, context: str) -> str:
-    gemini_key = _key("GOOGLE_API_KEY")
-    if not gemini_key:
-        return "⚠️ GOOGLE_API_KEY não configurada no .env ou Secrets."
-
-    client  = genai.Client(api_key=gemini_key)
-    history = _build_history(messages)
-
-    system_prompt = (
-        "Você é a IA - IH, assistente inteligente da Ital In House.\n"
-        "Responda SEMPRE em português do Brasil, de forma direta.\n"
-        "Não invente dados. Use apenas as informações do contexto.\n\n"
-        + context
-    )
-
-    ultimo_erro = ""
     for modelo in _MODELOS:
         try:
-            resp = client.models.generate_content(
+            print(f"[IA-IH] Tentando {modelo}...")
+            stream = client.models.generate_content_stream(
                 model=modelo,
                 contents=history,
                 config=types.GenerateContentConfig(
@@ -73,77 +82,57 @@ def _responder_gemini(messages: list, context: str) -> str:
                     temperature=0.6,
                 ),
             )
+            for chunk in stream:
+                if chunk.text:
+                    yield chunk.text
             print(f"[IA-IH] ✓ respondeu via {modelo}")
-            return resp.text
+            return
 
         except Exception as e:
             err = str(e)
-            ultimo_erro = err
             print(f"[IA-IH] {modelo} falhou: {err[:120]}")
 
-            is_quota = "quota" in err.lower() or "429" in err or "resource exhausted" in err.lower()
-            is_key   = "api key" in err.lower() or "401" in err or "invalid" in err.lower() and "key" in err.lower()
-
-            if is_key:
-                return "⚠️ Chave Google inválida. Verifique GOOGLE_API_KEY no .env"
-            if is_quota:
-                time.sleep(1)  # aguarda antes do próximo modelo
-
-            # qualquer erro → tenta próximo modelo
+            if "api key" in err.lower() or "401" in err:
+                yield "⚠️ Chave Google inválida. Verifique GOOGLE_API_KEY."
+                return
+            if "429" in err or "quota" in err.lower() or "resource exhausted" in err.lower():
+                yield "⚠️ Limite de requisições atingido. Aguarde alguns segundos."
+                return
+            # 404 ou outro erro → tenta próximo modelo
             continue
 
-    # todos falharam — retorna o erro real para diagnóstico
-    return f"⚠️ Não foi possível conectar à IA agora. Detalhe: {ultimo_erro[:200]}"
+    yield "⚠️ Nenhum modelo disponível respondeu. Verifique sua conta no Google AI Studio."
 
 
 def ia_responder(messages: list, context: str) -> str:
-    """Ponto de entrada principal. Gemini com fallback automático entre modelos."""
-    gemini_key = _key("GOOGLE_API_KEY")
-
-    print(f"[IA-IH] Gemini={'✓' if gemini_key else '✗'} | msgs={len(messages)}")
-    if messages:
-        print(f"[IA-IH] pergunta: '{messages[-1]['content'][:80]}'")
-
-    if gemini_key:
-        return _responder_gemini(messages, context)
-
-    return "⚠️ GOOGLE_API_KEY não configurada. Adicione no .env ou Streamlit Secrets."
+    return "".join(ia_stream(messages, context))
 
 
 # ─────────────────────────────────────────────────────────
 #  QUERIES DE CONTEXTO
 # ─────────────────────────────────────────────────────────
 
-def _top_prods(trade_name: str = None, mes: int = None, ano: int = None,
-               dias: int = 30, limit: int = 10) -> list:
-    """Top produtos — por loja, por mês/ano, ou consolidado."""
+def _top_prods(trade_name=None, dias=30, limit=10) -> list:
     try:
-        if mes and ano:
-            params = (mes, ano, limit) if not trade_name else (trade_name, mes, ano, limit)
-            where  = "EXTRACT(MONTH FROM created_at)=%s AND EXTRACT(YEAR FROM created_at)=%s"
-            where  = (f"trade_name=%s AND " + where) if trade_name else where
+        where = f"created_at >= CURRENT_DATE - ('{dias} days')::INTERVAL AND desc_sale_item IS NOT NULL"
+        if trade_name:
+            where = f"trade_name=%s AND {where}"
+            params = (trade_name, limit)
         else:
-            where  = f"created_at >= CURRENT_DATE - ('{dias} days')::INTERVAL"
-            params = (limit,) if not trade_name else (trade_name, limit)
-            where  = (f"trade_name=%s AND " + where) if trade_name else where
-
+            params = (limit,)
         return fetch_all(f"""
-            SELECT desc_sale_item      AS produto,
-                   desc_store_category_item AS categoria,
-                   SUM(quantity)::int  AS qtd_vendida,
+            SELECT desc_sale_item AS produto, desc_store_category_item AS categoria,
+                   SUM(quantity)::int AS qtd_vendida,
                    SUM(quantity * unit_price)::float AS receita_total
-            FROM backup.venda_item
-            WHERE {where} AND desc_sale_item IS NOT NULL
-            GROUP BY desc_sale_item, desc_store_category_item
-            ORDER BY receita_total DESC
-            LIMIT %s
-        """, params)
+            FROM backup.venda_item WHERE {where}
+            GROUP BY 1,2 ORDER BY receita_total DESC LIMIT %s
+        """, params) or []
     except Exception as e:
         print(f"[top_prods] {e}")
         return []
 
 
-def _kpi_rede(dias: int = 30) -> dict:
+def _kpi_rede(dias=30) -> dict:
     try:
         r = fetch_one("""
             SELECT COALESCE(SUM(total_amount),0)::float AS fat_total,
@@ -158,7 +147,7 @@ def _kpi_rede(dias: int = 30) -> dict:
         return {}
 
 
-def _ranking(dias: int = 30, limit: int = 10, asc: bool = False) -> list:
+def _ranking(dias=30, limit=10, asc=False) -> list:
     try:
         order = "ASC" if asc else "DESC"
         return fetch_all(f"""
@@ -168,42 +157,29 @@ def _ranking(dias: int = 30, limit: int = 10, asc: bool = False) -> list:
                    AVG(total_amount)::float AS ticket
             FROM backup.vendas
             WHERE created_at >= CURRENT_DATE - (%s || ' days')::INTERVAL
-            GROUP BY trade_name
-            ORDER BY faturamento {order}
-            LIMIT %s
-        """, (str(dias), limit))
+            GROUP BY trade_name ORDER BY faturamento {order} LIMIT %s
+        """, (str(dias), limit)) or []
     except Exception as e:
         print(f"[ranking] {e}")
         return []
 
 
-# ─────────────────────────────────────────────────────────
-#  FORMATADORES
-# ─────────────────────────────────────────────────────────
-
-def _fmt_prods(rows: list) -> str:
-    if not rows:
-        return "sem dados"
-    out = []
-    for i, r in enumerate(rows):
-        fat  = float(r.get("receita_total") or 0)
-        qtd  = int(r.get("qtd_vendida") or 0)
-        prod = r.get("produto") or "—"
-        cat  = r.get("categoria") or "—"
-        out.append(f"{i+1}. {prod} ({cat}): {qtd} un. | R$ {fat:,.2f}")
-    return "\n".join(out)
+def _fmt_prods(rows):
+    if not rows: return "sem dados"
+    return "\n".join(
+        f"{i+1}. {r.get('produto','—')} ({r.get('categoria','—')}): "
+        f"{int(r.get('qtd_vendida') or 0):,} un. | R$ {float(r.get('receita_total') or 0):,.2f}"
+        for i, r in enumerate(rows)
+    )
 
 
-def _fmt_rank(rows: list) -> str:
-    if not rows:
-        return "sem dados"
-    out = []
-    for i, r in enumerate(rows):
-        fat  = float(r.get("faturamento") or 0)
-        peds = int(r.get("pedidos") or 0)
-        nome = r.get("trade_name") or "—"
-        out.append(f"{i+1}. {nome}: R$ {fat:,.2f} ({peds} pedidos)")
-    return "\n".join(out)
+def _fmt_rank(rows):
+    if not rows: return "sem dados"
+    return "\n".join(
+        f"{i+1}. {r.get('trade_name','—')}: "
+        f"R$ {float(r.get('faturamento') or 0):,.2f} ({int(r.get('pedidos') or 0):,} pedidos)"
+        for i, r in enumerate(rows)
+    )
 
 
 # ─────────────────────────────────────────────────────────
@@ -212,82 +188,60 @@ def _fmt_rank(rows: list) -> str:
 
 def build_context_ia(user: dict, loja_atual: dict) -> str:
     is_admin = (user.get("role") or "").lower() == "admin"
-
-    # ── nome: session guarda como "nome", não "nome_completo" ──
-    nome = (user.get("nome_completo")
-            or user.get("nome")
-            or user.get("username")
-            or "Usuário")
+    nome = (user.get("nome_completo") or user.get("nome")
+            or user.get("username") or "Usuário")
 
     trade = None
     if loja_atual and loja_atual.get("trade_name") not in (None, "__admin__", ""):
         trade = loja_atual["trade_name"]
 
-    # ── Lojas que o franqueado pode ver ──
-    lojas_permitidas: list[str] = []
+    lojas_permitidas = []
     if not is_admin:
         lojas_permitidas = [l["trade_name"] for l in (user.get("lojas") or [])]
 
-    bloco_rede = ""
-    bloco_loja = ""
+    bloco = ""
 
-    # ── Admin: dados consolidados da rede ──
     if is_admin:
         try:
             kv   = _kpi_rede(30)
             rank = _ranking(30, 10)
             pior = _ranking(30, 5, asc=True)
             top  = _top_prods(dias=30, limit=10)
-
-            fat  = float(kv.get("fat_total") or 0)
-            peds = int(kv.get("pedidos_total") or 0)
-            tick = float(kv.get("ticket_medio") or 0)
-
-            bloco_rede = f"""
+            bloco += f"""
 === REDE — últimos 30 dias ===
-Faturamento total: R$ {fat:,.2f}
-Total de pedidos:  {peds:,}
-Ticket médio:      R$ {tick:,.2f}
+Faturamento: R$ {float(kv.get('fat_total') or 0):,.2f}
+Pedidos: {int(kv.get('pedidos_total') or 0):,}
+Ticket médio: R$ {float(kv.get('ticket_medio') or 0):,.2f}
 
 === TOP 10 LOJAS por faturamento ===
 {_fmt_rank(rank)}
 
-=== 5 LOJAS COM MENOR FATURAMENTO ===
+=== 5 MENORES FATURAMENTOS ===
 {_fmt_rank(pior)}
 
-=== TOP PRODUTOS DA REDE (30d) ===
+=== TOP 10 PRODUTOS DA REDE (30d) ===
 {_fmt_prods(top)}
 """
         except Exception as e:
             print(f"[ctx admin] {e}")
 
-    # ── Dados da loja selecionada ──
     if trade:
         try:
             kv  = kpi_vendas(trade) or {}
             kc  = kpi_clientes(trade) or {}
             top = _top_prods(trade_name=trade, dias=30, limit=10)
-
             ma  = float(kv.get("mes_atual") or 0)
             mp  = float(kv.get("mes_anterior") or 0)
             tk  = float(kv.get("ticket_medio_geral") or 0)
             tc  = int(kc.get("total_clientes") or 0)
             fm  = float(kc.get("freq_media") or 0)
-            rm  = float(kc.get("recencia_media") or 0)
-
             var = ((ma - mp) / mp * 100) if mp else 0
-            sinal = "↑" if var >= 0 else "↓"
-
-            bloco_loja = f"""
+            bloco += f"""
 === LOJA: {trade} ===
-Faturamento mês atual:    R$ {ma:,.2f} ({sinal}{abs(var):.1f}% vs mês anterior)
-Faturamento mês anterior: R$ {mp:,.2f}
-Ticket médio:             R$ {tk:,.2f}
-
-=== CLIENTES — {trade} ===
-Total clientes únicos: {tc:,}
-Frequência média:      {fm:.1f} compras
-Recência média:        {rm:.0f} dias
+Mês atual: R$ {ma:,.2f} ({'↑' if var>=0 else '↓'}{abs(var):.1f}% vs anterior)
+Mês anterior: R$ {mp:,.2f}
+Ticket médio: R$ {tk:,.2f}
+Clientes únicos: {tc:,} | Frequência média: {fm:.1f}x
 
 === TOP 10 PRODUTOS — {trade} (30d) ===
 {_fmt_prods(top)}
@@ -295,61 +249,26 @@ Recência média:        {rm:.0f} dias
         except Exception as e:
             print(f"[ctx loja] {e}")
 
-    dados = (bloco_rede + bloco_loja).strip() or "Não há dados disponíveis no momento."
+    dados = bloco.strip() or "Dados não disponíveis no momento."
 
-    # ── Regra de permissão para franqueado ──
-    regra_permissao = ""
+    regra = ""
     if not is_admin and lojas_permitidas:
-        lojas_str = ", ".join(lojas_permitidas)
-        regra_permissao = f"""
-REGRA DE PERMISSÃO (OBRIGATÓRIA):
-- Este usuário é FRANQUEADO e só tem acesso aos dados das suas lojas: {lojas_str}
-- Se perguntarem sobre QUALQUER outra loja ou dados da rede, responda:
-  "Só tenho acesso aos dados da(s) sua(s) unidade(s): {lojas_str}."
-- NUNCA compartilhe dados de outras lojas, mesmo que estejam no contexto.
-"""
+        ls = ", ".join(lojas_permitidas)
+        regra = (f"\nPERMISSÃO OBRIGATÓRIA: Este usuário é FRANQUEADO e só pode ver "
+                 f"dados de: {ls}. Recuse qualquer pergunta sobre outras lojas.\n")
 
-    perfil    = "ADMINISTRADOR (acesso total à rede)" if is_admin else f"FRANQUEADO (acesso restrito a: {', '.join(lojas_permitidas) or trade or '—'})"
-    loja_info = f"Loja ativa: {trade}" if trade else "Visão consolidada da rede"
+    perfil = "ADMINISTRADOR" if is_admin else f"FRANQUEADO ({', '.join(lojas_permitidas) or '—'})"
+    ctx    = "Rede toda" if not trade else f"Loja: {trade}"
 
-    return f"""
-Você é a IA - IH, assistente inteligente da Ital In House Macarrão Gourmet.
-Usuário: {nome} ({perfil}) | {loja_info}
-{regra_permissao}
-REGRAS GERAIS:
-1. Responda SEMPRE em português do Brasil, de forma direta e amigável
-2. Use no máximo 2 emojis por resposta
-3. NUNCA invente dados — use apenas o contexto abaixo
-4. Se a informação não estiver disponível, diga claramente
-5. Valores monetários: R$ X.XXX,XX | Crescimento: ↑ | Queda: ↓
-6. Máximo 3 parágrafos — seja conciso e objetivo
-7. Mensagens de teste: confirme que está funcionando normalmente
-8. Finalize com 1 insight ou sugestão prática quando relevante
-
+    return f"""Usuário: {nome} ({perfil}) | {ctx}
+{regra}
 DADOS DISPONÍVEIS:
-{dados}
-""".strip()
+{dados}"""
 
 
-# ── Compatibilidade legada ──
 def build_context(trade_name: str) -> str:
     kv  = kpi_vendas(trade_name) or {}
-    kc  = kpi_clientes(trade_name) or {}
-    top = _top_prods(trade_name=trade_name, dias=30, limit=10)
-
-    def money(k):
-        from decimal import Decimal
-        v = kv.get(k)
-        if v is None: return "R$ 0,00"
-        x = float(v) if isinstance(v, Decimal) else float(v)
-        return f"R$ {x:,.2f}".replace(",","X").replace(".",",").replace("X",".")
-
-    return (
-        f"Unidade: {trade_name}. "
-        f"Mês atual: {money('mes_atual')}. Hoje: {money('hoje')}. "
-        f"Pedidos hoje: {int(kv.get('pedidos_hoje') or 0)}. "
-        f"Ticket médio: {money('ticket_medio_geral')}. "
-        f"Clientes: {int(kc.get('total_clientes') or 0)}. "
-        f"Top produtos: {_fmt_prods(top)}. "
-        "Responda em português. Não invente."
-    )
+    top = _top_prods(trade_name=trade_name, dias=30, limit=5)
+    return (f"Unidade: {trade_name}. "
+            f"Mês: R$ {float(kv.get('mes_atual') or 0):,.2f}. "
+            f"Produtos: {_fmt_prods(top)}")
